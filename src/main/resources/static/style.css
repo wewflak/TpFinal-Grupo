@@ -1,0 +1,76 @@
+body{
+    min-height: 90vh;
+    display: grid;
+    background: rgb(123,31,162);
+    background: linear-gradient(0deg, rgba(123,31,162,1) 0%, rgba(0,25,53,1) 100%);
+    color: #fef9ff;
+    font-family: 'Hind Siliguri', sans-serif;
+    justify-items:center;
+}
+#registro{
+	display:inline;
+    width: 60%;
+    margin: 10% 01% 20% 01%;
+    padding: 1%;
+}
+#registro .titulo h5{
+	color:#dde1e4;
+}
+.button{
+	margin-top:1em;
+    margin-left: 70%;
+    width: 30%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    color: #fef9ff;
+    padding: 0.25em 1em;
+    border-radius: 12px;
+    position: relative;
+    }
+.form-control{
+    background-color: rgba(0,0,0,0.5);
+    border: #dde1e4 solid 0.1em;
+    border-radius: 12px;
+    color: #dde1e4;
+    display: block;
+    width: 90%;
+}
+.ui-datepicker {
+    background: #333;
+    border: 1px solid #555;
+    color: #2179fd;
+ }
+.form-control:focus{
+    background-color: rgba(0,0,0,0.5);
+    border: #dde1e4 solid 0.1em;
+    border-radius: 12px;
+    color: #dde1e4;
+    display: block;
+    width: 90%;
+}
+button{
+    margin-top:1em;
+    margin-left: 70%;
+    width: 30%;
+        display: block;
+        text-align: center;
+        cursor: pointer;
+        color: #fef9ff;
+        padding: 0.25em 1em;
+        border-radius: 12px;
+        position: relative;
+        }
+.button a{
+	text-decoration:none;
+	color:#dde1e4
+}
+a{
+	
+	text-decoration:none;
+	color:#dde1e4
+}
+.button:hover{
+	border-bottom: #dde1e4 0.125em solid;
+	transition:all 0.2s;
+}

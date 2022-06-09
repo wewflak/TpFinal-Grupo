@@ -15,6 +15,8 @@ public class Cliente {
 	String nombre;
 	@NotEmpty
 	String apellido;
+	@NotEmpty
+	String contrasena;
 	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
 	@NotNull
@@ -22,7 +24,12 @@ public class Cliente {
 	@NotEmpty
 	String email;
 	LocalDate FechadeN;
-	
+	public String getContrasena() {
+		return contrasena;
+	}
+	public void setContrasena(String contrasena) {
+		this.contrasena = contrasena;
+	}
 	public String getNombre() {
 		return nombre;
 	}
