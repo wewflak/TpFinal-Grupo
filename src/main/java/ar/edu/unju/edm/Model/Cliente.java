@@ -2,6 +2,7 @@ package ar.edu.unju.edm.Model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
@@ -11,6 +12,8 @@ public class Cliente {
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
+	@NotNull
+	Integer id;
 	@NotEmpty
 	String nombre;
 	@NotEmpty
@@ -20,6 +23,7 @@ public class Cliente {
 	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
 	@NotNull
+	@Id
 	Long dni;
 	@NotEmpty
 	String email;
