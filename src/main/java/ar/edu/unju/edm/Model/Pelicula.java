@@ -3,15 +3,22 @@ package ar.edu.unju.edm.Model;
 import java.time.LocalDate;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+
+import org.springframework.stereotype.Component;
+
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-
+@Component
+@Entity
 public class Pelicula {
-    @NotEmpty
+    @NotNull
     @Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
     Integer Id;
+    @NotEmpty
     String nombre;
     String genero;
     String duracion;

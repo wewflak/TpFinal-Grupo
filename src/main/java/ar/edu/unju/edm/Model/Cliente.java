@@ -2,12 +2,16 @@ package ar.edu.unju.edm.Model;
 
 import java.time.LocalDate;
 
+import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.stereotype.Component;
+@Component
+@Entity
 public class Cliente {
 	public Cliente() {
 		// TODO Auto-generated constructor stub
@@ -28,6 +32,13 @@ public class Cliente {
 	@NotEmpty
 	String email;
 	LocalDate FechadeN;
+	Boolean estado;
+	public Boolean getEstado() {
+		return estado;
+	}
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
+	}
 	public String getContrasena() {
 		return contrasena;
 	}

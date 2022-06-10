@@ -13,91 +13,92 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.edm.Model.Cliente;
+import ar.edu.unju.edm.Service.IClienteService;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-
+@Controller
 public class ClienteController {
 	private static final Log SRT = LogFactory.getLog(ClienteController.class);
 	@Autowired
 	Cliente nuevoCliente;
 	@Autowired
-	//IUsuarioService serviceuser;
-	@GetMapping("/cargarusuario")//entrega usuarios
-	public ModelAndView addUser() {
-		ModelAndView vista = new ModelAndView("cargarusuario");
-		vista.addObject("usuario", nuevoUsuario);
+	IClienteService serviceclient;
+	@GetMapping("/cargarcliente")//entrega clientes
+	public ModelAndView addClient() {
+		ModelAndView vista = new ModelAndView("cargarcliente");
+		vista.addObject("cliente", nuevoCliente);
 
 		vista.addObject("band", false);
 		return vista;
 		
 	}
 	
-	@PostMapping("/guardarusuario")//recibe datos
-	public String saveUser(@Valid @ModelAttribute ("usuario") Usuario usuarioparaguardar, BindingResult resultado, Model model) {
-		SRT.info("Ingresando al metodo guardar Usuario: "+usuarioparaguardar.getDni());
+	@PostMapping("/guardarcliente")//recibe datos
+	public String saveUser(@Valid @ModelAttribute ("cliente") Cliente clienteparaguardar, BindingResult resultado, Model model) {
+		SRT.info("Ingresando al metodo guardar Cliente: "+clienteparaguardar.getDni());
 		if(resultado.hasErrors()) {
-			SRT.fatal("Error de validacion"+usuarioparaguardar.getApellido());
-			model.addAttribute("usuario", usuarioparaguardar);
-			return "cargarusuario";
+			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido());
+			model.addAttribute("cliente", clienteparaguardar);
+			return "cargarcliente";
 		}else {
 		try {
 
-			serviceuser.guardarUsuario(usuarioparaguardar);
+			serviceclient.guardarCliente(clienteparaguardar);
 			}
 		catch(Exception error){
-			model.addAttribute("formUsuarioErrorMessage", error.getMessage());
-			model.addAttribute("usuario", usuarioparaguardar); 
+			model.addAttribute("formclienteErrorMessage", error.getMessage());
+			model.addAttribute("cliente", clienteparaguardar); 
 			SRT.error("No se pudo cargar"); 
-			return "cargarusuario";
+			return "cargarcliente";
 		}
-		model.addAttribute("formUsuarioErrorMessage", "Usuario guardado correctamente");
-		model.addAttribute("usuario", nuevoUsuario);
-		System.out.println(usuarioparaguardar.getApellido()+usuarioparaguardar.getEmail());
+		model.addAttribute("formclienteErrorMessage", "Cliente guardado correctamente");
+		model.addAttribute("cliente", nuevoCliente);
+		System.out.println(clienteparaguardar.getApellido()+clienteparaguardar.getEmail());
 		return "index";
 	}
 	}
 	
-	@GetMapping("/mostrarusuario")
-	public ModelAndView showuser() {
-		ModelAndView vista = new ModelAndView("mostrarusuario");
+	@GetMapping("/mostrarcliente")
+	public ModelAndView showclient() {
+		ModelAndView vista = new ModelAndView("mostrarcliente");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
-		vista.addObject("listausuarios", serviceuser.mostrarUsuarios());
+		vista.addObject("listaclientes", serviceclient.mostrarClientes());
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-	@GetMapping("/editarUsuario/{dni}")
-	public ModelAndView edituser(Model model, @PathVariable(name="dni")Long dni) throws Exception {
-		Usuario usuarioEncontrado = new Usuario();
+	@GetMapping("/editarcliente/{dni}")
+	public ModelAndView editclient(Model model, @PathVariable(name="dni")Long dni) throws Exception {
+		Cliente clienteEncontrado = new Cliente();
 		try {
-			usuarioEncontrado = serviceuser.buscarUsuario(dni);
+			clienteEncontrado = serviceclient.buscarCliente(dni);
 		}catch(Exception e) {
-			model.addAttribute("formUsuarioErrorMessage", e.getMessage());
+			model.addAttribute("formClienteErrorMessage", e.getMessage());
 		}
-		ModelAndView encontrado = new ModelAndView("cargarusuario");
-		encontrado.addObject("usuario", usuarioEncontrado);
-		SRT.error("usuario: " + usuarioEncontrado);
+		ModelAndView encontrado = new ModelAndView("cargarcliente");
+		encontrado.addObject("cliente", clienteEncontrado);
+		SRT.error("cliente: " + clienteEncontrado);
 		encontrado.addObject("band", true);
 		return encontrado;
 	}
-	@PostMapping("ModificarUsuario")
-	public ModelAndView subUser(@Valid @ModelAttribute ("Usuario") Usuario usuariomodificar, Model model) {
-		serviceuser.modificarUsuario(usuariomodificar);
-		SRT.info("Ingresando al metodo guardar Usuario: "+usuariomodificar.getApellido());
-		ModelAndView vista = new ModelAndView ("mostrarusuario");
-		vista.addObject("listaUsuario", serviceuser.mostrarUsuarios());
-		vista.addObject("formUsuarioErrorMessage", "Usuario guardado correctamente");
+	@PostMapping("Modificarcliente")
+	public ModelAndView subUser(@Valid @ModelAttribute ("cliente") Cliente clientemodificar, Model model) {
+		serviceclient.modificarCliente(clientemodificar);
+		SRT.info("Ingresando al metodo guardar Cliente: "+clientemodificar.getApellido());
+		ModelAndView vista = new ModelAndView ("mostrarcliente");
+		vista.addObject("listadoClientes", serviceclient.mostrarClientes());
+		vista.addObject("formclienteErrorMessage", "Cliente guardado correctamente");
 		return vista;
 	}
-	@GetMapping("/eliminarUsuario/{dni}")
+	@GetMapping("/eliminarcliente/{dni}")
 	public String deleteuser(@PathVariable(name="dni")Long dni) {
 		try {
-		serviceuser.eliminarUsuario(dni);
+		serviceclient.eliminarCliente(dni);
 		}catch(Exception error){
-			SRT.error("No se pudo eliminar el usuario");
-			return "redirect:/cargarusuario";
+			SRT.error("No se pudo eliminar el Cliente");
+			return "redirect:/cargarcliente";
 		}
-		return "redirect:/mostrarusuario";
+		return "redirect:/mostrarcliente";
 	}
 	
 }
