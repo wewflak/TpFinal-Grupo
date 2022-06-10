@@ -59,9 +59,9 @@ public class ClienteController {
 	}
 	}
 	
-	@GetMapping("/mostrarcliente")
+	@GetMapping("/mostrarclientes")
 	public ModelAndView showclient() {
-		ModelAndView vista = new ModelAndView("mostrarcliente");
+		ModelAndView vista = new ModelAndView("mostrarclientes");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
 		vista.addObject("listaclientes", serviceclient.mostrarClientes());
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");

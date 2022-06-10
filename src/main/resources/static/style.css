@@ -1,3 +1,7 @@
+:root{
+    --clr-neon: #0000ff;
+    --clr-bga: #1992fc;
+}
 body{
     min-height: 100vh;
     width: 100%;
@@ -9,6 +13,7 @@ body{
     font-family: 'Hind Siliguri', sans-serif;
     align-items: center;
 }
+
 #registro{
 	display:inline;
     width: 60%;
@@ -286,3 +291,87 @@ a.nav-link:hover{
 #slider-span5:target ~ .image-slider{left: -25%;}
 #slider-span6:target ~ .image-slider{left: -50%;}
 #slider-span7:target ~ .image-slider{left: -70%;}
+/* Style correspondiente al html mostraruclientes*/
+h2{
+	margin-top:2rem;
+    display: inline;
+}
+.contenedor{
+	width:100%;
+}
+.contenedor #tabla{
+	width:60%;
+	margin:10%;
+}
+#tabla th,
+#tabla td{
+    color: #dde1e4;
+    padding: 1em;
+}
+#tabla hr{
+    border-color: #dde1e4;
+}
+.bton {
+    width: 100%;
+    display: block;
+    text-align: center;
+    cursor: pointer;
+    color: #dde1e4;
+    border: #dde1e4 0.125em solid;
+    padding: 0.25em 1em;
+    border-radius: 12px;
+    position: relative;
+}
+.bton::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    box-shadow: 0 0 2em 0.5em var(--clr-neon);
+    opacity: 0;
+    border: var(--clr-neon) 0.125em solid;
+    background-color: var(--clr-neon);
+    border-radius: 9px;
+    z-index: -1;
+    transition: opacity 100ms linear;
+}
+.bton:hover,
+.bton:focus {
+    color: var(--clr-bga);
+    border: var(--clr-neon) 0.125em solid;
+    text-shadow: none;
+}
+.bton:hover::before,
+.bton:focus::before {
+    opacity: 1;
+}
+.bton:hover::after,
+.bton:focus::after {
+    opacity: 1;
+}
+.contenedor .botn{
+	margin-top:2rem;
+	display: block;
+	background-image: linear-gradient(to right, #0c038c, #4905aa, #7807c8, #a607e4, #d600ff);
+	padding:2rem 0 2rem 0;
+
+	
+}
+.contenedor  .botn span{
+	margin-left:2rem;
+	color:#dde1e4;
+	font-size:1.2rem;
+	text-decoration:none;
+}
+a{
+	text-decoration:none;
+}
+a .botn:hover{
+	transition:all 2s;
+	background-image: linear-gradient(to left, #0c038c, #4905aa, #7807c8, #a607e4, #d600ff);
+}
+a .botn:hover span{
+		color:#dde1e4;
+}
