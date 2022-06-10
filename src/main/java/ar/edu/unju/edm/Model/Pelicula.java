@@ -21,9 +21,16 @@ public class Pelicula {
     @NotEmpty
     String nombre;
     String genero;
-    String duracion;
+    Long duracion;
     String descripcion;
     LocalDate fechadeE;
+    Boolean Estado;
+    public Boolean getEstado() {
+        return Estado;
+    }
+    public void setEstado(Boolean estado) {
+        Estado = estado;
+    }
     public Integer getId() {
         return Id;
     }
@@ -45,10 +52,10 @@ public class Pelicula {
     public String getNombre() {
         return nombre;
     }
-    public String getDuracion() {
+    public Long getDuracion() {
         return duracion;
     }
-    public void setDuracion(String duracion) {
+    public void setDuracion(Long duracion) {
         this.duracion = duracion;
     }
     public void setNombre(String nombre) {

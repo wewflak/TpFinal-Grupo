@@ -27,7 +27,7 @@
 <div class="titulo">
 <h5>Inicio de usuario</h5>
 </div>
-		<form th:object="${cliente}" th:action="${band}? @{/ModificarCliente} : @{/guardarcliente}" method="post">
+		<form th:object="${pelicula}" th:action="${band}? @{/ModificarPelicula} : @{/guardarpelicula}" method="post">
 		
 		<!--<input type="hidden" class="form-control" th:if="${band}" th:field="*{contrasena}">
 	        <input type="hidden" class="form-control" th:if="${band}" th:field="*{estado}">
@@ -39,15 +39,15 @@
             </div>
             
             <div class="mb-3">
-                <label for="apellido" class="form-label">Apellido</label>
-                <input  type="text" class="form-control" id="apellido" th:field="*{apellido}" required>
-                    <div class="alert alert-danger" th:if="${#fields.hasErrors('apellido')}"th:errors="*{apellido}"></div>
+                <label for="apellido" class="form-label">Genero</label>
+                <input  type="text" class="form-control" id="genero" th:field="*{genero}" required>
+                    <div class="alert alert-danger" th:if="${#fields.hasErrors('genero')}"th:errors="*{genero}"></div>
             </div>
             <div class="mb-3">
-                <label for="dni" class="form-label">Dni</label>
-                <input type="number" class="form-control" id="dni" th:field="*{dni}" required>
+                <label for="dni" class="form-label">Duracion</label>
+                <input type="number" class="form-control" id="duracion" th:field="*{duracion}" required>
         <div class="alert alert-danger" 
-        th:if="${#fields.hasErrors('dni')}"th:errors="*{dni}"></div>
+        th:if="${#fields.hasErrors('duracion')}"th:errors="*{duracion}"></div>
             </div>
 	  	
 		  <div class="mb-3" style="display:inline">
