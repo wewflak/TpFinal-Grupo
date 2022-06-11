@@ -35,7 +35,7 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/guardarcliente")//recibe datos
-	public String saveUser(@Valid @ModelAttribute ("cliente") Cliente clienteparaguardar, BindingResult resultado, Model model) {
+	public String saveClient(@Valid @ModelAttribute ("cliente") Cliente clienteparaguardar, BindingResult resultado, Model model) {
 		SRT.info("Ingresando al metodo guardar Cliente: "+clienteparaguardar.getDni());
 		if(resultado.hasErrors()) {
 			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido());
@@ -82,7 +82,7 @@ public class ClienteController {
 		return encontrado;
 	}
 	@PostMapping("Modificarcliente")
-	public ModelAndView subUser(@Valid @ModelAttribute ("cliente") Cliente clientemodificar, Model model) {
+	public ModelAndView subClient(@Valid @ModelAttribute ("cliente") Cliente clientemodificar, Model model) {
 		serviceclient.modificarCliente(clientemodificar);
 		SRT.info("Ingresando al metodo guardar Cliente: "+clientemodificar.getApellido());
 		ModelAndView vista = new ModelAndView ("mostrarcliente");
@@ -91,7 +91,7 @@ public class ClienteController {
 		return vista;
 	}
 	@GetMapping("/eliminarcliente/{dni}")
-	public String deleteuser(@PathVariable(name="dni")Long dni) {
+	public String deleteClient(@PathVariable(name="dni")Long dni) {
 		try {
 		serviceclient.eliminarCliente(dni);
 		}catch(Exception error){

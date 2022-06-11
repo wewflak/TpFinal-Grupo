@@ -23,7 +23,7 @@ public class PeliculaController {
 	Pelicula nuevaPelicula;
 	@Autowired
 	IPeliculaService servicemovie;
-	@GetMapping("/cargarcliente")//entrega clientes
+	@GetMapping("/cargarpelicula")//entrega clientes
 	public ModelAndView addMovie() {
 		ModelAndView vista = new ModelAndView("cargarpelicula");
 		vista.addObject("pelicula", nuevaPelicula);
@@ -33,7 +33,7 @@ public class PeliculaController {
 		
 	}
 	
-	@PostMapping("/guardarcliente")//recibe datos
+	@PostMapping("/guardarpelicula")//recibe datos
 	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, Model model) {
 		SRT.info("Ingresando al metodo guardar Cliente: "+peliculaparaguardar.getId());
 		if(resultado.hasErrors()) {
@@ -80,7 +80,7 @@ public class PeliculaController {
 		encontrado.addObject("band", true);
 		return encontrado;
 	}
-	@PostMapping("Modificarcliente")
+	@PostMapping("Modificarpelicula")
 	public ModelAndView subMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculamodificar, Model model) {
 		servicemovie.modificarPelicula(peliculamodificar);
 		SRT.info("Ingresando al metodo guardar Pelicula: "+peliculamodificar.getNombre());

@@ -3,8 +3,10 @@ package ar.edu.unju.edm.Util;
 import java.util.ArrayList;
 import java.util.List;
 
-import ar.edu.unju.edm.Model.Pelicula;
+import org.springframework.stereotype.Component;
 
+import ar.edu.unju.edm.Model.Pelicula;
+@Component
 public class ListadoPeliculas {
 	private List <Pelicula> listado = new ArrayList<>();
 	

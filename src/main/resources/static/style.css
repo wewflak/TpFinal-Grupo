@@ -13,7 +13,27 @@ body{
     font-family: 'Hind Siliguri', sans-serif;
     align-items: center;
 }
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
 
+  /* Track */
+::-webkit-scrollbar-track {
+    background: #dde1e4; 
+}
+
+  /* Handle */
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(to bottom, #0c038c, #8d007e, #cd0061, #f3003e, #ff680a);
+}
+  /* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(to bottom, #0000ff, #0082ff, #00b5ff, #00deda, #00ff99); 
+    transition: all 1.5s;
+}
+::-webkit-inner-spin-button { display: none; }
+::-webkit-calendar-picker-indicator { color: #dde1e4; }
 #registro{
 	display:inline;
     width: 60%;
@@ -37,20 +57,16 @@ body{
     position: relative;
     }
 .form-control{
-    background-color: rgba(0,0,0,0.5);
+    background-color: transparent;
     border: #dde1e4 solid 0.1em;
     border-radius: 12px;
     color: #dde1e4;
     display: block;
     width: 90%;
 }
-.ui-datepicker {
-    background: #333;
-    border: 1px solid #555;
-    color: #2179fd;
- }
 .form-control:focus{
-    background-color: rgba(0,0,0,0.5);
+    box-shadow: none;
+    background-color: transparent;
     border: #dde1e4 solid 0.1em;
     border-radius: 12px;
     color: #dde1e4;
@@ -77,6 +93,9 @@ a{
 	
 	text-decoration:none;
 	color:#dde1e4
+}
+a:hover{
+    color: #dde1e4;
 }
 .button:hover{
 	border-bottom: #dde1e4 0.125em solid;
