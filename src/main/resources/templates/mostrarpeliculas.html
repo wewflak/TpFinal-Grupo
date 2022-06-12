@@ -11,7 +11,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 <style type="text/css"> 
 </style>
-<title>***Listado de Clientes***</title>
+<title>***Listado de Peliculas***</title>
 <style>
     body{
     min-height: 100vh;
@@ -23,32 +23,34 @@
 </head>
 
 <body>
-<h2>Usuarios registrados</h2>
+<h2>Peliculas registrados</h2>
 <div class="contenedor">
 <div class="alert-danger text-center" th:if="${formUsuarioErrorMessage}" th:text="${formUsuarioErrorMessage}">Name Error</div>
 <table class="table" id="tabla">
   <thead>
     <tr>
+      <th scope="col">Id</th>
       <th scope="col">Nombre</th>
-      <th scope="col">Apellido</th>
-      <th scope="col">DNI</th>
-      <th scope="col">Email</th>
-      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col">Descripcion</th>
+      <th scope="col">Genero</th>
+      <th scope="col">Duracion</th>
+      <th scope="col">Fecha de Estreno</th>
       <th scope="col">Editar</th>
 	  <th scope="col">Eliminar</th>
     </tr>
   </thead>
   <tbody>
-    <tr th:each="c : ${listaclientes}">
-		<td th:text="${c.nombre}"></td>
-		<td th:text="${c.apellido}"></td>
-		<td th:text="${c.dni}"></td>
-		<td th:text="${c.email}"></td>
-		<td th:text="${c.FechadeN}"></td>
-		<td><a class="bton" th:href="@{'/editarCliente/'+${c.dni}}"> Editar </a></td>
+    <tr th:each="p : ${listapeliculas}">
+    	<td th:text="${p.id}"></td>
+		<td th:text="${p.nombre}"></td>
+		<td th:text="${p.descripcion}"></td>
+		<td th:text="${p.genero}"></td>
+		<td th:text="${p.duracion}"></td>
+		<td th:text="${p.fechadeE}"></td>
+		<td><a class="bton" th:href="@{'/editarpeliculas/'+${p.id}}"> Editar </a></td>
 		
 		<td>	 <a class="bton" 
-			    th:onclick="'javascript:confirmarEliminar(\''+${c.dni}+'\');'"
+			    th:onclick="'javascript:confirmarEliminar(\''+${p.id}+'\');'"
 			    >Eliminar</a></td>
     </tr>
 </tbody>
@@ -69,12 +71,12 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        ¿Seguro quiere eliminar este Cliente?
-        <input type="text" id="identificadorDeCliente" class="form-control" name="userIdHiddenInput" style="color: black;"> 
+        ¿Seguro quiere eliminar esta Pelicula?
+        <input type="text" id="identificadorDePelicula" class="form-control" name="userIdHiddenInput"> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        <button type="button" class="btn btn-primary" th:onclick="eliminarCliente()">Eliminar</button>
+        <button type="button" class="btn btn-primary" th:onclick="eliminarPelicula()">Eliminar</button>
       </div>
     </div>
   </div>
@@ -103,7 +105,7 @@ type="text/javascript" src="webjars/bootstrap/5.0.0/js/bootstrap.min.js">
 			var modalBodyInput = exampleModal
 					.querySelector('.modal-body input')
 
-			modalTitle.textContent = 'Eliminar Cliente ' + recipient
+			modalTitle.textContent = 'Eliminar Pelicula ' + recipient
 			modalBodyInput.value = recipient2
 		})
 	</script>
@@ -111,12 +113,11 @@ type="text/javascript" src="webjars/bootstrap/5.0.0/js/bootstrap.min.js">
 <script type="text/javascript">
 	function confirmarEliminar(dni){
 		$('#modalEliminar').modal('show');
-		$("#identificadorDeCliente").val(dni);
+		$("#identificadorDePelicula").val(id);
 	}
-
-	function eliminarCliente(){
-		var id=$("#identificadorDeCliente").val();
-		window.location="/eliminarCliente/"+ id;
+		function eliminarPelicula(){
+		var id=$("#identificadorDePelicula").val();
+		window.location="/eliminarpelicula/"+ id;
 	}
 </script>
 </html>

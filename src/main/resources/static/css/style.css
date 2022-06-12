@@ -26,6 +26,8 @@ body{
   /* Handle */
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to bottom, #0c038c, #8d007e, #cd0061, #f3003e, #ff680a);
+    transition:all 1s;
+    border-radius: 10px;
 }
   /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
@@ -73,6 +75,9 @@ body{
     display: block;
     width: 90%;
 }
+.form-control:target{
+	background-color: transparent;
+}
 button{
     margin-top:1em;
     margin-left: 70%;
@@ -84,6 +89,8 @@ button{
         padding: 0.25em 1em;
         border-radius: 12px;
         position: relative;
+    border: none;
+    background-color: transparent;
         }
 .button a{
 	text-decoration:none;
@@ -128,7 +135,7 @@ a.nav-link:hover{
     box-shadow: none;
 }
 .navbar-toggler i.bi-list{
-    color: white;
+    color: #dde1e4;
     font-size: 1.6rem;
 }
 @media(max-width: 992px){
@@ -144,18 +151,18 @@ a.nav-link:hover{
 }
 .btn-custom{
     text-decoration: none;
-    border: 1.5px solid #fff;
+    border: 1.5px solid #dde1e4;
     border-radius: 50px;
     background: none;
     padding:  8px 20px;
     font-weight: 500;
     transition: all 0.6s;
-    color: #fff;
+    color: #dde1e4;
     }
     .btn-custom:hover{
         background: #611d8b;
         border: 1.5px solid #611d8b;
-        color: #fff;
+        color: #dde1e4;
     }
 .slide-container{
     margin-left: 0;
@@ -184,14 +191,15 @@ a.nav-link:hover{
     position: relative;
     width: 240px;
     height: 370px;
-    transition: .5s;
+    transition: all .5s;
+    border-radius: 12px;
 }
 .boton{
     position: absolute;
     width: 20em;
     margin: 0;
     height: 23.125em;
-    transition: .5s;
+    transition: all .5s;
 }
 .boton:hover{
     background-color: rgba(0, 0, 0, .1);
@@ -204,7 +212,7 @@ a.nav-link:hover{
     justify-content: center;
     display: flex;
     border-bottom: #dde1e4;
-    transition: 1s;
+    transition: all 1s;
 }
 #slider-span1:target ~ .image-slider #botoncito-1{
     color: #dde1e4;
@@ -376,7 +384,7 @@ h2{
 	display: block;
 	background-image: linear-gradient(to right, #0c038c, #4905aa, #7807c8, #a607e4, #d600ff);
 	padding:2rem 0 2rem 0;
-
+	transition:all 2s;
 	
 }
 .contenedor  .botn span{
@@ -389,7 +397,6 @@ a{
 	text-decoration:none;
 }
 a .botn:hover{
-	transition:all 2s;
 	background-image: linear-gradient(to left, #0c038c, #4905aa, #7807c8, #a607e4, #d600ff);
 }
 a .botn:hover span{

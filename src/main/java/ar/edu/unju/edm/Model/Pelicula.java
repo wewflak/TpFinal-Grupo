@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.Entity;
@@ -16,15 +17,16 @@ import javax.persistence.Id;
 public class Pelicula {
     @NotNull
     @Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-    Integer Id;
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer Id;
     @NotEmpty
-    String nombre;
-    String genero;
-    Long duracion;
-    String descripcion;
-    LocalDate fechadeE;
-    Boolean Estado;
+    private String nombre;
+    private  String genero;
+    private Long duracion;
+    private String descripcion;
+    @DateTimeFormat(pattern = "yyyy-MM-dd")
+    private LocalDate fechadeE;
+    private Boolean Estado;
     public Boolean getEstado() {
         return Estado;
     }

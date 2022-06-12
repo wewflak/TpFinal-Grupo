@@ -38,7 +38,7 @@ public class ClienteController {
 	public String saveClient(@Valid @ModelAttribute ("cliente") Cliente clienteparaguardar, BindingResult resultado, Model model) {
 		SRT.info("Ingresando al metodo guardar Cliente: "+clienteparaguardar.getDni());
 		if(resultado.hasErrors()) {
-			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido());
+			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN()+clienteparaguardar.getEmail()+clienteparaguardar.getNombre());
 			model.addAttribute("cliente", clienteparaguardar);
 			return "cargarcliente";
 		}else {
@@ -67,7 +67,7 @@ public class ClienteController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-	@GetMapping("/editarcliente/{dni}")
+	@GetMapping("/editarCliente/{dni}")
 	public ModelAndView editclient(Model model, @PathVariable(name="dni")Long dni) throws Exception {
 		Cliente clienteEncontrado = new Cliente();
 		try {
@@ -85,12 +85,12 @@ public class ClienteController {
 	public ModelAndView subClient(@Valid @ModelAttribute ("cliente") Cliente clientemodificar, Model model) {
 		serviceclient.modificarCliente(clientemodificar);
 		SRT.info("Ingresando al metodo guardar Cliente: "+clientemodificar.getApellido());
-		ModelAndView vista = new ModelAndView ("mostrarcliente");
+		ModelAndView vista = new ModelAndView ("mostrarclientes");
 		vista.addObject("listadoClientes", serviceclient.mostrarClientes());
 		vista.addObject("formclienteErrorMessage", "Cliente guardado correctamente");
 		return vista;
 	}
-	@GetMapping("/eliminarcliente/{dni}")
+	@GetMapping("/eliminarCliente/{dni}")
 	public String deleteClient(@PathVariable(name="dni")Long dni) {
 		try {
 		serviceclient.eliminarCliente(dni);
@@ -98,7 +98,7 @@ public class ClienteController {
 			SRT.error("No se pudo eliminar el Cliente");
 			return "redirect:/cargarcliente";
 		}
-		return "redirect:/mostrarcliente";
+		return "redirect:/mostrarclientes";
 	}
 	
 }

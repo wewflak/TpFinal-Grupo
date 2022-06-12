@@ -37,6 +37,8 @@ public class PeliculaController {
 	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, Model model) {
 		SRT.info("Ingresando al metodo guardar Cliente: "+peliculaparaguardar.getId());
 		if(resultado.hasErrors()) {
+
+			servicemovie.guardarPelicula(peliculaparaguardar);
 			SRT.fatal("Error de validacion"+peliculaparaguardar.getNombre());
 			model.addAttribute("pelicula", peliculaparaguardar);
 			return "cargarpelicula";
@@ -84,7 +86,7 @@ public class PeliculaController {
 	public ModelAndView subMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculamodificar, Model model) {
 		servicemovie.modificarPelicula(peliculamodificar);
 		SRT.info("Ingresando al metodo guardar Pelicula: "+peliculamodificar.getNombre());
-		ModelAndView vista = new ModelAndView ("mostrarpelicula");
+		ModelAndView vista = new ModelAndView ("mostrarpeliculas");
 		vista.addObject("listadoPeliculas", servicemovie.mostrarPeliculas ());
 		vista.addObject("formclienteErrorMessage", "Cliente guardado correctamente");
 		return vista;
@@ -97,7 +99,7 @@ public class PeliculaController {
 			SRT.error("No se pudo eliminar la pelicula");
 			return "redirect:/cargarpelicula";
 		}
-		return "redirect:/mostrarpelicual";
+		return "redirect:/mostrarpeliculas";
 	}
 	
 }
