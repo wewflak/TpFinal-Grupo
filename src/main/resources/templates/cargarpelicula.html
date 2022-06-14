@@ -29,7 +29,7 @@ body{
 <div class="titulo">
 <h5>Inicio de usuario</h5>
 </div>
-		<form th:object="${pelicula}" th:action="${band}? @{/ModificarPelicula} : @{/guardarpelicula}" method="post">
+		<form th:object="${pelicula}" th:action="${band}? @{/Modificarpelicula} : @{/guardarpelicula}" method="post">
 		
 		<!--<input type="hidden" class="form-control" th:if="${band}" th:field="*{contrasena}">
 	        <input type="hidden" class="form-control" th:if="${band}" th:field="*{estado}">

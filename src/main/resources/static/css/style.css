@@ -66,6 +66,9 @@ body{
     display: block;
     width: 90%;
 }
+.form-control:valid{
+	background-color: transparent;
+}
 .form-control:focus{
     box-shadow: none;
     background-color: transparent;
@@ -100,6 +103,16 @@ a{
 	
 	text-decoration:none;
 	color:#dde1e4
+}
+.alert{
+	background-color: #dde1e4;
+	color: #0000ff;
+	display:flex;
+	font-weight:400;
+	justify-content:center;
+	align-content:center;
+	height: 12px;
+	border-radius: 0px;
 }
 a:hover{
     color: #dde1e4;

@@ -47,12 +47,12 @@ public class ClienteController {
 			serviceclient.guardarCliente(clienteparaguardar);
 			}
 		catch(Exception error){
-			model.addAttribute("formclienteErrorMessage", error.getMessage());
+			model.addAttribute("formClienteErrorMessage", error.getMessage());
 			model.addAttribute("cliente", clienteparaguardar); 
 			SRT.error("No se pudo cargar"); 
 			return "cargarcliente";
 		}
-		model.addAttribute("formclienteErrorMessage", "Cliente guardado correctamente");
+		model.addAttribute("formClienteErrorMessage", "Cliente guardado correctamente");
 		model.addAttribute("cliente", nuevoCliente);
 		System.out.println(clienteparaguardar.getApellido()+clienteparaguardar.getEmail());
 		return "index";
@@ -86,8 +86,8 @@ public class ClienteController {
 		serviceclient.modificarCliente(clientemodificar);
 		SRT.info("Ingresando al metodo guardar Cliente: "+clientemodificar.getApellido());
 		ModelAndView vista = new ModelAndView ("mostrarclientes");
-		vista.addObject("listadoClientes", serviceclient.mostrarClientes());
-		vista.addObject("formclienteErrorMessage", "Cliente guardado correctamente");
+		vista.addObject("listclientes", serviceclient.mostrarClientes());
+		vista.addObject("formClienteErrorMessage", "Cliente guardado correctamente");
 		return vista;
 	}
 	@GetMapping("/eliminarCliente/{dni}")

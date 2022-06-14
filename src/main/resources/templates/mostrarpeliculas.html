@@ -25,7 +25,7 @@
 <body>
 <h2>Peliculas registrados</h2>
 <div class="contenedor">
-<div class="alert-danger text-center" th:if="${formUsuarioErrorMessage}" th:text="${formUsuarioErrorMessage}">Name Error</div>
+<div class="alert text-center" th:if="${formPeliculaErrorMessage}" th:text="${formUsuarioPeliculaMessage}">Name Error</div>
 <table class="table" id="tabla">
   <thead>
     <tr>
@@ -111,13 +111,13 @@ type="text/javascript" src="webjars/bootstrap/5.0.0/js/bootstrap.min.js">
 	</script>
 
 <script type="text/javascript">
-	function confirmarEliminar(dni){
+	function confirmarEliminar(id){
 		$('#modalEliminar').modal('show');
 		$("#identificadorDePelicula").val(id);
 	}
 		function eliminarPelicula(){
 		var id=$("#identificadorDePelicula").val();
-		window.location="/eliminarpelicula/"+ id;
+		window.location="/eliminarPelicula/"+ id;
 	}
 </script>
 </html>

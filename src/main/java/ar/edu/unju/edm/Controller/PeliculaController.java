@@ -18,12 +18,12 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 @Controller
 public class PeliculaController {
-    private static final Log SRT = LogFactory.getLog(ClienteController.class);
+    private static final Log SRT = LogFactory.getLog(PeliculaController.class);
 	@Autowired
 	Pelicula nuevaPelicula;
 	@Autowired
 	IPeliculaService servicemovie;
-	@GetMapping("/cargarpelicula")//entrega clientes
+	@GetMapping("/cargarpelicula")//entrega Peliculas
 	public ModelAndView addMovie() {
 		ModelAndView vista = new ModelAndView("cargarpelicula");
 		vista.addObject("pelicula", nuevaPelicula);
@@ -35,7 +35,7 @@ public class PeliculaController {
 	
 	@PostMapping("/guardarpelicula")//recibe datos
 	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, Model model) {
-		SRT.info("Ingresando al metodo guardar Cliente: "+peliculaparaguardar.getId());
+		SRT.info("Ingresando al metodo guardar pelicula: "+peliculaparaguardar.getId());
 		if(resultado.hasErrors()) {
 
 			servicemovie.guardarPelicula(peliculaparaguardar);
@@ -45,15 +45,15 @@ public class PeliculaController {
 		}else {
 		try {
 
-			servicemovie.guardarPelicula(peliculaparaguardar);
+			servicemovie.guardarPelicula(peliculaparaguardar); SRT.info(peliculaparaguardar.getId());
 			}
 		catch(Exception error){
-			model.addAttribute("formclienteErrorMessage", error.getMessage());
+			model.addAttribute("formPeliculaErrorMessage", error.getMessage());
 			model.addAttribute("pelicula", peliculaparaguardar); 
 			SRT.error("No se pudo cargar"); 
 			return "cargarpelicula";
 		}
-		model.addAttribute("formclienteErrorMessage", "Pelicula guardado correctamente");
+		model.addAttribute("formPeliculaErrorMessage", "Pelicula guardado correctamente");
 		model.addAttribute("pelicula", nuevaPelicula);
 		System.out.println(peliculaparaguardar.getNombre()+peliculaparaguardar.getGenero());
 		return "index";
@@ -69,15 +69,16 @@ public class PeliculaController {
 		return vista;
 	}
 	@GetMapping("/editarpeliculas/{id}")
-	public ModelAndView editclient(Model model, @PathVariable(name="id")Integer id) throws Exception {
+	public ModelAndView editmovie(Model model, @PathVariable(name="id")Integer id) throws Exception {
 		Pelicula peliculaEncontrada = new Pelicula();
 		try {
 			peliculaEncontrada = servicemovie.buscarPelicula(id);
 		}catch(Exception e) {
-			model.addAttribute("formClienteErrorMessage", e.getMessage());
+			model.addAttribute("formPeliculaErrorMessage", e.getMessage());
 		}
+		SRT.info("los jajas");
 		ModelAndView encontrado = new ModelAndView("cargarpelicula");
-		encontrado.addObject("cliente", peliculaEncontrada);
+		encontrado.addObject("pelicula", peliculaEncontrada);
 		SRT.error("pelicula: " + peliculaEncontrada);
 		encontrado.addObject("band", true);
 		return encontrado;
@@ -87,12 +88,13 @@ public class PeliculaController {
 		servicemovie.modificarPelicula(peliculamodificar);
 		SRT.info("Ingresando al metodo guardar Pelicula: "+peliculamodificar.getNombre());
 		ModelAndView vista = new ModelAndView ("mostrarpeliculas");
-		vista.addObject("listadoPeliculas", servicemovie.mostrarPeliculas ());
-		vista.addObject("formclienteErrorMessage", "Cliente guardado correctamente");
+		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas ());
+		SRT.info(peliculamodificar.getNombre());
+		vista.addObject("formPeliculaErrorMessage", "Pelicula guardado correctamente");
 		return vista;
 	}
-	@GetMapping("/eliminarpelicula/{id}")
-	public String deleteuser(@PathVariable(name="id")Integer id) {
+	@GetMapping("/eliminarPelicula/{id}")
+	public String deleteMovie(@PathVariable(name="id")Integer id) {
 		try {
 		servicemovie.eliminarPelicula(id);
 		}catch(Exception error){
