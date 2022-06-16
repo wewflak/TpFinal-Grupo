@@ -63,8 +63,9 @@ body{
     border: #dde1e4 solid 0.1em;
     border-radius: 12px;
     color: #dde1e4;
-    display: block;
-    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
 }
 .form-control:valid{
 	background-color: transparent;
@@ -75,8 +76,9 @@ body{
     border: #dde1e4 solid 0.1em;
     border-radius: 12px;
     color: #dde1e4;
-    display: block;
-    width: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
 }
 .form-control:target{
 	background-color: transparent;
@@ -109,6 +111,7 @@ a{
 	color: #0000ff;
 	display:flex;
 	font-weight:400;
+	align-self: center;
 	justify-content:center;
 	align-content:center;
 	height: 12px;
@@ -209,13 +212,17 @@ a.nav-link:hover{
 }
 .boton{
     position: absolute;
-    width: 20em;
-    margin: 0;
+    width: 16em;
+    margin: 1em;
     height: 23.125em;
     transition: all .5s;
 }
 .boton:hover{
     background-color: rgba(0, 0, 0, .1);
+    border-radius: 12px;
+}
+.botoncito:hover{
+	display:none
 }
 .botoncito{
     left: 20px;
@@ -223,58 +230,73 @@ a.nav-link:hover{
     align-items: center;
     color: transparent;
     justify-content: center;
-    display: flex;
-    border-bottom: #dde1e4;
+    display: none;
     transition: all 1s;
+    padding:2px;
+    background-color: linear-gradient(to bottom, #0c038c, #8d007e, #cd0061, #f3003e, #ff680a);
 }
 #slider-span1:target ~ .image-slider #botoncito-1{
     color: #dde1e4;
+    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-1:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
+    display:flex;
 }
 #slider-span2:target ~ .image-slider #botoncito-2{
     color: #dde1e4;
+    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-2:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
+    display:flex;
 }
 #slider-span3:target ~ .image-slider #botoncito-3{
     color: #dde1e4;
+    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-3:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
+    display:flex;
 }
 #slider-span4:target ~ .image-slider #botoncito-4{
     color: #dde1e4;
+    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-4:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
+    display:flex;
 }
 #slider-span5:target ~ .image-slider #botoncito-5{
     color: #dde1e4;
+    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-5:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
+    display:flex;
 }
 #slider-span6:target ~ .image-slider #botoncito-6{
     color: #dde1e4;
+    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-6:hover{
     border-bottom: 1em #dde1e4;
     border-radius: 12px;
+    display:flex;
 }
 #slider-span7:target ~ .image-slider #botoncito-7{
     color: #dde1e4;
+    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-7:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
+    display:flex;
 }
 #slider-span1:target ~ .image-slider #img1,
 #slider-span1:target ~ .image-slider #button-1{
@@ -332,7 +354,7 @@ a.nav-link:hover{
 #slider-span5:target ~ .image-slider{left: -25%;}
 #slider-span6:target ~ .image-slider{left: -50%;}
 #slider-span7:target ~ .image-slider{left: -70%;}
-/* Style correspondiente al html mostraruclientes*/
+/* Style correspondiente al html mostrarclientes*/
 h2{
 	margin-top:2rem;
     display: inline;
