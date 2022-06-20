@@ -221,9 +221,6 @@ a.nav-link:hover{
     background-color: rgba(0, 0, 0, .1);
     border-radius: 12px;
 }
-.botoncito:hover{
-	display:none
-}
 .botoncito{
     left: 20px;
     margin-top: 30rem;
