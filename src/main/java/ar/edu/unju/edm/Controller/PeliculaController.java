@@ -36,10 +36,9 @@ public class PeliculaController {
 	@PostMapping("/guardarpelicula")//recibe datos
 	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, Model model) {
 		SRT.info("Ingresando al metodo guardar pelicula: "+peliculaparaguardar.getId());
-		if(resultado.hasErrors()) {
 
-			servicemovie.guardarPelicula(peliculaparaguardar);
-			SRT.fatal("Error de validacion"+peliculaparaguardar.getNombre());
+		if(resultado.hasErrors()) {
+			SRT.fatal("Error de validacion"+peliculaparaguardar.getNombre()+" "+peliculaparaguardar.getDescripcion()+" "+peliculaparaguardar.getGenero()+" "+peliculaparaguardar.getId()+" "+peliculaparaguardar.getDuracion()+" "+peliculaparaguardar.getFechadeE());
 			model.addAttribute("pelicula", peliculaparaguardar);
 			return "cargarpelicula";
 		}else {

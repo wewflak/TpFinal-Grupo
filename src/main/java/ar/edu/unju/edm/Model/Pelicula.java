@@ -17,9 +17,8 @@ import javax.persistence.Id;
 @Component
 @Entity
 public class Pelicula {
-    @NotNull
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
     @Column(name = "Id",unique=true, nullable = false)
     private Integer Id;
