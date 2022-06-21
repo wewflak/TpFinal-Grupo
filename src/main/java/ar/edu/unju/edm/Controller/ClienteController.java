@@ -37,6 +37,7 @@ public class ClienteController {
 	@PostMapping("/guardarcliente")//recibe datos
 	public String saveClient(@Valid @ModelAttribute ("cliente") Cliente clienteparaguardar, BindingResult resultado, Model model) {
 		SRT.info("Ingresando al metodo guardar Cliente: "+clienteparaguardar.getDni());
+
 		if(resultado.hasErrors()) {
 			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN()+clienteparaguardar.getEmail()+clienteparaguardar.getNombre());
 			model.addAttribute("cliente", clienteparaguardar);

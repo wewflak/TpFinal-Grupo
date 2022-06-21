@@ -21,11 +21,11 @@ public class Cliente {
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
-	@NotNull
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Basic(optional = false)
-    @Column(name = "IdCliente",unique=true, nullable = false)
-    private Integer IdCliente;
+//	@NotNull
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Basic(optional = false)
+//    @Column(name = "IdCliente",unique=true, nullable = false)
+//    private Integer IdCliente;
 	@NotEmpty
 	private String nombre;
 	@NotEmpty
@@ -46,12 +46,12 @@ public class Cliente {
 	private Boolean estado;
 	
 
-	public Integer getIdCliente() {
-		return IdCliente;
-	}
-	public void setIdCliente(Integer idCliente) {
-		IdCliente = idCliente;
-	}
+//	public Integer getIdCliente() {
+//		return IdCliente;
+//	}
+//	public void setIdCliente(Integer idCliente) {
+//		IdCliente = idCliente;
+//	}
 	public Boolean getEstado() {
 		return estado;
 	}
