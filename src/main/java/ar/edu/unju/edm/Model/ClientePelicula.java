@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
 import org.hibernate.annotations.Cascade;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -29,6 +30,7 @@ public class ClientePelicula {
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="Id")
 	private Pelicula pelicula;
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate fechaCompra;
 	
 	public ClientePelicula() {

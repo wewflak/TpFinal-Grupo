@@ -23,9 +23,9 @@ public class Cliente {
 	}
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Basic(optional = false)
-    //@Column(name = "IdCliente",unique=true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IdCliente",unique=true, nullable = false)
     private Integer IdCliente;
 	@NotEmpty
 	private String nombre;
@@ -39,7 +39,7 @@ public class Cliente {
 	private Long dni;
 	@NotEmpty
 	private String email;
-	@DateTimeFormat(pattern = "yyyy-MM-dd")
+	@DateTimeFormat(pattern = "dd-MM-yyyy")
 	private LocalDate FechadeN;
 	private Boolean estado;
 	
