@@ -39,7 +39,7 @@ public class Cliente {
 	private Long dni;
 	@NotEmpty
 	private String email;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate FechadeN;
 	private Boolean estado;
 	
