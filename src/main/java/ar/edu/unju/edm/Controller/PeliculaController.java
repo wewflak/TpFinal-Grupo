@@ -1,4 +1,6 @@
 package ar.edu.unju.edm.Controller;
+import java.util.Base64;
+
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.edm.Model.Pelicula;
@@ -33,8 +37,8 @@ public class PeliculaController {
 		
 	}
 	
-	@PostMapping("/guardarpelicula")//recibe datos
-	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, Model model) {
+	@PostMapping(value="/guardarpelicula", consumes = "multipart/form-data")//recibe datos
+	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, @RequestParam("imagen") MultipartFile imagen, Model model) {
 		SRT.info("Ingresando al metodo guardar pelicula: "+peliculaparaguardar.getId());
 
 		if(resultado.hasErrors()) {
@@ -43,7 +47,10 @@ public class PeliculaController {
 			return "cargarpelicula";
 		}else {
 		try {
-
+			byte[] content = imagen.getBytes();
+			String base64 = Base64.getEncoder().encodeToString(content);
+			nuevaPelicula.setImagen(base64);
+			nuevaPelicula.setEstado(true);
 			servicemovie.guardarPelicula(peliculaparaguardar); SRT.info(peliculaparaguardar.getId());
 			}
 		catch(Exception error){

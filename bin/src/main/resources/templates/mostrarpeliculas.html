@@ -29,7 +29,6 @@
 <table class="table" id="tabla">
   <thead>
     <tr>
-	  <th scope="col">Portada</th>
       <th scope="col">Id</th>
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
@@ -42,8 +41,6 @@
   </thead>
   <tbody>
     <tr th:each="p : ${listapeliculas}">
-<!--     	<td th:text="${p.imagen}"></td> -->
-    	<td><img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" ></td>
     	<td th:text="${p.id}"></td>
 		<td th:text="${p.nombre}"></td>
 		<td th:text="${p.descripcion}"></td>
