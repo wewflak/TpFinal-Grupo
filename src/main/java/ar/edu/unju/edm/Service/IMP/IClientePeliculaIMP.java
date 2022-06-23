@@ -27,7 +27,7 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 	@Override
 	public void guardarClientePelicula(ClientePelicula clientMovie) {
 		// TODO Auto-generated method stub
-			clientePeliculaRepository.save(clientePelicula);
+			clientePeliculaRepository.save(clientMovie);
 	}
 
 	@Override

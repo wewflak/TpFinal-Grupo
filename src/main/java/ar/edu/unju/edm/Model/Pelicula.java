@@ -18,9 +18,9 @@ import javax.persistence.Id;
 @Entity
 public class Pelicula {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "Id",unique=true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@Basic(optional = false)
+    //@Column(name = "Id",unique=true, nullable = false)
     private Integer Id;
     @NotEmpty
     private String nombre;

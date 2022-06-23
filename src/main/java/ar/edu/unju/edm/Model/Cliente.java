@@ -23,9 +23,9 @@ public class Cliente {
 	}
 
 	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Basic(optional = false)
-    @Column(name = "IdCliente",unique=true, nullable = false)
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    //@Basic(optional = false)
+    //@Column(name = "IdCliente",unique=true, nullable = false)
     private Integer IdCliente;
 	@NotEmpty
 	private String nombre;

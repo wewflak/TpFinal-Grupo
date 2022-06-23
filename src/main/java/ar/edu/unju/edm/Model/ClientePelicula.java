@@ -13,6 +13,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Cascade;
 import org.springframework.stereotype.Component;
 
 @Component
@@ -22,10 +23,10 @@ public class ClientePelicula {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Basic(optional = false)
 	private Integer idClientePelicula;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="IdCliente")
 	private Cliente cliente;
-	@ManyToOne(fetch=FetchType.LAZY)
+	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="Id")
 	private Pelicula pelicula;
 	private LocalDate fechaCompra;
