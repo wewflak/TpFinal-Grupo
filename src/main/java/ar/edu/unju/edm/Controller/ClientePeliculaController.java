@@ -33,6 +33,7 @@ public class ClientePeliculaController {
 	@GetMapping("/cargarentrada")
 	public ModelAndView addEntrada() {
 		SRT.info("Ingresando al metodo");
+
 		ModelAndView view = new ModelAndView("cargarentrada");
 		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
 		view.addObject("clientes", clienteservice.mostrarClientes());
@@ -42,6 +43,8 @@ public class ClientePeliculaController {
 	@PostMapping("/guardarEntrada")
 	public ModelAndView saveEntrada(@Valid @ModelAttribute("unaEntrada") ClientePelicula clientePeliculaNuevo, BindingResult resultado) {
 		ModelAndView view = new ModelAndView();
+
+		clientePeliculaService.guardarClientePelicula(clientePeliculaNuevo);
 		if(resultado.hasErrors()) {
 			view.setViewName("cargarentrada");
 			view.addObject("unaEntrada", clientePeliculaNuevo);

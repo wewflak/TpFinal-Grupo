@@ -21,11 +21,12 @@ public class Cliente {
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
-//	@NotNull
-//    @GeneratedValue(strategy = GenerationType.AUTO)
-//    @Basic(optional = false)
-//    @Column(name = "IdCliente",unique=true, nullable = false)
-//    private Integer IdCliente;
+
+	@Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Basic(optional = false)
+    @Column(name = "IdCliente",unique=true, nullable = false)
+    private Integer IdCliente;
 	@NotEmpty
 	private String nombre;
 	@NotEmpty
@@ -35,9 +36,6 @@ public class Cliente {
 	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
 	@NotNull
-	@Id
-	@Basic(optional = false)
-    @Column(name = "dni",unique=true, nullable = false)
 	private Long dni;
 	@NotEmpty
 	private String email;
@@ -46,12 +44,12 @@ public class Cliente {
 	private Boolean estado;
 	
 
-//	public Integer getIdCliente() {
-//		return IdCliente;
-//	}
-//	public void setIdCliente(Integer idCliente) {
-//		IdCliente = idCliente;
-//	}
+	public Integer getIdCliente() {
+		return IdCliente;
+	}
+	public void setIdCliente(Integer idCliente) {
+		IdCliente = idCliente;
+	}
 	public Boolean getEstado() {
 		return estado;
 	}

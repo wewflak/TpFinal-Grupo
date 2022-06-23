@@ -6,6 +6,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,12 +21,11 @@ public class ClientePelicula {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Basic(optional = false)
-    @Column(name = "idEntrada",unique=true, nullable = false)
 	private Integer idClientePelicula;
-	@ManyToOne(cascade = {CascadeType.ALL})
-	@JoinColumn(name="dni")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="IdCliente")
 	private Cliente cliente;
-	@ManyToOne(cascade = {CascadeType.ALL})
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="Id")
 	private Pelicula pelicula;
 	private LocalDate fechaCompra;

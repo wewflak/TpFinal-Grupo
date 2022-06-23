@@ -31,7 +31,7 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 	}
 
 	@Override
-	public void eliminarClientePelicula(Integer id) {
+	public void eliminarClientePelicula(Integer idClientePelicula) {
 		// TODO Auto-generated method stub
 		
 	}
@@ -49,7 +49,7 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 	}
 
 	@Override
-	public ClientePelicula buscarClientePelicula(Integer id) {
+	public ClientePelicula buscarClientePelicula(Integer idClientePelicula) {
 		// TODO Auto-generated method stub
 		return null;
 	}

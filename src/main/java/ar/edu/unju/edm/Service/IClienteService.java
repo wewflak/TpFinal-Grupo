@@ -12,9 +12,9 @@ public interface IClienteService {
 	//Muestra usuarios
 	public List<Cliente> mostrarClientes();
 	//Elminar Usuario
-	public void eliminarCliente(Long dni) throws Exception;
+	public void eliminarCliente(Integer IdCliente) throws Exception;
 	//Modifica los datos del usuario
 	public void modificarCliente(Cliente client);
 	//Busca usuarios
-	public Cliente buscarCliente(Long dni) throws Exception;
+	public Cliente buscarCliente(Integer IdCliente) throws Exception;
 }

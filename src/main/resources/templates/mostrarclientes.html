@@ -29,6 +29,7 @@
 <table class="table" id="tabla">
   <thead>
     <tr>
+      <th scope="col">Id</th>
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">DNI</th>
@@ -40,15 +41,16 @@
   </thead>
   <tbody>
     <tr th:each="c : ${listaclientes}">
+		<td th:text="${c.IdCliente}"></td>
 		<td th:text="${c.nombre}"></td>
 		<td th:text="${c.apellido}"></td>
 		<td th:text="${c.dni}"></td>
 		<td th:text="${c.email}"></td>
 		<td th:text="${c.FechadeN}"></td>
-		<td><a class="bton" th:href="@{'/editarCliente/'+${c.dni}}"> Editar </a></td>
+		<td><a class="bton" th:href="@{'/editarCliente/'+${c.IdCliente}}"> Editar </a></td>
 		
 		<td>	 <a class="bton" 
-			    th:onclick="'javascript:confirmarEliminar(\''+${c.dni}+'\');'"
+			    th:onclick="'javascript:confirmarEliminar(\''+${c.IdCliente}+'\');'"
 			    >Eliminar</a></td>
     </tr>
 </tbody>
@@ -109,9 +111,9 @@ type="text/javascript" src="webjars/bootstrap/5.0.0/js/bootstrap.min.js">
 	</script>
 
 <script type="text/javascript">
-	function confirmarEliminar(dni){
+	function confirmarEliminar(IdCliente){
 		$('#modalEliminar').modal('show');
-		$("#identificadorDeCliente").val(dni);
+		$("#identificadorDeCliente").val(IdCliente);
 	}
 
 	function eliminarCliente(){
