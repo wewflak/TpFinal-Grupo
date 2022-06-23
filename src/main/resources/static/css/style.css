@@ -370,12 +370,8 @@ a.nav-link:hover{
 #slider-span5:target ~ .image-slider{left: -25%;}
 #slider-span6:target ~ .image-slider{left: -50%;}
 #slider-span7:target ~ .image-slider{left: -70%;}
-<<<<<<< Updated upstream
-/* Style correspondiente al html mostraruclientes*/
-=======
 
 /* Style correspondiente a los html de mostrar*/
->>>>>>> Stashed changes
 h2{
 	margin-top:2rem;
     display: inline;
