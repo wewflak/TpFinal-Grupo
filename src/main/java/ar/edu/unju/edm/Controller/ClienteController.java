@@ -36,10 +36,10 @@ public class ClienteController {
 	
 	@PostMapping("/guardarcliente")//recibe datos
 	public String saveClient(@Valid @ModelAttribute ("cliente") Cliente clienteparaguardar, BindingResult resultado, Model model) {
-		SRT.info("Ingresando al metodo guardar Cliente: "+clienteparaguardar.getDni());
+		SRT.info("Ingresando al metodo guardar Cliente: "+clienteparaguardar.getDni()+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN()+clienteparaguardar.getEmail()+clienteparaguardar.getNombre()+clienteparaguardar.getIdCliente());
 
 		if(resultado.hasErrors()) {
-			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN()+clienteparaguardar.getEmail()+clienteparaguardar.getNombre());
+			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN()+clienteparaguardar.getEmail()+clienteparaguardar.getNombre()+clienteparaguardar.getIdCliente());
 			model.addAttribute("cliente", clienteparaguardar);
 			return "cargarcliente";
 		}else {
@@ -68,11 +68,11 @@ public class ClienteController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-	@GetMapping("/editarCliente/{dni}")
-	public ModelAndView editclient(Model model, @PathVariable(name="dni")Long dni) throws Exception {
+	@GetMapping("/editarCliente/{IdCliente}")
+	public ModelAndView editclient(Model model, @PathVariable(name="IdCliente")Integer IdCliente) throws Exception {
 		Cliente clienteEncontrado = new Cliente();
 		try {
-			clienteEncontrado = serviceclient.buscarCliente(dni);
+			clienteEncontrado = serviceclient.buscarCliente(IdCliente);
 		}catch(Exception e) {
 			model.addAttribute("formClienteErrorMessage", e.getMessage());
 		}
@@ -91,10 +91,10 @@ public class ClienteController {
 		vista.addObject("formClienteErrorMessage", "Cliente guardado correctamente");
 		return vista;
 	}
-	@GetMapping("/eliminarCliente/{dni}")
-	public String deleteClient(@PathVariable(name="dni")Long dni) {
+	@GetMapping("/eliminarCliente/{IdCliente}")
+	public String deleteClient(@PathVariable(name="IdCliente")Integer IdCliente) {
 		try {
-		serviceclient.eliminarCliente(dni);
+		serviceclient.eliminarCliente(IdCliente);
 		}catch(Exception error){
 			SRT.error("No se pudo eliminar el Cliente");
 			return "redirect:/cargarcliente";

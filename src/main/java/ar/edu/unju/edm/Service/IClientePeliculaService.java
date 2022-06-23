@@ -10,9 +10,9 @@ public interface IClientePeliculaService {
 
 	public ClientePelicula nuevoClientePelicula();
 	public void guardarClientePelicula(ClientePelicula clientMovie);
-	public void eliminarClientePelicula(Integer id);
+	public void eliminarClientePelicula(Integer idClientePelicula);
 	public void modificarClientePelicula(ClientePelicula clientMovie);
 	public List<ClientePelicula> listarClientePelicula();
-	public ClientePelicula buscarClientePelicula(Integer id);
+	public ClientePelicula buscarClientePelicula(Integer idClientePelicula);
 	
 }
