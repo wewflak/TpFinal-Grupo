@@ -14,6 +14,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 @Component
 @Entity
 public class Pelicula {
@@ -30,7 +31,15 @@ public class Pelicula {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechadeE;
     private Boolean Estado;
-    public Boolean getEstado() {
+    @Lob
+    private String imagen;
+    public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	public Boolean getEstado() {
         return Estado;
     }
     public void setEstado(Boolean estado) {

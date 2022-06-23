@@ -63,10 +63,7 @@ body{
                 <input  type="date"  class="date form-control" id="fechadeE" th:field="*{fechadeE}" required>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('fechadeE')}"th:errors="*{fechadeE}"></div>
             </div>
-<<<<<<< Updated upstream
-	  	  
 <button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button> 
-=======
             
             <div class="form-group row">
             	<label for="file" class="col-sm-4 col-form-label"> Subir Imagen</label>
@@ -83,7 +80,6 @@ body{
 <!-- <button type="submit" class="button" th:href="@{/mostrarpeliculas}"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button>  -->
 <!-- 	<a type="submit" class="button" th:href="@{/mostrarpeliculas}"><span th:text="${band}? 'Modificar' : 'Registrar' "></span> </a> -->
 
->>>>>>> Stashed changes
 		    <a class="button" th:href="@{/}">Volver</a>
 	</form >
 </div>
