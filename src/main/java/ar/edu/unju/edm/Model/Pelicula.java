@@ -20,8 +20,8 @@ import javax.persistence.Lob;
 public class Pelicula {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    //@Basic(optional = false)
-    //@Column(name = "Id",unique=true, nullable = false)
+    @Basic(optional = false)
+    @Column(name = "Id",unique=true, nullable = false)
     private Integer Id;
     @NotEmpty
     private String nombre;

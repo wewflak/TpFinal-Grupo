@@ -1,3 +1,4 @@
+/*Basics with css of body and initials for html*/
 :root{
     --clr-neon: #0000ff;
     --clr-bga: #1992fc;
@@ -9,7 +10,8 @@ body{
     background: rgb(123,31,162);
     background: linear-gradient(0deg, rgba(123,31,162,1) 0%, rgba(0,25,53,1) 100%);
     color: #fef9ff;
-    overflow: hidden;
+    overflow-x: hidden;
+    overflow-y:scroll;
     font-family: 'Hind Siliguri', sans-serif;
     align-items: center;
 }
@@ -22,7 +24,6 @@ body{
 ::-webkit-scrollbar-track {
     background: #dde1e4; 
 }
-
   /* Handle */
 ::-webkit-scrollbar-thumb {
     background: linear-gradient(to bottom, #0c038c, #8d007e, #cd0061, #f3003e, #ff680a);
@@ -36,6 +37,7 @@ body{
 }
 ::-webkit-inner-spin-button { display: none; }
 ::-webkit-calendar-picker-indicator { color: #dde1e4; }
+/*Css de los registros*/
 #registro{
 	display:inline;
     width: 60%;
@@ -58,14 +60,35 @@ body{
     border-radius: 12px;
     position: relative;
     }
+#file{
+	
+    background-color: transparent;
+    color: #dde1e4;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+}
+#file:valid{
+	background-color: transparent;
+}
+#file:focus{
+	box-shadow: none;
+    background-color: transparent;
+    color: #dde1e4;
+    display: flex;
+    flex-wrap: wrap;
+    width: 80%;
+}
+#file:target{
+	background-color: transparent;
+}
 .form-control{
     background-color: transparent;
     border: #dde1e4 solid 0.1em;
     border-radius: 12px;
     color: #dde1e4;
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
+    display: block;
+    width: 90%;
 }
 .form-control:valid{
 	background-color: transparent;
@@ -76,9 +99,8 @@ body{
     border: #dde1e4 solid 0.1em;
     border-radius: 12px;
     color: #dde1e4;
-    display: flex;
-    flex-wrap: wrap;
-    width: 80%;
+    display: block;
+    width: 90%;
 }
 .form-control:target{
 	background-color: transparent;
@@ -106,12 +128,12 @@ a{
 	text-decoration:none;
 	color:#dde1e4
 }
+/*Alert e index*/
 .alert{
 	background-color: #dde1e4;
 	color: #0000ff;
 	display:flex;
 	font-weight:400;
-	align-self: center;
 	justify-content:center;
 	align-content:center;
 	height: 12px;
@@ -154,6 +176,14 @@ a.nav-link:hover{
     color: #dde1e4;
     font-size: 1.6rem;
 }
+.navbar-fixed .btn-custom{
+        margin-top: 2em;
+}
+.navbar-fixed .btn-custom:hover{
+	
+	background:#0c038c;
+	border: 1.5px solid #0c038c;
+}
 @media(max-width: 992px){
     .navbar-collapse{
         padding-bottom: 19px;
@@ -162,8 +192,12 @@ a.nav-link:hover{
         padding-top: 16rem;
     }
     .btn-custom{
-        margin-top: 1em;
+        margin-top: 2em;
     }
+    .btn-custom:hover{
+	background:#0c038c;
+	border: 1.5px solid #0c038c;
+	}
 }
 .btn-custom{
     text-decoration: none;
@@ -212,8 +246,8 @@ a.nav-link:hover{
 }
 .boton{
     position: absolute;
-    width: 16em;
-    margin: 1em;
+    width: 20em;
+    margin: 0;
     height: 23.125em;
     transition: all .5s;
 }
@@ -227,73 +261,58 @@ a.nav-link:hover{
     align-items: center;
     color: transparent;
     justify-content: center;
-    display: none;
+    display: flex;
+    border-bottom: #dde1e4;
     transition: all 1s;
-    padding:2px;
-    background-color: linear-gradient(to bottom, #0c038c, #8d007e, #cd0061, #f3003e, #ff680a);
 }
 #slider-span1:target ~ .image-slider #botoncito-1{
     color: #dde1e4;
-    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-1:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
-    display:flex;
 }
 #slider-span2:target ~ .image-slider #botoncito-2{
     color: #dde1e4;
-    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-2:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
-    display:flex;
 }
 #slider-span3:target ~ .image-slider #botoncito-3{
     color: #dde1e4;
-    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-3:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
-    display:flex;
 }
 #slider-span4:target ~ .image-slider #botoncito-4{
     color: #dde1e4;
-    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-4:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
-    display:flex;
 }
 #slider-span5:target ~ .image-slider #botoncito-5{
     color: #dde1e4;
-    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-5:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
-    display:flex;
 }
 #slider-span6:target ~ .image-slider #botoncito-6{
     color: #dde1e4;
-    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-6:hover{
     border-bottom: 1em #dde1e4;
     border-radius: 12px;
-    display:flex;
 }
 #slider-span7:target ~ .image-slider #botoncito-7{
     color: #dde1e4;
-    display:flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-7:hover{
     border-bottom: 1em solid #dde1e4;
     border-radius: 12px;
-    display:flex;
 }
 #slider-span1:target ~ .image-slider #img1,
 #slider-span1:target ~ .image-slider #button-1{
@@ -351,7 +370,12 @@ a.nav-link:hover{
 #slider-span5:target ~ .image-slider{left: -25%;}
 #slider-span6:target ~ .image-slider{left: -50%;}
 #slider-span7:target ~ .image-slider{left: -70%;}
-/* Style correspondiente al html mostrarclientes*/
+<<<<<<< Updated upstream
+/* Style correspondiente al html mostraruclientes*/
+=======
+
+/* Style correspondiente a los html de mostrar*/
+>>>>>>> Stashed changes
 h2{
 	margin-top:2rem;
     display: inline;
@@ -433,4 +457,24 @@ a .botn:hover{
 }
 a .botn:hover span{
 		color:#dde1e4;
+}
+.modal-content{
+	background-color: #0C038C;
+	color:#dde1e4;
+}
+/* Revisar los estilos del btn-clos, probablemente tenga que quitar todo y
+cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
+.modal-content .btn-close{
+	color:#dde1e4;
+}
+*/
+.modal-content .btn{
+	background-color: #1dd3b0;
+	border: none;
+	padding: 2px;
+}
+.modal-content .btn:hover{
+	box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
+	-webkit-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
+	-moz-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
 }

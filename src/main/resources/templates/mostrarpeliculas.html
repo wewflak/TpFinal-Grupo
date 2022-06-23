@@ -18,12 +18,13 @@
     display: grid;
     font-family: 'Hind Siliguri', sans-serif;
     justify-items:center;
+    overflow-y:scroll;
 }
 </style>
 </head>
 
 <body>
-<h2>Peliculas registrados</h2>
+<h2>Peliculas registradas</h2>
 <div class="contenedor">
 <div class="alert text-center" th:if="${formPeliculaErrorMessage}" th:text="${formUsuarioPeliculaMessage}">Name Error</div>
 <table class="table" id="tabla">

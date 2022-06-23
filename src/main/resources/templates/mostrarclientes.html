@@ -18,12 +18,13 @@
     display: grid;
     font-family: 'Hind Siliguri', sans-serif;
     justify-items:center;
+    overflow-y:scroll;
 }
 </style>
 </head>
 
 <body>
-<h2>Usuarios registrados</h2>
+<h2>Clientess registrados</h2>
 <div class="contenedor">
 <div class="alert text-center" th:if="${formClienteErrorMessage}" th:text="${formClienteErrorMessage}">Name Error</div>
 <table class="table" id="tabla">
@@ -72,7 +73,7 @@
       </div>
       <div class="modal-body">
         ¿Seguro quiere eliminar este Cliente?
-        <input type="text" id="identificadorDeCliente" class="form-control" name="userIdHiddenInput" style="color: black;"> 
+        <input type="text" id="identificadorDeCliente" class="form-control" name="userIdHiddenInput"> 
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
