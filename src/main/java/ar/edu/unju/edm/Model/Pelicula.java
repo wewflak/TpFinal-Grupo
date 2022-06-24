@@ -26,6 +26,7 @@ public class Pelicula {
     @NotEmpty
     private String nombre;
     private  String genero;
+    @NotNull
     private Long duracion;
     private String descripcion;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
