@@ -32,6 +32,7 @@
     <tr>
 	  <th scope="col">Portada</th>
       <th scope="col">Id</th>
+      <th scope="col">Portada</th>
       <th scope="col">Nombre</th>
       <th scope="col">Descripcion</th>
       <th scope="col">Genero</th>
@@ -46,6 +47,7 @@
 <!--     	<td th:text="${p.imagen}"></td> -->
     	<td><img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" ></td>
     	<td th:text="${p.id}"></td>
+    	<td><img th:src="${'data:image/png;base64,'+p.imagen}" alt="" /></td>
 		<td th:text="${p.nombre}"></td>
 		<td th:text="${p.descripcion}"></td>
 		<td th:text="${p.genero}"></td>

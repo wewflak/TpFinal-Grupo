@@ -371,7 +371,6 @@ a.nav-link:hover{
 #slider-span6:target ~ .image-slider{left: -50%;}
 #slider-span7:target ~ .image-slider{left: -70%;}
 
-
 /* Style correspondiente a los html de mostrar*/
 h2{
 	margin-top:2rem;

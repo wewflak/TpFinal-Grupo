@@ -30,6 +30,7 @@ public class Pelicula {
     private String descripcion;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechadeE;
+    private Boolean Estado;
     @Lob
     private String imagen;
     public String getImagen() {
@@ -38,9 +39,7 @@ public class Pelicula {
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	private Boolean Estado;
-    
-    public Boolean getEstado() {
+	public Boolean getEstado() {
         return Estado;
     }
     public void setEstado(Boolean estado) {
