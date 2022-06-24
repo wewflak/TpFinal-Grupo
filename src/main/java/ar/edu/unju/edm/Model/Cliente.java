@@ -42,8 +42,14 @@ public class Cliente {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate FechadeN;
 	private Boolean estado;
-	
+	private String tipo;
 
+	public String getTipo() {
+		return tipo;
+	}
+	public void setTipo(String tipo) {
+		this.tipo = tipo;
+	}
 	public Integer getIdCliente() {
 		return IdCliente;
 	}
