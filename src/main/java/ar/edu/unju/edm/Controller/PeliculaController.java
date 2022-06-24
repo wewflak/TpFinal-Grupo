@@ -40,7 +40,6 @@ public class PeliculaController {
 
 	@PostMapping(value="/guardarpelicula", consumes = "multipart/form-data")//recibe datos
 	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, @RequestParam("file") MultipartFile file, Model model) {
-
 		SRT.info("Ingresando al metodo guardar pelicula: "+peliculaparaguardar.getId());
 
 		if(resultado.hasErrors()) {
