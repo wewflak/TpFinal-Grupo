@@ -75,6 +75,15 @@ body{
 	  			     id="contrasena" th:field="*{contrasena}"   required>
 	  	                <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
 	  	  </div>
+	  	  		    <div class="mb-3" style="display:inline">
+	    		    <label for="tipo" class="form-label" th:if="${band==false}">Tipo</label>
+	  			    <select class="form-control"
+						th:field="*{tipo}">
+						<option>Cliente</option>
+						<option>Admin</option>
+					</select>  
+	  	                <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
+	  	  </div>
 	  	  
 <button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button> 
 		    <a class="button" th:href="@{/}">Volver</a>

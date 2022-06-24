@@ -8,4 +8,8 @@ public class PrincipalController {
 	public String getIndex() {
 		return "index";
 	}
+	@GetMapping({"/login", "/formLogin", "/ingreso"})
+	public String getLogin() {
+		return "formLogin";
+	}
 }
