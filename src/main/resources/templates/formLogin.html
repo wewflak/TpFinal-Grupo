@@ -31,10 +31,14 @@ body{
                 <input type="text" class="form-control" value="" name="dni" required>
             </div>
             		    <div class="mb-3" style="display:inline">
-	    		    <label for="contrasena" class="form-label" th:if="${band==false}">Contrasena</label>
+	    		    <label for="contrasena" class="form-label">Contrasena</label>
 	  			    <input type="password" class="form-control" name="contrasena"   required>
 	  	  </div>
 	  	  
 	  	  </form>
+	  	  <button type="submit" class="button"><span th:text=" 'Modificar' : 'Registrarse' "></span> </button> 
+		    <a class="button" th:href="@{/}">Volver</a>
+	</form >
+</div>
 </body>
 </html>

@@ -78,10 +78,11 @@ body{
 	  	  		    <div class="mb-3" style="display:inline">
 	    		    <label for="tipo" class="form-label" th:if="${band==false}">Tipo</label>
 	  			    <select class="form-control"
-						th:field="*{tipo}">
-						<option>Cliente</option>
-						<option>Admin</option>
-					</select>  
+						th:field="*{tipo}" id="tipo" aria-label="Elegir"required>
+                <option selected disabled value="Elegir">Elegir</option>
+                <option value="">Cliente</option>
+                <option value="">Empleado</option>
+                </select>
 	  	                <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
 	  	  </div>
 	  	  

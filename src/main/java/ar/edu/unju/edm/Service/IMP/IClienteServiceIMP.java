@@ -40,10 +40,10 @@ public class IClienteServiceIMP implements IClienteService {
 	}
 
 	@Override
-	public void eliminarCliente(Integer IdCliente) throws Exception {
+	public void eliminarCliente(Long dni) throws Exception {
 		// TODO Auto-generated method stub
 		Cliente auxiliar = new Cliente();
-		auxiliar = buscarCliente(IdCliente);
+		auxiliar = buscarCliente(dni);
 		auxiliar.setEstado(false);
 		clienteRepository.save(auxiliar);
 	}
@@ -56,10 +56,10 @@ public class IClienteServiceIMP implements IClienteService {
 	}
 
 	@Override
-	public Cliente buscarCliente(Integer IdCliente) throws Exception {
+	public Cliente buscarCliente(Long dni) throws Exception {
 		// TODO Auto-generated method stub
 		Cliente clienteencontrado = new Cliente();
-		clienteencontrado=clienteRepository.findById(IdCliente).orElseThrow(()->new Exception("Cliente No encontrado"));
+		clienteencontrado=clienteRepository.findById(dni).orElseThrow(()->new Exception("Cliente No encontrado"));
 		return clienteencontrado;
 	}
 

@@ -68,11 +68,11 @@ public class ClienteController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-	@GetMapping("/editarCliente/{IdCliente}")
-	public ModelAndView editclient(Model model, @PathVariable(name="IdCliente")Integer IdCliente) throws Exception {
+	@GetMapping("/editarCliente/{dni}")
+	public ModelAndView editclient(Model model, @PathVariable(name="dni")Long dni) throws Exception {
 		Cliente clienteEncontrado = new Cliente();
 		try {
-			clienteEncontrado = serviceclient.buscarCliente(IdCliente);
+			clienteEncontrado = serviceclient.buscarCliente(dni);
 		}catch(Exception e) {
 			model.addAttribute("formClienteErrorMessage", e.getMessage());
 		}
@@ -91,10 +91,10 @@ public class ClienteController {
 		vista.addObject("formClienteErrorMessage", "Cliente guardado correctamente");
 		return vista;
 	}
-	@GetMapping("/eliminarCliente/{IdCliente}")
-	public String deleteClient(@PathVariable(name="IdCliente")Integer IdCliente) {
+	@GetMapping("/eliminarCliente/{dni}")
+	public String deleteClient(@PathVariable(name="dni")Long dni) {
 		try {
-		serviceclient.eliminarCliente(IdCliente);
+		serviceclient.eliminarCliente(dni);
 		}catch(Exception error){
 			SRT.error("No se pudo eliminar el Cliente");
 			return "redirect:/cargarcliente";

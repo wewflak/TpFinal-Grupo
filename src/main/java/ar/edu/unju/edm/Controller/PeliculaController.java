@@ -38,8 +38,8 @@ public class PeliculaController {
 	}
 
 
-	@PostMapping(value="/guardarpelicula", consumes = "multipart/form-data")//recibe datos
-	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, @RequestParam("file") MultipartFile file, Model model) {
+	@PostMapping(value="/guardarpelicula")//recibe datos
+	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado,  Model model) {
 		SRT.info("Ingresando al metodo guardar pelicula: "+peliculaparaguardar.getId());
 
 		if(resultado.hasErrors()) {
@@ -48,9 +48,9 @@ public class PeliculaController {
 			return "cargarpelicula";
 		}else {
 		try {
-			byte[] content = file.getBytes();
-			String base64 = Base64.getEncoder().encodeToString(content);
-			nuevaPelicula.setImagen(base64);
+//			byte[] content = file.getBytes();
+//			String base64 = Base64.getEncoder().encodeToString(content);
+//			nuevaPelicula.setImagen(base64);
 			nuevaPelicula.setEstado(true);
 			servicemovie.guardarPelicula(peliculaparaguardar); SRT.info(peliculaparaguardar.getId());
 			}
