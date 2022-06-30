@@ -481,3 +481,25 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 	-webkit-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
 	-moz-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
 }
+/* Footer */
+#footer{
+    border-top: 1px solid #7E7E7E;
+    padding-top: 44px;
+}
+#footer a{
+    text-decoration: none;
+    color: black;
+}
+#footer .social{
+    background: #FC6731;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+#footer .social a{
+    color: white;
+}
