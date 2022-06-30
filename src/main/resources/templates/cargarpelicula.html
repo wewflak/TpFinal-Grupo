@@ -29,8 +29,8 @@ body{
 <div class="titulo">
 <h5>Inicio de usuario</h5>
 </div>
-		<form th:object="${pelicula}" th:action="${band}? @{/Modificarpelicula} : @{/guardarpelicula}" method="post">
-		
+		<form th:object="${pelicula}" th:action="${band}? @{/Modificarpelicula} : @{/guardarpelicula}" method="post" enctype="multipart/form-data">
+		<input type="hidden" class="form-control" th:field="*{id}">
 		<!--<input type="hidden" class="form-control" th:if="${band}" th:field="*{contrasena}">
 	        <input type="hidden" class="form-control" th:if="${band}" th:field="*{estado}">
 	        <input type="hidden" class="form-control" th:if="${band}" th:field="*{dni}">-->
@@ -40,6 +40,7 @@ body{
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('nombre')}"th:errors="*{nombre}"></div>
             </div>
             
+          
             <div class="mb-3">
                 <label for="apellido" class="form-label">Genero</label>
                 <input  type="text" class="form-control" id="genero" th:field="*{genero}" required>
@@ -60,12 +61,26 @@ body{
 		  </div>
 		    <div class="mb-3">
                 <label for="fechadeE" class="form-label">Fecha de Estreno</label>
-                <input  type="date"  class="date form-control" id="fechadeE" th:field="*{fechadeE}" required>
+                <input type="date"  class="date form-control" id="fechadeE" th:field="*{fechadeE}" required>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('fechadeE')}"th:errors="*{fechadeE}"></div>
             </div>
-	  	  
-<button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button> 
-		    <a class="button" th:href="@{/}">Volver</a>
+            
+            <div class="form-group row">
+					<label for="file" class="col-sm-4 col-form-label"> Subir
+						Imagen </label>
+					<div class="col-sm-10">
+						<input type="file" name="file" class="form-control-file" id="file"
+							accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"
+							onchange="loadFile(event)"> <img id="output"
+							style="padding-top: 2px; width: 146px;" />
+					</div>
+				</div>
+             <div>
+					<button type="submit" class="btn btn-primary">
+						<span th:text="Guardar"></span>
+					</button>
+					<a class="btn btn-light" th:href="@{/}">Volver</a>
+				</div>
 	</form >
 </div>
 <script type="text/javascript">  

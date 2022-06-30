@@ -14,15 +14,14 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 @Component
 @Entity
 public class Pelicula {
-    @NotNull
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Basic(optional = false)
-    @Column(name = "Id",unique=true, nullable = false)
-    private Integer Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
+    private Integer id;
     @NotEmpty
     private String nombre;
     private  String genero;
@@ -30,7 +29,20 @@ public class Pelicula {
     private String descripcion;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechadeE;
-    private Boolean Estado;
+    @Lob
+    private String imagen;
+    public Pelicula() {
+		// TODO Auto-generated constructor stub
+	}
+
+    public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
+	}
+	private Boolean Estado;
+    
     public Boolean getEstado() {
         return Estado;
     }
@@ -38,10 +50,10 @@ public class Pelicula {
         Estado = estado;
     }
     public Integer getId() {
-        return Id;
+        return id;
     }
     public void setId(Integer id) {
-        Id = id;
+        id = id;
     }
     public String getGenero() {
         return genero;

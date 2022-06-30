@@ -18,4 +18,5 @@ public interface IPeliculaService {
 	public void modificarPelicula(Pelicula movie);
 	//Busca usuarios
 	public Pelicula buscarPelicula(Integer id) throws Exception;
+	
 }

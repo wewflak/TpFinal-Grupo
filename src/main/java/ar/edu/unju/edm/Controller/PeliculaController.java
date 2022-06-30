@@ -1,4 +1,6 @@
 package ar.edu.unju.edm.Controller;
+import java.util.Base64;
+
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -9,6 +11,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.edm.Model.Pelicula;
@@ -33,19 +37,22 @@ public class PeliculaController {
 		
 	}
 	
-	@PostMapping("/guardarpelicula")//recibe datos
-	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, Model model) {
-		SRT.info("Ingresando al metodo guardar pelicula: "+peliculaparaguardar.getId());
+	@PostMapping(value="/guardarpelicula", consumes = "multipart/form-data")//recibe datos
+	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, @RequestParam("file") MultipartFile file, Model model) {
+		SRT.info("Ingresando al metodo guardar pelicula: "+ file.getSize());
 		if(resultado.hasErrors()) {
-
-			servicemovie.guardarPelicula(peliculaparaguardar);
+			
 			SRT.fatal("Error de validacion"+peliculaparaguardar.getNombre());
 			model.addAttribute("pelicula", peliculaparaguardar);
 			return "cargarpelicula";
 		}else {
 		try {
-
-			servicemovie.guardarPelicula(peliculaparaguardar); SRT.info(peliculaparaguardar.getId());
+			byte[] content = file.getBytes();
+			String base64 = Base64.getEncoder().encodeToString(content);
+			peliculaparaguardar.setImagen(base64);
+			peliculaparaguardar.setEstado(true);
+			servicemovie.guardarPelicula(peliculaparaguardar); 
+			SRT.info(peliculaparaguardar.getId());
 			}
 		catch(Exception error){
 			model.addAttribute("formPeliculaErrorMessage", error.getMessage());
