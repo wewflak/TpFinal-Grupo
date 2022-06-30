@@ -22,8 +22,7 @@ public class Cliente {
 		// TODO Auto-generated constructor stub
 	}
 
-	@Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Basic(optional = false)
     @Column(name = "IdCliente",unique=true, nullable = false)
     private Integer IdCliente;
@@ -36,6 +35,7 @@ public class Cliente {
 	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
 	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
 	@NotNull
+	@Id
 	private Long dni;
 	@NotEmpty
 	private String email;

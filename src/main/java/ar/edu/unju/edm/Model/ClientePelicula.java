@@ -23,7 +23,7 @@ public class ClientePelicula {
 	@Basic(optional = false)
 	private Integer idClientePelicula;
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="IdCliente")
+	@JoinColumn(name="dni")
 	private Cliente cliente;
 	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
 	@JoinColumn(name="Id")

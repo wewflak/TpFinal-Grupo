@@ -37,6 +37,16 @@ body{
 }
 ::-webkit-inner-spin-button { display: none; }
 ::-webkit-calendar-picker-indicator { color: #dde1e4; }
+
+/*Css del login*/
+#inicio{
+	background-color: #3d3d3d;
+	backdrop-filter: blur(2px);
+}
+form{
+	background: transparent;
+}
+
 /*Css de los registros*/
 #registro{
 	display:inline;
@@ -103,6 +113,13 @@ body{
     width: 90%;
 }
 .form-control:target{
+	background-color: transparent;
+}
+option, select{
+	background-color: transparent;
+	color:#dde1e4;
+}
+option:target{
 	background-color: transparent;
 }
 button{
@@ -473,4 +490,26 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 	box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
 	-webkit-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
 	-moz-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
+}
+/* Footer */
+#footer{
+    border-top: 1px solid #7E7E7E;
+    padding-top: 44px;
+}
+#footer a{
+    text-decoration: none;
+    color: black;
+}
+#footer .social{
+    background: #FC6731;
+    width: 35px;
+    height: 35px;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    margin-right: 5px;
+}
+#footer .social a{
+    color: white;
 }

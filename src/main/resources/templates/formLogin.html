@@ -14,12 +14,14 @@
 <style type="text/css"> 
 body{
     overflow: visible;
+	background: url("/img/background.jpeg");
+	backdrop-filter: blur(4px);
 }
 </style>
 </head>
 <title>Login</title>
 <body>
-	<div class="container" id="registro" th:fragment="inicio">
+	<div class="container" id="inicio" th:fragment="inicio">
 <div class="titulo">
 <h5>Inicio de usuario</h5>
 
@@ -31,10 +33,14 @@ body{
                 <input type="text" class="form-control" value="" name="dni" required>
             </div>
             		    <div class="mb-3" style="display:inline">
-	    		    <label for="contrasena" class="form-label" th:if="${band==false}">Contrasena</label>
+	    		    <label for="contrasena" class="form-label">Contrasena</label>
 	  			    <input type="password" class="form-control" name="contrasena"   required>
 	  	  </div>
 	  	  
 	  	  </form>
+	  	  
+		  <button type="submit" class="button">Ingresar</button>
+	</form >
+</div>
 </body>
 </html>
