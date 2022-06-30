@@ -18,11 +18,10 @@ import javax.persistence.Lob;
 @Component
 @Entity
 public class Pelicula {
+    
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Basic(optional = false)
-    @Column(name = "Id",unique=true, nullable = false)
-    private Integer Id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)    
+    private Integer id;
     @NotEmpty
     private String nombre;
     private  String genero;
@@ -31,26 +30,31 @@ public class Pelicula {
     private String descripcion;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate fechadeE;
-    private Boolean Estado;
     @Lob
     private String imagen;
+    public Pelicula() {
+		// TODO Auto-generated constructor stub
+	}
+
     public String getImagen() {
 		return imagen;
 	}
 	public void setImagen(String imagen) {
 		this.imagen = imagen;
 	}
-	public Boolean getEstado() {
+	private Boolean Estado;
+    
+    public Boolean getEstado() {
         return Estado;
     }
     public void setEstado(Boolean estado) {
         Estado = estado;
     }
     public Integer getId() {
-        return Id;
+        return id;
     }
     public void setId(Integer id) {
-        Id = id;
+        this.id = id;
     }
     public String getGenero() {
         return genero;

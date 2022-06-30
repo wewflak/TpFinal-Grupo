@@ -36,23 +36,23 @@ public class PeliculaController {
 		return vista;
 		
 	}
-
-
+	
 	@PostMapping(value="/guardarpelicula", consumes = "multipart/form-data")//recibe datos
 	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, @RequestParam("file") MultipartFile file, Model model) {
-		SRT.info("Ingresando al metodo guardar pelicula: "+peliculaparaguardar.getId());
-
+		SRT.info("Ingresando al metodo guardar pelicula: "+ file.getSize());
 		if(resultado.hasErrors()) {
-			SRT.fatal("Error de validacion"+peliculaparaguardar.getNombre()+" "+peliculaparaguardar.getDescripcion()+" "+peliculaparaguardar.getGenero()+" "+peliculaparaguardar.getId()+" "+peliculaparaguardar.getDuracion()+" "+peliculaparaguardar.getFechadeE());
+			
+			SRT.fatal("Error de validacion"+peliculaparaguardar.getNombre());
 			model.addAttribute("pelicula", peliculaparaguardar);
 			return "cargarpelicula";
 		}else {
 		try {
 			byte[] content = file.getBytes();
 			String base64 = Base64.getEncoder().encodeToString(content);
-			nuevaPelicula.setImagen(base64);
-			nuevaPelicula.setEstado(true);
-			servicemovie.guardarPelicula(peliculaparaguardar); SRT.info(peliculaparaguardar.getId());
+			peliculaparaguardar.setImagen(base64);
+			peliculaparaguardar.setEstado(true);
+			servicemovie.guardarPelicula(peliculaparaguardar); 
+			SRT.info(peliculaparaguardar.getId());
 			}
 		catch(Exception error){
 			model.addAttribute("formPeliculaErrorMessage", error.getMessage());
