@@ -37,6 +37,16 @@ body{
 }
 ::-webkit-inner-spin-button { display: none; }
 ::-webkit-calendar-picker-indicator { color: #dde1e4; }
+
+/*Css del login*/
+#inicio{
+	background-color: #3d3d3d;
+	backdrop-filter: blur(2px);
+}
+form{
+	background: transparent;
+}
+
 /*Css de los registros*/
 #registro{
 	display:inline;

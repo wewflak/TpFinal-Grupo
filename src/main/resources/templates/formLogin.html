@@ -14,12 +14,14 @@
 <style type="text/css"> 
 body{
     overflow: visible;
+	background: url("/img/background.jpeg");
+	backdrop-filter: blur(4px);
 }
 </style>
 </head>
 <title>Login</title>
 <body>
-	<div class="container" id="registro" th:fragment="inicio">
+	<div class="container" id="inicio" th:fragment="inicio">
 <div class="titulo">
 <h5>Inicio de usuario</h5>
 
@@ -36,8 +38,8 @@ body{
 	  	  </div>
 	  	  
 	  	  </form>
-	  	  <button type="submit" class="button"><span th:text=" 'Modificar' : 'Registrarse' "></span> </button> 
-		    <a class="button" th:href="@{/}">Volver</a>
+	  	  
+		  <button type="submit" class="button">Ingresar</button>
 	</form >
 </div>
 </body>
