@@ -2,11 +2,7 @@ package ar.edu.unju.edm.Model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Basic;
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
@@ -22,10 +18,10 @@ public class Cliente {
 		// TODO Auto-generated constructor stub
 	}
 
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Basic(optional = false)
-    @Column(name = "IdCliente",unique=true, nullable = false)
-    private Integer IdCliente;
+//    @GeneratedValue(strategy = GenerationType.AUTO)
+//    @Basic(optional = false)
+//    @Column(name = "IdCliente",unique=true, nullable = false)
+//    private Integer IdCliente;
 	@NotEmpty
 	private String nombre;
 	@NotEmpty
@@ -33,7 +29,7 @@ public class Cliente {
 	@NotEmpty
 	private String contrasena;
 	@Min(value=1000000, message="El DNI debe ser mayor que un millon")
-	@Max(value=99999999, message="El DNI debe ser menor que un 100 millones")
+	@Max(value=99999999, message="El DNI debe ser menor que 100 millones")
 	@NotNull
 	@Id
 	private Long dni;
@@ -50,12 +46,12 @@ public class Cliente {
 	public void setTipo(String tipo) {
 		this.tipo = tipo;
 	}
-	public Integer getIdCliente() {
-		return IdCliente;
-	}
-	public void setIdCliente(Integer idCliente) {
-		IdCliente = idCliente;
-	}
+//	public Integer getIdCliente() {
+//		return IdCliente;
+//	}
+//	public void setIdCliente(Integer idCliente) {
+//		IdCliente = idCliente;
+//	}
 	public Boolean getEstado() {
 		return estado;
 	}

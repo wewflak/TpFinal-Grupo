@@ -27,6 +27,7 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 	@Override
 	public void guardarClientePelicula(ClientePelicula clientMovie) {
 		// TODO Auto-generated method stub
+		System.out.println("eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee");
 			clientePeliculaRepository.save(clientMovie);
 	}
 

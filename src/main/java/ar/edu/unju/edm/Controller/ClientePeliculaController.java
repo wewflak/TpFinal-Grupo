@@ -44,22 +44,26 @@ public class ClientePeliculaController {
 	public ModelAndView saveEntrada(@Valid @ModelAttribute("unaEntrada") ClientePelicula clientePeliculaNuevo, BindingResult resultado) {
 		ModelAndView view = new ModelAndView();
 
-		clientePeliculaService.guardarClientePelicula(clientePeliculaNuevo);
+		//clientePeliculaService.guardarClientePelicula(clientePeliculaNuevo);
+		SRT.info("holaaaaaaaaaaaaaa"+clientePeliculaNuevo.getFechaCompra());
 		if(resultado.hasErrors()) {
+			SRT.info("holaaaaaaaaaaaaaa antes de guardar");
 			view.setViewName("cargarentrada");
 			view.addObject("unaEntrada", clientePeliculaNuevo);
 			return view;
 		}
 		try {
+			SRT.info("holaaaaaaaaaaaaaa"+clientePeliculaNuevo.getFechaCompra());
 			clientePeliculaService.guardarClientePelicula(clientePeliculaNuevo);
 		}catch(Exception e) {
+			SRT.info("holaaaaaaaaaaaaaa error al guardar");
 			view.addObject("formClientePeliculaErrorMessage", e.getMessage());
 			view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
 			SRT.error("Saliendo del metodo");
 			view.setViewName("cargarentrada");
 			return view;
 		}
-		view.addObject("formClientePeliculaErrorMessage", "Relacion guardada correctamete");
+		view.addObject("formClientePeliculaErrorMessage", "Relacion guardada correctamente");
 		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
 		view.setViewName("cargarentrada");
 		return view;

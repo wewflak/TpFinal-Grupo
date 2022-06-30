@@ -2,8 +2,6 @@ package ar.edu.unju.edm.Model;
 
 import java.time.LocalDate;
 
-import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -19,16 +17,16 @@ import org.springframework.stereotype.Component;
 @Entity
 public class ClientePelicula {
 	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Basic(optional = false)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	//@Basic(optional = false)
 	private Integer idClientePelicula;
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
+	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="dni")
 	private Cliente cliente;
-	@ManyToOne(fetch=FetchType.LAZY, cascade=CascadeType.ALL)
-	@JoinColumn(name="Id")
+	@ManyToOne(fetch=FetchType.LAZY)
+	@JoinColumn(name="id")
 	private Pelicula pelicula;
-	@DateTimeFormat(pattern = "dd-MM-yyyy")
+	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaCompra;
 	
 	public ClientePelicula() {

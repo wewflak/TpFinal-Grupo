@@ -42,9 +42,14 @@ body{
 #inicio{
 	background-color: #3d3d3d;
 	backdrop-filter: blur(2px);
+	padding:2em;
+	border-radius: 12px;
+	z-index: 0;
 }
 form{
 	background: transparent;
+	filter:blur(0);
+	z-index: 1;
 }
 
 /*Css de los registros*/
@@ -116,11 +121,17 @@ form{
 	background-color: transparent;
 }
 option, select{
-	background-color: transparent;
+	background-color: #611d8b;
 	color:#dde1e4;
 }
-option:target{
-	background-color: transparent;
+option:target, select:target{
+	background-color: #0000ff;
+}
+option:hover{
+	background-color: #0000ff;
+}
+select:hover{
+	background-color: #0000ff;
 }
 button{
     margin-top:1em;
@@ -153,7 +164,8 @@ a{
 	font-weight:400;
 	justify-content:center;
 	align-content:center;
-	height: 12px;
+	height: max-content;
+	width:max-content;
 	border-radius: 0px;
 }
 a:hover{
@@ -209,8 +221,8 @@ a.nav-link:hover{
         padding-top: 16rem;
     }
     .btn-custom{
-        margin-top: 2em;
-    }
+		margin-bottom: 2px;
+	}
     .btn-custom:hover{
 	background:#0c038c;
 	border: 1.5px solid #0c038c;
@@ -225,6 +237,7 @@ a.nav-link:hover{
     font-weight: 500;
     transition: all 0.6s;
     color: #dde1e4;
+    margin-bottom: 4px;
     }
     .btn-custom:hover{
         background: #611d8b;
@@ -475,7 +488,7 @@ a .botn:hover span{
 	background-color: #0C038C;
 	color:#dde1e4;
 }
-/* Revisar los estilos del btn-clos, probablemente tenga que quitar todo y
+/* Revisar los estilos del btn-close, probablemente tenga que quitar todo y
 cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 .modal-content .btn-close{
 	color:#dde1e4;
@@ -495,13 +508,16 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 #footer{
     border-top: 1px solid #7E7E7E;
     padding-top: 44px;
+    width:100%;
 }
 #footer a{
     text-decoration: none;
-    color: black;
+    color: #dde1e4;
 }
 #footer .social{
-    background: #FC6731;
+	
+    width:100%;
+    background: #0000ff;
     width: 35px;
     height: 35px;
     display: inline-flex;
@@ -511,5 +527,5 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
     margin-right: 5px;
 }
 #footer .social a{
-    color: white;
+    color: #dde1e4;
 }

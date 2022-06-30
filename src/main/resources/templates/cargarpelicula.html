@@ -72,14 +72,12 @@ body{
 						<input type="file" name="file" class="form-control-file" id="file"
 							accept="image/x-png,image/gif,image/jpeg,image/png,image/jpeg"
 							onchange="loadFile(event)"> <img id="output"
-							style="padding-top: 2px; width: 146px;" />
+							style="padding-top: 2px; width: 14px;" />
 					</div>
 				</div>
              <div>
-					<button type="submit" class="btn btn-primary">
-						<span th:text="Guardar"></span>
-					</button>
-					<a class="btn btn-light" th:href="@{/}">Volver</a>
+<button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button> 
+		    <a class="button" th:href="@{/}">Volver</a>
 				</div>
 	</form >
 </div>

@@ -19,6 +19,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 @Controller
 public class ClienteController {
+	Boolean bandtipo;
 	private static final Log SRT = LogFactory.getLog(ClienteController.class);
 	@Autowired
 	Cliente nuevoCliente;
@@ -36,11 +37,12 @@ public class ClienteController {
 	
 	@PostMapping("/guardarcliente")//recibe datos
 	public String saveClient(@Valid @ModelAttribute ("cliente") Cliente clienteparaguardar, BindingResult resultado, Model model) {
-		SRT.info("Ingresando al metodo guardar Cliente: "+clienteparaguardar.getDni()+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN()+clienteparaguardar.getEmail()+clienteparaguardar.getNombre()+clienteparaguardar.getIdCliente());
+		SRT.info("Ingresando al metodo guardar Cliente: "+clienteparaguardar.getDni()+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN()+clienteparaguardar.getEmail()+clienteparaguardar.getNombre());
 
 		if(resultado.hasErrors()) {
-			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN()+clienteparaguardar.getEmail()+clienteparaguardar.getNombre()+clienteparaguardar.getIdCliente());
+			SRT.fatal("Error de validacion"+clienteparaguardar.getApellido()+clienteparaguardar.getContrasena()+clienteparaguardar.getFechadeN());
 			model.addAttribute("cliente", clienteparaguardar);
+			model.addAttribute("band", false);
 			return "cargarcliente";
 		}else {
 		try {
@@ -49,12 +51,18 @@ public class ClienteController {
 			}
 		catch(Exception error){
 			model.addAttribute("formClienteErrorMessage", error.getMessage());
-			model.addAttribute("cliente", clienteparaguardar); 
+			model.addAttribute("cliente", clienteparaguardar);
+			model.addAttribute("band", false);
 			SRT.error("No se pudo cargar"); 
 			return "cargarcliente";
 		}
 		model.addAttribute("formClienteErrorMessage", "Cliente guardado correctamente");
 		model.addAttribute("cliente", nuevoCliente);
+		if(clienteparaguardar.getTipo().equals("Cliente")){
+			bandtipo=false;
+		}else {
+			bandtipo=true;
+		}
 		System.out.println(clienteparaguardar.getApellido()+clienteparaguardar.getEmail());
 		return "index";
 	}

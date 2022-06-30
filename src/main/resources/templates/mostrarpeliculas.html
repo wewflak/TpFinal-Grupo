@@ -20,6 +20,10 @@
     justify-items:center;
     overflow-y:scroll;
 }
+img{
+	width:120px;
+	height:140px;
+}
 </style>
 </head>
 
@@ -47,7 +51,6 @@
 <!--     	<td th:text="${p.imagen}"></td> -->
     	<td><img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" ></td>
     	<td th:text="${p.id}"></td>
-    	<td><img th:src="${'data:image/png;base64,'+p.imagen}" alt="" /></td>
 		<td th:text="${p.nombre}"></td>
 		<td th:text="${p.descripcion}"></td>
 		<td th:text="${p.genero}"></td>
