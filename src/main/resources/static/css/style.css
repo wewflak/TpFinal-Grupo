@@ -133,6 +133,17 @@ option:hover{
 select:hover{
 	background-color: #0000ff;
 }
+.custom-file-upload {
+	border: #dde1e4 solid 0.1em;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+input[type="file"] {
+    display: none;
+}
 button{
     margin-top:1em;
     margin-left: 70%;
@@ -505,6 +516,9 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 	-moz-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
 }
 /* Footer */
+footer{
+	width:100%;
+}
 #footer{
     border-top: 1px solid #7E7E7E;
     padding-top: 44px;

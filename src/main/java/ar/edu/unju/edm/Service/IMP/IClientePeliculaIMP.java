@@ -39,6 +39,7 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 
 	@Override
 	public void modificarClientePelicula(ClientePelicula clientMovie) {
+		clientePeliculaRepository.save(clientMovie);
 		// TODO Auto-generated method stub
 		
 	}
@@ -50,9 +51,11 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 	}
 
 	@Override
-	public ClientePelicula buscarClientePelicula(Integer idClientePelicula) {
+	public ClientePelicula buscarClientePelicula(Integer idClientePelicula) throws Exception {
 		// TODO Auto-generated method stub
-		return null;
+		ClientePelicula entradaEncontrada = new ClientePelicula();
+		entradaEncontrada=clientePeliculaRepository.findById(idClientePelicula).orElseThrow(()->new Exception("Cliente Pelicula No encontrada"));
+		return entradaEncontrada;
 	}
 
 }
