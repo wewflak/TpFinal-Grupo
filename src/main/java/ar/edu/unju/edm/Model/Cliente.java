@@ -95,4 +95,6 @@ public class Cliente {
 		FechadeN = fechadeN;
 	}
 	
+	//borrar despues
+	int n,a;
 }
