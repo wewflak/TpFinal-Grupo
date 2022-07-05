@@ -28,7 +28,9 @@ public class ClientePelicula {
 	private Pelicula pelicula;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechaCompra;
-	
+	private Integer valoracion;
+	private String comentario;
+
 	public ClientePelicula() {
 		// TODO Auto-generated constructor stub
 	}
@@ -57,5 +59,19 @@ public class ClientePelicula {
 	public void setFechaCompra(LocalDate fechaCompra) {
 		this.fechaCompra = fechaCompra;
 	}
-	
+	public Integer getValoracion() {
+		return valoracion;
+	}
+
+	public void setValoracion(Integer valoracion) {
+		this.valoracion = valoracion;
+	}
+
+	public String getComentario() {
+		return comentario;
+	}
+
+	public void setComentario(String comentario) {
+		this.comentario = comentario;
+	}
 }

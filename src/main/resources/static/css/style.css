@@ -40,11 +40,15 @@ body{
 
 /*Css del login*/
 #inicio{
-	background-color: #3d3d3d;
+	background: rgba(17, 4, 200, 0.7);
 	backdrop-filter: blur(2px);
 	padding:2em;
 	border-radius: 12px;
 	z-index: 0;
+	transition: all 0.5s;
+}
+#inicio:hover{
+	background: rgba(17, 4, 200, 0.9);
 }
 form{
 	background: transparent;
@@ -132,6 +136,17 @@ option:hover{
 }
 select:hover{
 	background-color: #0000ff;
+}
+.custom-file-upload {
+	border: #dde1e4 solid 0.1em;
+    border-radius: 12px;
+    display: inline-block;
+    padding: 6px 12px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+input[type="file"] {
+    display: none;
 }
 button{
     margin-top:1em;
@@ -505,6 +520,15 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 	-moz-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
 }
 /* Footer */
+<<<<<<< Updated upstream
+footer{
+	width:100%;
+}
+=======
+	#foot{
+		width:100%;
+	}
+>>>>>>> Stashed changes
 #footer{
     border-top: 1px solid #7E7E7E;
     padding-top: 44px;

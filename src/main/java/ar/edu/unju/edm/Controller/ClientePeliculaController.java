@@ -6,9 +6,11 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -29,7 +31,12 @@ public class ClientePeliculaController {
 	
 	@Autowired
 	IPeliculaService peliculaservice;
-	
+	@GetMapping("/Comprobante")
+	ModelAndView comprobante(){
+		ModelAndView view = new ModelAndView("Comprobante");
+		view.setViewName("Comprobante");
+		return view;
+	}
 	@GetMapping("/cargarentrada")
 	public ModelAndView addEntrada() {
 		SRT.info("Ingresando al metodo");
@@ -65,7 +72,32 @@ public class ClientePeliculaController {
 		}
 		view.addObject("formClientePeliculaErrorMessage", "Relacion guardada correctamente");
 		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
-		view.setViewName("cargarentrada");
+		view.setViewName("Comprobante");
 		return view;
+	}
+
+	@GetMapping("/editarPelicula/{idClientePelicula}")
+	public ModelAndView editRelation(Model model, @PathVariable(name="idClientePelicula")Integer idClientePelicula)throws Exception{
+		ClientePelicula relacionEncontrada = new ClientePelicula();
+		try{
+			relacionEncontrada = clientePeliculaService.buscarClientePelicula(idClientePelicula);
+		}catch (Exception error){
+			model.addAttribute("formClientePeliculaErrorMessage", error.getMessage());
+		}
+		ModelAndView encontrado = new ModelAndView("Resena");
+		encontrado.addObject("relacion", relacionEncontrada);
+		encontrado.addObject("clientes", clienteservice.mostrarClientes());
+		encontrado.addObject("peliculas", peliculaservice.mostrarPeliculas());
+		SRT.error("Relacion: " + relacionEncontrada);
+		return encontrado;
+	}
+	@PostMapping("Modificarrelacion")
+	public ModelAndView subRelation(@Valid @ModelAttribute ("unaEntrada") ClientePelicula clientePeliculamodificar, Model model){
+		clientePeliculaService.modificarClientePelicula(clientePeliculamodificar);
+		SRT.info("Ingresando al metodo guardar entrada: " + clientePeliculamodificar.getPelicula().getNombre());
+		ModelAndView vista = new ModelAndView("Resena");
+		vista.addObject("formClientePeliculaErrorMessage", "Resena guardada correctamente");
+		return vista;
+		
 	}
 }
