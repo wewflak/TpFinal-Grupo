@@ -25,7 +25,10 @@ public class ClienteController {
 	Cliente nuevoCliente;
 	@Autowired
 	IClienteService serviceclient;
+	
+	
 	@GetMapping("/cargarcliente")//entrega clientes
+	
 	public ModelAndView addClient() {
 		ModelAndView vista = new ModelAndView("cargarcliente");
 		vista.addObject("cliente", nuevoCliente);
