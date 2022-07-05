@@ -520,15 +520,12 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 	-moz-box-shadow: 15px 9px 12px 0px rgba(29,211,176,0.43);
 }
 /* Footer */
-<<<<<<< Updated upstream
 footer{
 	width:100%;
 }
-=======
 	#foot{
 		width:100%;
 	}
->>>>>>> Stashed changes
 #footer{
     border-top: 1px solid #7E7E7E;
     padding-top: 44px;
