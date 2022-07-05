@@ -23,8 +23,6 @@ public class IClienteServiceIMP implements IClienteService {
 	public void guardarCliente(Cliente clienteparaguardar) {
 		// TODO Auto-generated method stub
 		clienteparaguardar.setEstado(true);
-		clienteparaguardar.setTipo("CLIENTE");
-		
 		String pw = clienteparaguardar.getContrasena();
 		BCryptPasswordEncoder coder = new BCryptPasswordEncoder(4);
 		clienteparaguardar.setContrasena(coder.encode(pw));

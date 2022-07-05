@@ -3,9 +3,12 @@ package ar.edu.unju.edm.Model;
 import java.time.LocalDate;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -17,6 +20,10 @@ public class Cliente {
 	public Cliente() {
 		// TODO Auto-generated constructor stub
 	}
+	///AGREGADO DE BRISA
+   // @Id
+    //@GeneratedValue(strategy = GenerationType.IDENTITY)    
+    //private Long id;
 
 //    @GeneratedValue(strategy = GenerationType.AUTO)
 //    @Basic(optional = false)
@@ -38,8 +45,8 @@ public class Cliente {
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate FechadeN;
 	private Boolean estado;
+	@NotBlank
 	private String tipo;
-
 	public String getTipo() {
 		return tipo;
 	}
@@ -52,6 +59,15 @@ public class Cliente {
 //	public void setIdCliente(Integer idCliente) {
 //		IdCliente = idCliente;
 //	}
+	//AGREGADO POR BRISA
+	/*public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}*/
+//_---------------------
 	public Boolean getEstado() {
 		return estado;
 	}

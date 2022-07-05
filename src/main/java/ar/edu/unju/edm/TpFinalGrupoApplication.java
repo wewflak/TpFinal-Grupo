@@ -26,15 +26,17 @@ public class TpFinalGrupoApplication implements CommandLineRunner{
 	@Override
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
-		
-		cliente.setDni((long) 45372772);
-		cliente.setNombre("lisandro");
-		cliente.setApellido("alejoo");
-		cliente.setContrasena("holamundo");
-		cliente.setFechadeN(LocalDate.now());
-		cliente.setEmail("lisandro@gmail.com");
-		
-		clienteService.guardarCliente(cliente);
+//		
+//		cliente.setDni((long) 44754210);
+//		
+//		//cliente.setId((long)1);
+//	    cliente.setNombre("Brisa");
+//		cliente.setApellido("alejoo");
+//		cliente.setContrasena("123");
+//		cliente.setFechadeN(LocalDate.now());
+//		cliente.setEmail("lisandro@gmail.com");
+//		cliente.setTipo("ADMIN");
+//		clienteService.guardarCliente(cliente);
 	}
 
 }

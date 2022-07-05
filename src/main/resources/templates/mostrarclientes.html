@@ -30,23 +30,27 @@
 <table class="table" id="tabla">
   <thead>
     <tr>
-      <th scope="col">Id</th>
+      
+     <!-- <th scope="col">Id</th> -->
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">DNI</th>
       <th scope="col">Email</th>
       <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col">Tipo</th>
       <th scope="col">Editar</th>
 	  <th scope="col">Eliminar</th>
     </tr>
   </thead>
   <tbody>
     <tr th:each="c : ${listaclientes}">
+        <!-- <td th:text="${c.id}"></td>-- -->
 		<td th:text="${c.nombre}"></td>
 		<td th:text="${c.apellido}"></td>
 		<td th:text="${c.dni}"></td>
 		<td th:text="${c.email}"></td>
 		<td th:text="${c.FechadeN}"></td>
+		<td th:text="${c.tipo}"></td>
 		<td><a class="bton" th:href="@{'/editarCliente/'+${c.dni}}"> Editar </a></td>
 		
 		<td>	 <a class="bton" 
