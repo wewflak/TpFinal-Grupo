@@ -58,6 +58,7 @@ public class PeliculaController {
 			model.addAttribute("formPeliculaErrorMessage", error.getMessage());
 			model.addAttribute("pelicula", peliculaparaguardar); 
 			SRT.error("No se pudo cargar"); 
+			System.out.println("PRoblemas");
 			return "cargarpelicula";
 		}
 		model.addAttribute("formPeliculaErrorMessage", "Pelicula guardado correctamente");

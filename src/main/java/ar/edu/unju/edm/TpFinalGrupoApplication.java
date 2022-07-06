@@ -28,8 +28,6 @@ public class TpFinalGrupoApplication implements CommandLineRunner{
 		// TODO Auto-generated method stub
 //		
 //		cliente.setDni((long) 44754210);
-//		
-//		//cliente.setId((long)1);
 //	    cliente.setNombre("Brisa");
 //		cliente.setApellido("alejoo");
 //		cliente.setContrasena("123");

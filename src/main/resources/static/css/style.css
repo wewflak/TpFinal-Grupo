@@ -183,6 +183,7 @@ a{
 	width:max-content;
 	border-radius: 0px;
 }
+/* Css de la barra de navegacion*/
 a:hover{
     color: #dde1e4;
 }
@@ -219,6 +220,7 @@ a.nav-link:hover{
 .navbar-toggler i.bi-list{
     color: #dde1e4;
     font-size: 1.6rem;
+    margin: none;
 }
 .navbar-fixed .btn-custom{
         margin-top: 2em;
@@ -304,14 +306,22 @@ a.nav-link:hover{
     left: 20px;
     margin-top: 30rem;
     align-items: center;
-    color: transparent;
+    display:none;
     justify-content: center;
-    display: flex;
     border-bottom: #dde1e4;
     transition: all 1s;
 }
+.botoncito:hover{
+	display:none;
+	width: 0;
+	height: 0;
+	margin: 0;
+	left: 0;
+	cursor:none;
+}
 #slider-span1:target ~ .image-slider #botoncito-1{
     color: #dde1e4;
+    display: flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-1:hover{
     border-bottom: 1em solid #dde1e4;
@@ -319,6 +329,7 @@ a.nav-link:hover{
 }
 #slider-span2:target ~ .image-slider #botoncito-2{
     color: #dde1e4;
+    display: flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-2:hover{
     border-bottom: 1em solid #dde1e4;
@@ -326,6 +337,7 @@ a.nav-link:hover{
 }
 #slider-span3:target ~ .image-slider #botoncito-3{
     color: #dde1e4;
+    display: flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-3:hover{
     border-bottom: 1em solid #dde1e4;
@@ -333,6 +345,7 @@ a.nav-link:hover{
 }
 #slider-span4:target ~ .image-slider #botoncito-4{
     color: #dde1e4;
+    display: flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-4:hover{
     border-bottom: 1em solid #dde1e4;
@@ -340,6 +353,7 @@ a.nav-link:hover{
 }
 #slider-span5:target ~ .image-slider #botoncito-5{
     color: #dde1e4;
+    display: flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-5:hover{
     border-bottom: 1em solid #dde1e4;
@@ -347,6 +361,7 @@ a.nav-link:hover{
 }
 #slider-span6:target ~ .image-slider #botoncito-6{
     color: #dde1e4;
+    display: flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-6:hover{
     border-bottom: 1em #dde1e4;
@@ -354,6 +369,7 @@ a.nav-link:hover{
 }
 #slider-span7:target ~ .image-slider #botoncito-7{
     color: #dde1e4;
+    display: flex;
 }
 #slider-span1:target ~ .image-slider #botoncito-7:hover{
     border-bottom: 1em solid #dde1e4;
@@ -549,4 +565,16 @@ footer{
 }
 #footer .social a{
     color: #dde1e4;
+}
+
+/* Comprobante */
+
+.grid{
+	display: grid;
+  	grid-template-columns: repeat(2, 1fr);
+  	grid-gap: 2em;
+  	grid-auto-rows: minmax(100px, auto);
+}
+.ticket{
+	background-color: #dde1e4;
 }

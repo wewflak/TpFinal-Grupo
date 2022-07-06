@@ -78,20 +78,20 @@ body{
 	  	                <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
 	  	  </div>
 	  	  		    
-	  	  <!-- -
+	  	  
 	  	  <div class="mb-3" style="display:inline">
 	    		    <label for="tipo" class="form-label" th:if="${band==false}">Tipo</label>
 	  			    <select class="form-control"
 						th:field="*{tipo}" id="tipo" aria-label="Elegir"required>
                 <option selected disabled value="Elegir">Elegir</option>
-                <option value="Cliente" th:field="*{tipo}">Cliente</option>
-                <option value="Empleado" th:field="*{tipo}">Empleado</option>
+                <option value="CLIENTE" th:field="*{tipo}">Cliente</option>
+                <option value="ADMIN" th:field="*{tipo}">Admin</option>
                 </select>
 	  	                <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
 	  	  </div>
 	  	  
-	  	   -->
-	  	  <div class="form-group row" th:if="${editMode==null or editMode==false}">
+	    	   	  
+	  	 <!-- <div class="form-group row" th:if="${editMode==null or editMode==false}">
 										<label class="col-lg-3 col-form-label form-control-label">Tipo:</label>
 										<div class="col-lg-9">
 											<div class="form-check">
@@ -106,7 +106,7 @@ body{
 											</div>
 											<div class="alert-danger" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Name	Error</div>
 										</div>
-									</div>
+									</div>-->
 	  	  
 <button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button> 
 		    <a class="button" th:href="@{/}">Volver</a>
