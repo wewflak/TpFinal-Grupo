@@ -46,7 +46,7 @@ public class Autenticacion implements AuthenticationSuccessHandler{
 		}
 		if(tipoCliente)
 		{
-			redirectStrategy.sendRedirect(request, response, "/mostrarpeliculas");
+			redirectStrategy.sendRedirect(request, response, "/mostrarpeliculasclientes");
 		}
 		
 		else
