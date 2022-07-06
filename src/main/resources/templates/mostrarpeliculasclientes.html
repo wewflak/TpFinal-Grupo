@@ -41,13 +41,11 @@ img{
       <th scope="col">Genero</th>
       <th scope="col">Duracion</th>
       <th scope="col">Fecha de Estreno</th>
-      <th scope="col">Comentar</th>
-      <th scope="col">Editar</th>
-	  <th scope="col">Eliminar</th>
     </tr>
   </thead>
   <tbody>
     <tr th:each="p : ${listapeliculas}">
+<!--     	<td th:text="${p.imagen}"></td> -->
     	<td><img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" ></td>
     	<td th:text="${p.id}"></td>
 		<td th:text="${p.nombre}"></td>
@@ -55,17 +53,12 @@ img{
 		<td th:text="${p.genero}"></td>
 		<td th:text="${p.duracion}"></td>
 		<td th:text="${p.fechadeE}"></td>
-		<td><a class="bton" th:href="@{'/resena'}">Comentar</a></td>
-		<td><a class="bton" th:href="@{'/editarpeliculas/'+${p.id}}"> Editar </a></td>
 		
-		<td>	 <a class="bton" 
-			    th:onclick="'javascript:confirmarEliminar(\''+${p.id}+'\');'"
-			    >Eliminar</a></td>
     </tr>
 </tbody>
 </table>
 
-<a href="index">
+<a href="/mostrarpeliculasclientes">
     <div class="botn">
       <span>Volver al Inicio</span>
     </div>
