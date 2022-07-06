@@ -75,6 +75,27 @@ public class PeliculaController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
+	
+//    AGREGUE ESTO PARA PODER MOSTRAR las peliculas sin editar
+	//Basicamente hice lo mismo que la anterior getMapping pero ahora esto conecta a las vistas
+	//peliculas y mostrarpeliculasclientes
+	@GetMapping("/mostrarpeliculasclientes")
+	public ModelAndView showMovies1() {
+		ModelAndView vista= new ModelAndView("peliculas");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas());
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
+	@GetMapping("/peliculasclientes")
+	public ModelAndView showMovies2() {
+		ModelAndView vista= new ModelAndView("mostrarpeliculasclientes");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas());
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
+	
 	@GetMapping("/editarpeliculas/{id}")
 	public ModelAndView editmovie(Model model, @PathVariable(name="id")Integer id) throws Exception {
 		Pelicula peliculaEncontrada = new Pelicula();
