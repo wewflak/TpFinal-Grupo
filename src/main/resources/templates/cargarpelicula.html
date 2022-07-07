@@ -30,6 +30,9 @@ body{
 <h5>Inicio de usuario</h5>
 </div>
 		<form th:object="${pelicula}" th:action="${band}? @{/Modificarpelicula} : @{/guardarpelicula}" method="post" enctype="multipart/form-data">
+            <div>
+            <input type="hidden" th:if=${band} th:field=*{id}>
+            </div>
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" value="" required>
