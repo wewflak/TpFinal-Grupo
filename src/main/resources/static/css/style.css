@@ -602,3 +602,29 @@ footer{
 	font-size: 12px;
 	color:#3d3d3d;
 }
+/*Cards*/
+.container .row .col .card{
+	
+    color: #212121;
+    background: #f1f1f1;
+    overflow: hidden;
+    margin-top: 3vh;
+    margin-bottom: 5vh;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;
+}
+.col .card{
+	height:60vh;
+}
+.btn1{
+    background-color: #9C27B0;
+    color: #F1f1f1;
+    border: #9C27B0 solid 1px;
+    border-radius: 20px;
+    padding: .3rem;
+    float: right;
+    margin: .2rem;
+    margin-top: .5rem;
+}
+.btn1:hover{
+    color: #f1f1f1;
+}
