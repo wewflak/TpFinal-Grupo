@@ -69,4 +69,12 @@ public class ReseniaController {
 			view.setViewName("cargarResena");
 			return view;
 	}
+	@GetMapping("/mostrarReseña")
+	public ModelAndView showMovies() {
+		ModelAndView vista= new ModelAndView("mostrarReseña");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		vista.addObject("listareseñas",reviewService.mostrarResenias());
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
 }

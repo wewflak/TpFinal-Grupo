@@ -27,14 +27,14 @@ public class TpFinalGrupoApplication implements CommandLineRunner{
 	public void run(String... args) throws Exception {
 		// TODO Auto-generated method stub
 //		
-//		cliente.setDni((long) 44754210);
-//	    cliente.setNombre("Brisa");
-//		cliente.setApellido("alejoo");
-//		cliente.setContrasena("123");
-//		cliente.setFechadeN(LocalDate.now());
-//		cliente.setEmail("lisandro@gmail.com");
-//		cliente.setTipo("ADMIN");
-//		clienteService.guardarCliente(cliente);
+		cliente.setDni((long) 44754210);
+	    cliente.setNombre("Brisa");
+		cliente.setApellido("alejoo");
+		cliente.setContrasena("123");
+		cliente.setFechadeN(LocalDate.now());
+		cliente.setEmail("lisandro@gmail.com");
+		cliente.setTipo("ADMIN");
+		clienteService.guardarCliente(cliente);
 	}
 
 }

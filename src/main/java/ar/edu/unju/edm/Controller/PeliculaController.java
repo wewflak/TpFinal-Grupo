@@ -20,11 +20,13 @@ import ar.edu.unju.edm.Service.IPeliculaService;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-@Controller
+@Controller //ESTO DEFINE
 public class PeliculaController {
     private static final Log SRT = LogFactory.getLog(PeliculaController.class);
-	@Autowired
+	@Autowired //Creando un objetos nuevo lo tenes que instalciar 
 	Pelicula nuevaPelicula;
+	@Autowired
+	Pelicula unaResenia;
 	@Autowired
 	IPeliculaService servicemovie;
 	@GetMapping("/cargarpelicula")//entrega Peliculas
@@ -36,6 +38,7 @@ public class PeliculaController {
 		return vista;
 		
 	}
+	 
 	
 	@PostMapping(value="/guardarpelicula", consumes = "multipart/form-data")//recibe datos
 	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, @RequestParam("file") MultipartFile file, Model model) {
@@ -96,7 +99,15 @@ public class PeliculaController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-	
+//	@GetMapping("/cargarcomentario")
+//	public ModelAndView showMovies3() {
+//		ModelAndView vista= new ModelAndView("reciboComentarios");
+//		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+//		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas());
+//		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+//		return vista;
+//	}
+//	
 	@GetMapping("/editarpeliculas/{id}")
 	public ModelAndView editmovie(Model model, @PathVariable(name="id")Integer id) throws Exception {
 		Pelicula peliculaEncontrada = new Pelicula();
