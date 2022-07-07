@@ -72,12 +72,7 @@ img{
 		    <a class="button" th:href="@{/mostrarpeliculasclientes}">Volver</a>
 				</div>
         </form>
-        <div class="col-md-1"></div>
-        <div class="portada col-md-4">
-            <tr th:each="p : ${peliculas}">
-            <td><img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" ></td>
-        </tr>
-        </div>
+       
     </div>
 </body>
 </html>
