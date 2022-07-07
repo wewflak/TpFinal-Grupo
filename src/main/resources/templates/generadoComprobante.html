@@ -14,6 +14,19 @@
 <body>
     <div class="grid">
         <div class="ticket" th:object="${unaEntrada}" >
+        	    <div class="carta">
+                <div class="left-column background-left-column">
+                </div>
+                <div class="right-column background-right-column">
+                    <h6>Album recomendado</h6>
+                    <h2>Nombre de Album</h2>
+                    <span>
+                        descripcion album
+                        Fecha de salida de Album
+                    </span>
+                <button class="btn2"><a href="">Ir al album</a></button>
+            </div>
+        </div>
             <tr>
             <td th:text="${Cliente}"></td>           
             <td th:text="${Pelicula}"></td>            

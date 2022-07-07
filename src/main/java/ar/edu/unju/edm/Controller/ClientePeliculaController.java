@@ -1,5 +1,7 @@
 package ar.edu.unju.edm.Controller;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.apache.commons.logging.Log;
@@ -18,11 +20,15 @@ import ar.edu.unju.edm.Model.ClientePelicula;
 import ar.edu.unju.edm.Service.IClientePeliculaService;
 import ar.edu.unju.edm.Service.IClienteService;
 import ar.edu.unju.edm.Service.IPeliculaService;
+import ar.edu.unju.edm.Util.ListadoClientePelicula;
 
 @Controller
 public class ClientePeliculaController {
     private static final Log SRT = LogFactory.getLog(ClientePeliculaController.class);
     private Integer pos;
+    
+    @Autowired
+    ListadoClientePelicula listClientMovie;
 	@Autowired
 	IClientePeliculaService clientePeliculaService;
 	
@@ -57,6 +63,7 @@ public class ClientePeliculaController {
 		try {
 			SRT.info("holaaaaaaaaaaaaaa"+clientePeliculaNuevo.getFechaCompra());
 			clientePeliculaService.guardarClientePelicula(clientePeliculaNuevo);
+			pos = clientePeliculaNuevo.getIdClientePelicula();
 		}catch(Exception e) {
 			SRT.info("holaaaaaaaaaaaaaa error al guardar");
 			view.addObject("formClientePeliculaErrorMessage", e.getMessage());
@@ -68,19 +75,35 @@ public class ClientePeliculaController {
 		view.addObject("formClientePeliculaErrorMessage", "Relacion guardada correctamente");
 		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
 		pos= clientePeliculaNuevo.getIdClientePelicula();
-		view.setViewName("redirect:/Comprobante");
+		view.setViewName("generadoComprobante");
 		return view;
 	}
-	@GetMapping("/Comprobante")
-	ModelAndView Comprobante(@Valid @ModelAttribute("unaEntrada") ClientePelicula clientePeliculaUltimo){
-		ModelAndView view = new ModelAndView("Comprobante");
-		ClientePelicula entradaComprobante = new ClientePelicula();
-		view.addObject("Cliente", entradaComprobante.getCliente());
-		view.addObject("Pelicula", entradaComprobante.getPelicula());
-		view.addObject("unaEntrada", entradaComprobante.getIdClientePelicula());
-		view.setViewName("Comprobante");
-		return view;
+	@GetMapping("/generadoComprobante")
+	String Comprobante(@Valid @ModelAttribute("unaEntrada") ClientePelicula clientePeliculaUltimo, Model model){
+		
+		try{
+			List<ClientePelicula> listado = listClientMovie.getListado();
+			Integer pos = listado.lastIndexOf(clientePeliculaUltimo);
+			ClientePelicula existente = clientePeliculaService.listarClientePelicula().get(pos);
+			SRT.info("Turista " + existente.getIdClientePelicula() + "encontrado");
+			model.addAttribute("clienteActual", existente.getCliente());
+			model.addAttribute("Pelicula", existente.getPelicula());
+			return "generadoComprobante";
+		}
+		catch(Exception e){
+			model.addAttribute("formClientePeliculaErrorMessage", e.getMessage());
+		}
+    return "generadoComprobante";
 	}
+//		ModelAndView view = new ModelAndView("generadoComprobante");
+//		ClientePelicula entradaComprobante = new ClientePelicula();
+//		view.addObject("Cliente", entradaComprobante.getCliente());
+//		view.addObject("Pelicula", entradaComprobante.getPelicula());
+//		view.addObject("unaEntrada", entradaComprobante.getIdClientePelicula());
+//		view.addObject("band2", false);
+//		view.setViewName("generadoComprobante");
+//		return view;
+//	}
 
 	@GetMapping("/editarPelicula/{idClientePelicula}")
 	public ModelAndView editRelation(Model model, @PathVariable(name="idClientePelicula")Integer idClientePelicula)throws Exception{
@@ -106,40 +129,53 @@ public class ClientePeliculaController {
 		return vista;
 		
 	}
-	@GetMapping({ "/resena" })
-	public ModelAndView addResenia() {
-		// EMILIA.info("ingresando al metodo: Nuevo usuario");
-		ModelAndView view = new ModelAndView("cargarResena");
-		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
-		view.addObject("clientes", clienteservice.mostrarClientes());
-		view.addObject("peliculas", peliculaservice.mostrarPeliculas());
-		view.addObject("band", false);
-		return view;
-	}
-
-	@PostMapping("/guardarResenia")
-	public ModelAndView saveComentario(@Valid @ModelAttribute("unaEntrada") ClientePelicula entradaparaguardar,BindingResult result) {
-		ModelAndView view = new ModelAndView();
-		if (result.hasErrors()) {
-			SRT.fatal("Error durante el comentario");
-			view.addObject("unaEntrada", entradaparaguardar);
-			view.addObject("band", false);
-			view.setViewName("cargarResena");
-			return view;
-		}
-		try {
-			clientePeliculaService.guardarClientePelicula(entradaparaguardar);
-		} catch (Exception e) {
-			view.addObject("formClientePeliculaErrorMessage", e.getMessage());
-			view.addObject("unaEntrada", entradaparaguardar);
-			view.addObject("band", false);
-			view.setViewName("cargarResena");
-			return view;
-		}
-		view.addObject("formClientePeliculaErrorMessage", "Usuario guardado correctamente");
-		view.addObject("unCliente", clientePeliculaService.nuevoClientePelicula());
-		view.addObject("band", false);
-		view.setViewName("cargarResena");
-		return view;
-	}
+//	@GetMapping({ "/resena" })
+//	public ModelAndView addResenia() {
+//		ModelAndView view = new ModelAndView("cargarResena");
+//		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
+//		view.addObject("clientes", clienteservice.mostrarClientes());
+//		view.addObject("peliculas", peliculaservice.mostrarPeliculas());
+//		return view;
+//	}
+//
+//	@PostMapping("/guardarResenia")
+//	public ModelAndView saveComentario(@Valid @ModelAttribute("unaEntrada") ClientePelicula entradaParaGuardar, BindingResult result, Model model) throws Exception {
+//		ModelAndView view = new ModelAndView();
+//		SRT.info(clientePeliculaService.listarClientePelicula());
+//		try {
+//			ClientePelicula entradaparaGuardar = clientePeliculaService.buscarClientePelicula(1);
+//		SRT.info(entradaparaGuardar.getFechaCompra());
+//		if (result.hasErrors()) {
+//			SRT.fatal("Error durante el comentario");
+//			view.addObject("unaEntrada", entradaparaGuardar);
+//			view.setViewName("cargarResena");
+//			return view;
+//		}
+//		try {
+//			SRT.info("EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE");
+//			SRT.info(entradaparaGuardar.getCliente().getEmail());
+//			SRT.info(entradaparaGuardar.getCliente().getDni());
+//			SRT.info(entradaparaGuardar.getPelicula().getId());
+//			SRT.info(entradaparaGuardar.getPelicula().getGenero());
+//			SRT.info(entradaparaGuardar.getIdClientePelicula());
+//			clientePeliculaService.modificarClientePelicula(entradaparaGuardar);
+//		} catch (Exception e) {
+//			SRT.info("Error");
+//			view.addObject("formClientePeliculaErrorMessage", e.getMessage());
+//			view.addObject("unaEntrada", entradaparaGuardar);
+//			view.setViewName("cargarResena");
+//			return view;
+//		}
+//		view.addObject("formClientePeliculaErrorMessage", "Usuario guardado correctamente");
+//		view.addObject("unCliente", clientePeliculaService.nuevoClientePelicula());
+//		view.setViewName("cargarResena");
+//		return view;
+//		} catch (Exception error) {
+//			// TODO Auto-generated catch block
+//			SRT.error("No entro jsjsjsjsjsjssjsjjsjsjsj");
+//			model.addAttribute("formClientePeliculaErrorMessage", error.getMessage());
+//			view.setViewName("index");
+//			return view;
+//		}
+//	}
 }

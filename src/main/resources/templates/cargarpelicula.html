@@ -30,10 +30,6 @@ body{
 <h5>Inicio de usuario</h5>
 </div>
 		<form th:object="${pelicula}" th:action="${band}? @{/Modificarpelicula} : @{/guardarpelicula}" method="post" enctype="multipart/form-data">
-		<input type="hidden" class="form-control" th:field="*{id}">
-		<!--<input type="hidden" class="form-control" th:if="${band}" th:field="*{contrasena}">
-	        <input type="hidden" class="form-control" th:if="${band}" th:field="*{estado}">
-	        <input type="hidden" class="form-control" th:if="${band}" th:field="*{dni}">-->
             <div class="mb-3">
                 <label for="nombre" class="form-label">Nombre</label>
                 <input type="text" class="form-control" id="nombre" th:field="*{nombre}" value="" required>
@@ -45,32 +41,17 @@ body{
                 <label for="genero" class="form-label">Genero</label>
                 <select class="form-control" th:field="*{genero}" id="genero" aria-label="Elegir">Elegir
                 	<option selected disabled value="Elegir">Elegir</option>
-                	<option value="Comedia" th:field="*{genero}">Comedia</option>
-                	<option value="Romance" th:field="*{genero}">Romance</option>
-                	<option value="Drama" th:field="*{genero}">Drama</option>
-                	<option value="Sci-Fi" th:field="*{genero}">Sci-Fi</option>
-                	<option value="Accion" th:field="*{genero}">Accion</option>
-                	<option value="Fantasia" th:field="*{genero}">Fantasia</option>
+                	<option value="Comedia" >Comedia</option>
+                	<option value="Romance" >Romance</option>
+                	<option value="Drama" >Drama</option>
+                	<option value="Sci-Fi" >Sci-Fi</option>
+                	<option value="Accion" >Accion</option>
+                	<option value="Fantasia" >Fantasia</option>
                 
                 </select>
-                <select hidden type="text" class="form-control" id="genero" th:field="*{genero}" required>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('genero')}"th:errors="*{genero}"></div>
-                </select>
             </div>
-            
-            <!--
-            	  	  <div class="mb-3" style="display:inline">
-	    		    <label for="tipo" class="form-label" th:if="${band==false}">Tipo</label>
-	  			    <select class="form-control"
-						th:field="*{tipo}" id="tipo" aria-label="Elegir"required>
-                <option selected disabled value="Elegir">Elegir</option>
-                <option value="CLIENTE" th:field="*{tipo}">Cliente</option>
-                <option value="ADMIN" th:field="*{tipo}">Admin</option>
-                </select>
-	  	                <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
-	  	  </div>
-	  	  -->
-            
+          
             <div class="mb-3">
                 <label for="duracion" class="form-label">Duracion</label>
                 <input type="number" class="form-control" id="duracion" th:field="*{duracion}" required>
@@ -101,7 +82,7 @@ body{
 					</div>
 				</div>
              <div>
-<button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button> 
+<button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrar' "></span> </button> 
 		    <a class="button" th:href="@{/}">Volver</a>
 				</div>
 	</form >
@@ -116,5 +97,4 @@ body{
 </script> 
 </body>
 
-</body>
 </html>

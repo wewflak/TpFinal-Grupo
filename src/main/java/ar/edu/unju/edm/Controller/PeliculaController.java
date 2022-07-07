@@ -31,8 +31,8 @@ public class PeliculaController {
 	public ModelAndView addMovie() {
 		ModelAndView vista = new ModelAndView("cargarpelicula");
 		vista.addObject("pelicula", nuevaPelicula);
-
 		vista.addObject("band", false);
+		SRT.info("Cont");
 		return vista;
 		
 	}
