@@ -9,6 +9,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -24,6 +26,8 @@ public class Resenia {
     @NotEmpty
 	private String texto;
 	@NotNull
+	@Min(value=1, message="No puede ser menor que 1")
+	@Max(value=10, message="No puede ser mayo que 10")
 	private Integer valoracion;
 	@ManyToOne(fetch=FetchType.LAZY)
 	@JoinColumn(name="dni")
