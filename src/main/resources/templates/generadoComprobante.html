@@ -14,7 +14,7 @@
 <body>
     <div class="grid">
         <div class="ticket" th:object="${unaEntrada}" >
-        	    <div class="carta">
+        	 <!--   <div class="carta">
                 <div class="left-column background-left-column">
                 </div>
                 <div class="right-column background-right-column">
@@ -26,11 +26,21 @@
                     </span>
                 <button class="btn2"><a href="">Ir al album</a></button>
             </div>
+<<<<<<< Updated upstream
         </div>
             <tr>
             <td th:text="${clientes.nombre}"></td>           
             <td th:text="${peliculas.nombre}"></td>            
             <td th:text="${FechaCompra}"></td></tr>
+=======
+        </div>-->
+        <h5> Ticket comprado el dia: </h5>
+        <p th:text="${unaEntrada.fechaCompra}" ></p>
+        <h5> Comprado por: </h5>
+        <h2 th:text="${unaEntrada.cliente.nombre}"></h2>
+        <h5> Para la pelicula: </h5>
+        <h2 th:text="${unaEntrada.pelicula.nombre}"> </h2>
+>>>>>>> Stashed changes
         </div>
     </div>
 </body>

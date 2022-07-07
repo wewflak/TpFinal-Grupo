@@ -53,7 +53,7 @@ public class Autenticacion implements AuthenticationSuccessHandler{
 		{
 			if(tipoAdmin)
 			{
-				redirectStrategy.sendRedirect(request, response, "/cargarpelicula");
+				redirectStrategy.sendRedirect(request, response, "/index");
 			}
 		}
 	}

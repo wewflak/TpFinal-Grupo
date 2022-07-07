@@ -537,13 +537,14 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 }
 /* Footer */
 footer{
-	margin-top:5em;
 	width:100%;
 }
 	#foot{
 		width:100%;
 	}
 #footer{
+	padding-left: 2em;
+	padding-right: 5em;
 	    padding-top: 44px;
     margin-left:0;
     left:0;
@@ -559,8 +560,6 @@ footer{
 	-moz-box-shadow: 19px -10px 36px 6px rgba(15,47,212,0.57);
 	background-color: var(--clr-bga);
     padding-top: 44px;
-    margin-left:0;
-    left:0;
     width:100%;
 }
 #footer a{
@@ -592,5 +591,10 @@ footer{
   	grid-auto-rows: minmax(100px, auto);
 }
 .ticket{
+	height:80vh;
+	margin-left: 2em;
+	width:100%;
 	background-color: #dde1e4;
+	font-size: 12px;
+	color:#3d3d3d;
 }

@@ -32,7 +32,6 @@ public class ClienteController {
 	public ModelAndView addClient() {
 		ModelAndView vista = new ModelAndView("cargarcliente");
 		vista.addObject("cliente", nuevoCliente);
-
 		vista.addObject("band", false);
 		return vista;
 		
