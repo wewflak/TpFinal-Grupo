@@ -22,7 +22,7 @@
 }
 img{
 	width:120px;
-	height:140px;
+	height:180px;
 }
 </style>
 </head>
@@ -41,7 +41,7 @@ img{
       <th scope="col">Genero</th>
       <th scope="col">Duracion</th>
       <th scope="col">Fecha de Estreno</th>
-      <th scope="col">Comentar</th>
+      <th scope="col">Ver comentarios</th>
       <th scope="col">Editar</th>
 	  <th scope="col">Eliminar</th>
     </tr>
@@ -55,7 +55,7 @@ img{
 		<td th:text="${p.genero}"></td>
 		<td th:text="${p.duracion}"></td>
 		<td th:text="${p.fechadeE}"></td>
-		<td><a class="bton" th:href="@{'/cargarResena'}">Comentar</a></td>
+		<td><a class="bton" th:href="@{'/mostrarReseña'}">Ver comentarios</a></td>
 		<td><a class="bton" th:href="@{'/editarpeliculas/'+${p.id}}"> Editar </a></td>
 		
 		<td>	 <a class="bton" 

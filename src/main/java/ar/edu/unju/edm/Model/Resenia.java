@@ -11,6 +11,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -22,6 +23,7 @@ public class Resenia {
     @GeneratedValue(strategy = GenerationType.IDENTITY) 
 	private Integer idComentario;
     @NotEmpty
+    @Size(min = 3, max = 150, message="El código del producto tiene que tener entre 3 y 250 caracteres")
 	private String texto;
 	@NotNull
 	private Integer valoracion;

@@ -87,26 +87,9 @@ body{
                 <option value="CLIENTE" th:field="*{tipo}">Cliente</option>
                 <option value="ADMIN" th:field="*{tipo}">Admin</option>
                 </select>
-	  	                <div class="alert alert-danger" th:if="${#fields.hasErrors('contrasena')}"th:errors="*{contrasena}"></div>
+	  	                <div class="alert alert-danger" th:if="${#fields.hasErrors('tipo')}"th:errors="*{tipo}"></div>
 	  	  </div>
-	  	  
-	    	   	  
-	  	 <!-- <div class="form-group row" th:if="${editMode==null or editMode==false}">
-										<label class="col-lg-3 col-form-label form-control-label">Tipo:</label>
-										<div class="col-lg-9">
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1"
-													th:field="${cliente.tipo}" value="CLIENTE"	checked="checked"> 
-													<label class="form-check-label"	for="gridRadios1">CLIENTE</label>
-											</div>
-											<div class="form-check">
-												<input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="ADMIN"
-													th:field="${cliente.tipo}"> 
-													<label	class="form-check-label" for="gridRadios2">ADMIN</label>
-											</div>
-											<div class="alert-danger" th:if="${#fields.hasErrors('tipo')}" th:errors="*{tipo}">Name	Error</div>
-										</div>
-									</div>-->
+
 	  	  
 <button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrarse' "></span> </button> 
 		    <a class="button" th:href="@{/}">Volver</a>

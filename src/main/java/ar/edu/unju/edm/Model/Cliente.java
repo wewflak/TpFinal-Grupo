@@ -11,6 +11,7 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
@@ -30,8 +31,10 @@ public class Cliente {
 //    @Column(name = "IdCliente",unique=true, nullable = false)
 //    private Integer IdCliente;
 	@NotEmpty
+    @Size(min = 3, max = 15, message="El nombre tiene que tener entre 3 y 15 caracteres")
 	private String nombre;
 	@NotEmpty
+    @Size(min = 3, max = 15, message="El apellido tiene que tener entre 3 y 15 caracteres")
 	private String apellido;
 	@NotEmpty
 	private String contrasena;
