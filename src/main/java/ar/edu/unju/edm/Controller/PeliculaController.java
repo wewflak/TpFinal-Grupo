@@ -112,15 +112,37 @@ public class PeliculaController {
 		encontrado.addObject("band", true);
 		return encontrado;
 	}
-	@PostMapping("Modificarpelicula")
-	public ModelAndView subMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculamodificar, Model model) {
-		servicemovie.modificarPelicula(peliculamodificar);
-		SRT.info("Ingresando al metodo guardar Pelicula: "+peliculamodificar.getNombre());
-		ModelAndView vista = new ModelAndView ("mostrarpeliculas");
-		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas ());
-		SRT.info(peliculamodificar.getNombre());
-		vista.addObject("formPeliculaErrorMessage", "Pelicula guardado correctamente");
-		return vista;
+	@PostMapping(value="/Modificarpelicula", consumes = "multipart/form-data")
+	public ModelAndView subMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculamodificar, @RequestParam("file") MultipartFile file, Model model, BindingResult resultado) {
+		SRT.info("Ingresando al metodo guardar pelicula: "+ file.getSize());
+		if(resultado.hasErrors()) {
+			ModelAndView view = new ModelAndView("cargarpelicula");
+			SRT.fatal("Error de validacion"+peliculamodificar.getNombre());
+			view.addObject("pelicula", peliculamodificar);
+			return view;
+		}else {
+		try {
+			byte[] content = file.getBytes();
+			String base64 = Base64.getEncoder().encodeToString(content);
+			peliculamodificar.setImagen(base64);
+			peliculamodificar.setEstado(true);
+			servicemovie.modificarPelicula(peliculamodificar); 
+			SRT.info(peliculamodificar.getId());
+			}
+		catch(Exception error){
+			ModelAndView view = new ModelAndView("cargarpelicula");
+			view.addObject("formPeliculaErrorMessage", error.getMessage());
+			view.addObject("pelicula", peliculamodificar); 
+			SRT.error("No se pudo cargar"); 
+			System.out.println("Problemas");
+			return view;
+		}
+		ModelAndView view = new ModelAndView("mostrarpeliculas");
+		view.addObject("formPeliculaErrorMessage", "Pelicula guardado correctamente");
+		view.addObject("listapeliculas", servicemovie.mostrarPeliculas());
+		System.out.println(peliculamodificar.getNombre()+peliculamodificar.getGenero());
+		return view;
+	}
 	}
 	@GetMapping("/eliminarPelicula/{id}")
 	public String deleteMovie(@PathVariable(name="id")Integer id) {

@@ -537,14 +537,30 @@ cambiarlo por algun icon de bootstrap o font-awesome para poder cambiar el color
 }
 /* Footer */
 footer{
+	margin-top:5em;
 	width:100%;
 }
 	#foot{
 		width:100%;
 	}
 #footer{
-    border-top: 1px solid #7E7E7E;
+	    padding-top: 44px;
+    margin-left:0;
+    left:0;
+    width:100%;
+    border-radius:12px;
+    border-bottom-right-radius:0px;
+    border-bottom-left-radius:0px;
+    transition: all 1s;
+}
+#footer:hover{
+	box-shadow: 19px -10px 36px 6px rgba(15,47,212,0.57);
+	-webkit-box-shadow: 19px -10px 36px 6px rgba(15,47,212,0.57);
+	-moz-box-shadow: 19px -10px 36px 6px rgba(15,47,212,0.57);
+	background-color: var(--clr-bga);
     padding-top: 44px;
+    margin-left:0;
+    left:0;
     width:100%;
 }
 #footer a{
