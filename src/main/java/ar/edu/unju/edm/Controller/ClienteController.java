@@ -36,6 +36,7 @@ public class ClienteController {
 		return vista;
 		
 	}
+   
 	
 	@PostMapping("/guardarcliente")//recibe datos
 	public String saveClient(@Valid @ModelAttribute ("cliente") Cliente clienteparaguardar, BindingResult resultado, Model model) {

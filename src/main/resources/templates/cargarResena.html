@@ -48,7 +48,7 @@ img{
         
         
             <label for="texto">Ingrese su opinion sobre la pelicula</label>
-            <textarea class="form-control" id="texto"th:field="*{texto}" value=""></textarea>
+            <textarea class="form-control" id="texto" th:field="*{texto}" value=""></textarea>
             <br>
             <br>
           <div class="mb-3">
@@ -65,16 +65,14 @@ img{
             </div> 
           
           
-            <button type="submit" class="button"><span>Publicar comentario y valoracion</span> </button> 
-		    <a class="button" th:href="@{/}">Volver</a>
-        	
+<!--             <button type="submit" class="button"><span>Publicar comentario y valoracion</span> </button>  -->
+<!-- 		    <a class="button" th:href="@{/}">Volver</a> -->
+        	  <div>
+            <button type="submit" class="button"><span th:text="${band}? 'Modificar' : 'Registrar' "></span> </button> 
+		    <a class="button" th:href="@{/mostrarpeliculasclientes}">Volver</a>
+				</div>
         </form>
-        <div class="col-md-1"></div>
-        <div class="portada col-md-4">
-            <tr th:each="p : ${peliculas}">
-            <td><img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" ></td>
-        </tr>
-        </div>
+       
     </div>
 </body>
 </html>

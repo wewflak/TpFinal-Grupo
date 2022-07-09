@@ -20,11 +20,13 @@ import ar.edu.unju.edm.Service.IPeliculaService;
 
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-@Controller
+@Controller //ESTO DEFINE
 public class PeliculaController {
     private static final Log SRT = LogFactory.getLog(PeliculaController.class);
-	@Autowired
+	@Autowired //Creando un objetos nuevo lo tenes que instalciar 
 	Pelicula nuevaPelicula;
+	@Autowired
+	Pelicula unaResenia;
 	@Autowired
 	IPeliculaService servicemovie;
 	@GetMapping("/cargarpelicula")//entrega Peliculas
@@ -36,6 +38,7 @@ public class PeliculaController {
 		return vista;
 		
 	}
+	 
 	
 	@PostMapping(value="/guardarpelicula", consumes = "multipart/form-data")//recibe datos
 	public String saveMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculaparaguardar, BindingResult resultado, @RequestParam("file") MultipartFile file, Model model) {
@@ -96,7 +99,15 @@ public class PeliculaController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-	
+//	@GetMapping("/cargarcomentario")
+//	public ModelAndView showMovies3() {
+//		ModelAndView vista= new ModelAndView("reciboComentarios");
+//		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+//		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas());
+//		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+//		return vista;
+//	}
+//	
 	@GetMapping("/editarpeliculas/{id}")
 	public ModelAndView editmovie(Model model, @PathVariable(name="id")Integer id) throws Exception {
 		Pelicula peliculaEncontrada = new Pelicula();
@@ -112,15 +123,37 @@ public class PeliculaController {
 		encontrado.addObject("band", true);
 		return encontrado;
 	}
-	@PostMapping("Modificarpelicula")
-	public ModelAndView subMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculamodificar, Model model) {
-		servicemovie.modificarPelicula(peliculamodificar);
-		SRT.info("Ingresando al metodo guardar Pelicula: "+peliculamodificar.getNombre());
-		ModelAndView vista = new ModelAndView ("mostrarpeliculas");
-		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas ());
-		SRT.info(peliculamodificar.getNombre());
-		vista.addObject("formPeliculaErrorMessage", "Pelicula guardado correctamente");
-		return vista;
+	@PostMapping(value="/Modificarpelicula", consumes = "multipart/form-data")
+	public ModelAndView subMovie(@Valid @ModelAttribute ("pelicula") Pelicula peliculamodificar, @RequestParam("file") MultipartFile file, Model model, BindingResult resultado) {
+		SRT.info("Ingresando al metodo guardar pelicula: "+ file.getSize());
+		if(resultado.hasErrors()) {
+			ModelAndView view = new ModelAndView("cargarpelicula");
+			SRT.fatal("Error de validacion"+peliculamodificar.getNombre());
+			view.addObject("pelicula", peliculamodificar);
+			return view;
+		}else {
+		try {
+			byte[] content = file.getBytes();
+			String base64 = Base64.getEncoder().encodeToString(content);
+			peliculamodificar.setImagen(base64);
+			peliculamodificar.setEstado(true);
+			servicemovie.modificarPelicula(peliculamodificar); 
+			SRT.info(peliculamodificar.getId());
+			}
+		catch(Exception error){
+			ModelAndView view = new ModelAndView("cargarpelicula");
+			view.addObject("formPeliculaErrorMessage", error.getMessage());
+			view.addObject("pelicula", peliculamodificar); 
+			SRT.error("No se pudo cargar"); 
+			System.out.println("Problemas");
+			return view;
+		}
+		ModelAndView view = new ModelAndView("mostrarpeliculas");
+		view.addObject("formPeliculaErrorMessage", "Pelicula guardado correctamente");
+		view.addObject("listapeliculas", servicemovie.mostrarPeliculas());
+		System.out.println(peliculamodificar.getNombre()+peliculamodificar.getGenero());
+		return view;
+	}
 	}
 	@GetMapping("/eliminarPelicula/{id}")
 	public String deleteMovie(@PathVariable(name="id")Integer id) {

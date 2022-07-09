@@ -11,7 +11,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 <style type="text/css"> 
 </style>
-<title>***Listado de Peliculas***</title>
+<title>***Listado de Clientes***</title>
 <style>
     body{
     min-height: 100vh;
@@ -20,50 +20,41 @@
     justify-items:center;
     overflow-y:scroll;
 }
-img{
-	width:120px;
-	height:140px;
-}
 </style>
 </head>
 
 <body>
-<h2>Peliculas registradas</h2>
+<h2>Clientess registrados</h2>
 <div class="contenedor">
-<div class="alert text-center" th:if="${formPeliculaErrorMessage}" th:text="${formUsuarioPeliculaMessage}">Name Error</div>
+<div class="alert text-center" th:if="${formClienteErrorMessage}" th:text="${formClienteErrorMessage}">Name Error</div>
 <table class="table" id="tabla">
   <thead>
     <tr>
-	  <th scope="col">Portada</th>
-      <th scope="col">Id</th>
+      
+     <!-- <th scope="col">Id</th> -->
       <th scope="col">Nombre</th>
-      <th scope="col">Descripcion</th>
-      <th scope="col">Genero</th>
-      <th scope="col">Duracion</th>
-      <th scope="col">Fecha de Estreno</th>
-      <th scope="col">Comentar</th>
+      <th scope="col">Pelicula</th>
+      <th scope="col">Opinion</th>
+      <th scope="col">Valoracion</th>
+      <th scope="col">Fecha de Comentario</th>
     </tr>
   </thead>
   <tbody>
-    <tr th:each="p : ${listapeliculas}">
-<!--     	<td th:text="${p.imagen}"></td> -->
-    	<td><img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" ></td>
-    	<td th:text="${p.id}"></td>
-		<td th:text="${p.nombre}"></td>
-		<td th:text="${p.descripcion}"></td>
-		<td th:text="${p.genero}"></td>
-		<td th:text="${p.duracion}"></td>
-		<td th:text="${p.fechadeE}"></td>
-		<td><a class="bton" th:href="@{'/cargarResena'}">Comentar</a></td>
+    <tr th:each="r : ${listaresenas}" >
+        <!-- <td th:text="${c.id}"></td>-- -->
+		<td th:text="${r.cliente.nombre}"></td>
+		<td th:text="${r.pelicula.nombre}"></td>
+<!-- 		<td th:text="${p.nombre}"></td> -->
+		<td th:text="${r.texto}"></td>
+		<td th:text="${r.valoracion}"></td>
+		<td th:text="${r.fechadeCom}"></td>
     </tr>
 </tbody>
-</table>
-
+</table>ss
 <a href="/mostrarpeliculasclientes">
     <div class="botn">
       <span>Volver al Inicio</span>
     </div>
     </a>
     </div>
-
 </html>
