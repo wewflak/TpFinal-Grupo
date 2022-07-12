@@ -99,15 +99,7 @@ public class PeliculaController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-//	@GetMapping("/cargarcomentario")
-//	public ModelAndView showMovies3() {
-//		ModelAndView vista= new ModelAndView("reciboComentarios");
-//		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
-//		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas());
-//		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
-//		return vista;
-//	}
-//	
+
 	@GetMapping("/editarpeliculas/{id}")
 	public ModelAndView editmovie(Model model, @PathVariable(name="id")Integer id) throws Exception {
 		Pelicula peliculaEncontrada = new Pelicula();

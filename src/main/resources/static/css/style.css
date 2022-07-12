@@ -586,17 +586,21 @@ footer{
 
 .grid{
 	display: grid;
-  	grid-template-columns: repeat(2, 1fr);
-  	grid-gap: 2em;
-  	grid-auto-rows: minmax(100px, auto);
+	gap:5rem;
+	grid-auto-rows:30em;
+	grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
 }
 .ticket{
-	height:80vh;
-	margin-left: 2em;
-	width:100%;
+	margin: 2em;
 	background-color: #dde1e4;
 	font-size: 12px;
 	color:#3d3d3d;
+}
+.ticket .texto{
+	margin:2em;
+}
+.ticket .texto p{
+	font-size: 15px;
 }
 /*Cards*/
 .container .row .col .card{
@@ -610,6 +614,7 @@ footer{
 }
 .col .card{
 	height:60vh;
+	width:25em;
 }
 .btn1{
     background-color: #9C27B0;

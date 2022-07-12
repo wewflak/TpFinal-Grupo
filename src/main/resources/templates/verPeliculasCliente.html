@@ -54,17 +54,17 @@ img{
 </tbody>
 </table>
 
-    <!--        <div class="col">
+            <div class="col">
                 <div class="card" th:each="p : ${listapeliculas}">
                 <img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" >
                 <div class="card-body">
                     <h5 class="card-title" th:text="${p.nombre}">Titulo de cancion</h5>
                     <p class="card-text" th:text="${p.descripcion}">{Descripcion de la cancion, nombre de artista, nombre de album, descripcion de artista}</p>
-                    <button class="btn1"><a href="">Escuchar</a></button>
-                    <button class="btn1"></button>
+             		<button class="btn1" th:href="${'/cargarResena'}">Comentar</button>
+                    <button class="btn1" th:href="${'/mostrarResena'}">Comentar</button>
                 </div>
                 </div>
-            </div>-->
+            </div>
 <a href="index">
     <div class="botn">
       <span>Volver al Inicio</span>

@@ -27,7 +27,7 @@
                    
                    
                    <li class="nav-item">
-                        <a class="nav-link" href="mostrarReseña">Mis Comentarios</a>
+                        <a class="nav-link" href="mostrarResena">Mis Comentarios</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="peliculasclientes">Mostrar peliculas</a>
@@ -36,7 +36,7 @@
                         <a class="nav-link" href="cargarentrada">Comprar entrada</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="formLogin">Iniciar Seccion</a>
+                        <a class="nav-link" href="formLogin">Iniciar Sesion</a>
                     </li>
 <!--                     <form th:action="@{/logout}" method="post"> -->
 <!-- 					<button class="btn btn-outline-dark" type="submit" value="Salir"> -->
@@ -44,16 +44,13 @@
 <!-- 							th:text="${#authentication.getUsername() + ' - Salir'}"></span> -->
 <!-- 					</button> -->
 <!-- 				</form> -->
-                    
-                    <ul class="navbar-nav mt-2 mt-jg-0">
+                   
                     <li class="nav-item">
-                    <a class="btn btn-outline-dark" href="#" th:href="@{/logout}">
+                    <a class="nav-link" href="#" th:href="@{/logout}">
 <!--                     <span th:text="${#authentication.getPrincipal().getUsername}">                    	 -->
 <!--                     </span> -->
-                    <span> Salir </span><span class="float-right">
-                    <i class="fas fa-sign-out-alt"></i></span></a>
-                    </li>                    	
-                    </ul>
+                    Salir</a>
+                    </li> 
                     
                 </ul>
                 <a class="btn-custom ms-lg-4" href="#contacto">Contacto</a>

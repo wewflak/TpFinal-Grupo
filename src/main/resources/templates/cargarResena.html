@@ -39,11 +39,7 @@ img{
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Peliculas</label>
-    <select class="form-control"
-						th:field="*{pelicula.id}">
-						<option th:each="p:${peliculas}" th:value="${p.id}"
-							th:text="${p.nombre}"></option>
-					</select>
+    <input disabled class="form-control" th:field="*{pelicula.id}" th:value="${pelicula.id}" th:text="${pelicula.nombre}">
   </div>
         
         

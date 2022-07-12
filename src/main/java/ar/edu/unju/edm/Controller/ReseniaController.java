@@ -6,12 +6,15 @@ import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.edm.Model.Pelicula;
 import ar.edu.unju.edm.Model.Resenia;
 import ar.edu.unju.edm.Service.IClienteService;
 import ar.edu.unju.edm.Service.IPeliculaService;
@@ -21,6 +24,9 @@ import ar.edu.unju.edm.Service.IReseniaService;
 public class ReseniaController {
     private static final Log SRT = LogFactory.getLog(ClientePeliculaController.class);
 
+    @Autowired
+    Pelicula pelicula;
+    
 	@Autowired
 	Resenia nuevaResenia;
 	
@@ -33,13 +39,29 @@ public class ReseniaController {
 	@Autowired
 	IPeliculaService peliculaservice;
 
-	@GetMapping("/cargarResena")
-		public ModelAndView addResenia() {
-		
+	@GetMapping("/cargarResena/{id}")
+//	public ModelAndView addComentario() {
+//	
+//	ModelAndView view = new ModelAndView("cargarResena");
+//	SRT.info("Entre al addComentario maquina");
+//	view.addObject("pelicula", pelicula);
+//	return view;
+//	}
+//	@GetMapping("/comentarPelicula/{id}")
+		public ModelAndView addResenia(Model model, @PathVariable(name="id")Integer id) throws Exception{
+		Pelicula peliculaEncontrada = new Pelicula();
+		SRT.info("Entrando!!!!!!!!!!!!!!");
+		try {
+			peliculaEncontrada = peliculaservice.buscarPelicula(id);
+			SRT.info("Se encontro la pelicula");
+		}catch(Exception e) {
+			model.addAttribute("formReseniaErrorMessage", e.getMessage());
+		}
 		ModelAndView view = new ModelAndView("cargarResena");
+
 		view.addObject("unaResenia", reviewService.nuevaResenia());
 		view.addObject("clientes", clienteservice.mostrarClientes());
-		view.addObject("peliculas", peliculaservice.mostrarPeliculas());
+		view.addObject("pelicula", peliculaEncontrada);
 		return view;
 		}
 	@PostMapping("/guardarResenia")
@@ -66,12 +88,13 @@ public class ReseniaController {
 		}
 			view.addObject("formReseniaErrorMessage", "Comentario guardado correctamente");
 			view.addObject("unaResenia", reviewService.nuevaResenia());
-			view.setViewName("cargarResena");
+			SRT.info("Se logro");
+			view.setViewName("mostrarResena");
 			return view;
 	}
-	@GetMapping("/mostrarReseña")
+	@GetMapping("/mostrarResena")
 	public ModelAndView showMovies() {
-		ModelAndView vista= new ModelAndView("mostrarReseña");
+		ModelAndView vista= new ModelAndView("mostrarResena");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
 		vista.addObject("listaresenas",reviewService.mostrarResenias());
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");

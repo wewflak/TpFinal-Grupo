@@ -14,14 +14,18 @@
 <body>
     <div class="grid">
         <div class="ticket" th:object="${unaEntrada}" >
-
+		<div class="texto">
         <h5> Ticket comprado el dia: </h5>
         <p th:text="${unaEntrada.fechaCompra}" ></p>
         <h5> Comprado por: </h5>
         <h2 th:text="${unaEntrada.cliente.nombre}"></h2>
         <h5> Para la pelicula: </h5>
         <h2 th:text="${unaEntrada.pelicula.nombre}"> </h2>
+		</div>
         </div>
+   <!-- <div>
+   <button type="submit" onclick="window.open('file.doc')">Download!</button>
+    </div>-->
     </div>
 </body>
 </html>

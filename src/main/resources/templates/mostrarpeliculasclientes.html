@@ -58,7 +58,17 @@ img{
     </tr>
 </tbody>
 </table>
-
+            <div class="col">
+                <div class="card" th:each="p : ${listapeliculas}">
+                <img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" >
+                <div class="card-body">
+                    <h5 class="card-title" th:text="${p.nombre}">Titulo de cancion</h5>
+                    <p class="card-text" th:text="${p.descripcion}">{Descripcion de la cancion, nombre de artista, nombre de album, descripcion de artista}</p>
+             		<a class="bton" th:href="@{'/cargarResena/'+${p.id}}">Comentar</a>
+                    <a class="bton" th:href="@{'/mostrarResena'}">Comentar</a> 
+                </div>
+                </div>
+            </div>
 <a href="/mostrarpeliculasclientes">
     <div class="botn">
       <span>Volver al Inicio</span>
