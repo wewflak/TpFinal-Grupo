@@ -49,7 +49,7 @@
                     
                     <li class="nav-item">
                         <a class="nav-link" th:href="@{/logout}" >
-                        <span th:text="${'Salir'}"></span></a>
+                        <span th:text="${#authentication.getPrincipal().getUsername() + ' - Salir'}"></span></a>
                     </li>
                
                 </ul>

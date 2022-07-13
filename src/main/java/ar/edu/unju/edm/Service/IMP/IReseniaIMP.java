@@ -74,9 +74,23 @@ public class IReseniaIMP implements IReseniaService {
 		return filtrado;
 	}
 
-
 	@Override
-	public void eliminarReaenia(Integer idResenia) throws Exception {
+	public List<Resenia> mostrarReseniasPorCliente(Long dni){
+		//Pelicula nuevaPelicula;
+		List<Resenia> todos = new ArrayList<>();
+		List<Resenia> filtrado = new ArrayList<>();
+		todos=(List<Resenia>) reseniaRepository.findAll();
+		for(int i=0; i<todos.size();i++) {
+			System.out.println(todos.get(i).getCliente().getNombre());
+			if(todos.get(i).getCliente().getDni()==dni) {
+				filtrado.add(todos.get(i));
+			}
+		}
+		return filtrado;
+	}
+	
+	@Override
+	public void eliminarResenia(Integer idResenia) throws Exception {
 		// TODO Auto-generated method stub
 		Resenia auxiliar = new Resenia();
 		auxiliar = buscarResenia(idResenia);

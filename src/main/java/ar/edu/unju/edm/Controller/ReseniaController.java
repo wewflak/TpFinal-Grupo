@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.edm.Model.Cliente;
 import ar.edu.unju.edm.Model.Pelicula;
 import ar.edu.unju.edm.Model.Resenia;
 import ar.edu.unju.edm.Service.IClienteService;
@@ -100,6 +101,67 @@ public class ReseniaController {
 		vista.addObject("listaresenas",reviewService.mostrarReseniasPorPelicula(peliculaEncontrada.getId()));
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
+	}
+	@GetMapping("/mostrarResenaAdmin/{id}")
+	public ModelAndView showReviewsMovieAdmin(@PathVariable (name="id") Integer id) throws Exception {
+		ModelAndView vista= new ModelAndView("mostrarResena");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		Pelicula peliculaEncontrada = new Pelicula();
+		try {
+			peliculaEncontrada = peliculaservice.buscarPelicula(id);
+			SRT.info("Se encontro la pelicula");
+			
+		}catch(Exception e) {
+			vista.setViewName("index");
+			vista.addObject("formReseniaErrorMessage", e.getMessage());
+		}
+		vista.addObject("listaresenas",reviewService.mostrarReseniasPorPelicula(peliculaEncontrada.getId()));
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
+	@GetMapping("/mostrarResena/{dni}")
+	public ModelAndView showClientReviews(@PathVariable (name="dni") Long dni) throws Exception {
+		ModelAndView vista= new ModelAndView("mostrarResena");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		Cliente clienteEncontrado = new Cliente();
+		try {
+			clienteEncontrado = clienteservice.buscarCliente(dni);
+			SRT.info("Se encontro la pelicula");
+			
+		}catch(Exception e) {
+			vista.setViewName("index");
+			vista.addObject("formReseniaErrorMessage", e.getMessage());
+		}
+		vista.addObject("listaresenas",reviewService.mostrarReseniasPorCliente(clienteEncontrado.getDni()));
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
+	@GetMapping("/mostrarResenaAdmin/{dni}")
+	public ModelAndView showClientReviewsAdmin(@PathVariable (name="dni") Long dni) throws Exception {
+		ModelAndView vista= new ModelAndView("mostrarResena");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		Cliente clienteEncontrado = new Cliente();
+		try {
+			clienteEncontrado = clienteservice.buscarCliente(dni);
+			SRT.info("Se encontro la pelicula");
+			
+		}catch(Exception e) {
+			vista.setViewName("index");
+			vista.addObject("formReseniaErrorMessage", e.getMessage());
+		}
+		vista.addObject("listaresenas",reviewService.mostrarReseniasPorCliente(clienteEncontrado.getDni()));
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
+	@GetMapping("/eliminarResena/{idComentario}")
+	public String deleteMovie(@PathVariable(name="idComentario")Integer idComentario) {
+		try {
+		reviewService.eliminarResenia(idComentario);
+		}catch(Exception error){
+			SRT.error("No se pudo eliminar la resena");
+			return "redirect:/cargarresena";
+		}
+		return "redirect:/mostrarResenaAdmin";
 	}
 //	@GetMapping("/cargarResena/{id}")
 //	public ModelAndView addResenia(Model model, @PathVariable(name="id")Integer id) throws Exception{

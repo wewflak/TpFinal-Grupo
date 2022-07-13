@@ -11,8 +11,9 @@ public interface IReseniaService {
 	public Resenia nuevaResenia();
 	public void guardarResenia(Resenia review);
 	public List<Resenia> mostrarResenias();
-	public void eliminarReaenia(Integer idResenia) throws Exception;
+	public void eliminarResenia(Integer idResenia) throws Exception;
 	public List<Resenia> mostrarReseniasPorPelicula(Integer id);
+	public List<Resenia> mostrarReseniasPorCliente(Long dni);
 	public Resenia buscarResenia(Integer idResenia) throws Exception;
 
 
