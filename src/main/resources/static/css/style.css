@@ -432,7 +432,7 @@ a.nav-link:hover{
     background-color: transparent;
     filter: saturate(100%);
 }
-#slider-span1:target ~ .image-slider{left: 70%;}
+#slider-span1:target ~ .image-slider{left: 60%;}
 #slider-span2:target ~ .image-slider{left: 50%;}
 #slider-span3:target ~ .image-slider{left: 25%;}
 
