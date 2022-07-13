@@ -22,7 +22,7 @@ body{
 
   /* Track */
 ::-webkit-scrollbar-track {
-    background: #dde1e4; 
+    background:transparent; 
 }
   /* Handle */
 ::-webkit-scrollbar-thumb {
@@ -211,7 +211,7 @@ a.nav-link:hover{
 .navbar-toggler{
     padding: .01rem .05rem;
     border: 1px solid white;
-    border-radius: 10%;
+    border-radius: 25px;
 }
 .navbar-toggler:focus{
     outline: none;
@@ -238,11 +238,19 @@ a.nav-link:hover{
         padding-top: 16rem;
     }
     .btn-custom{
-		margin-bottom: 2px;
+	margin-top:1em;
+	margin-bottom: 4px;
 	}
     .btn-custom:hover{
 	background:#0c038c;
 	border: 1.5px solid #0c038c;
+	}
+	a.nav-link:hover{
+	margin-bottom: 4px;
+    padding-bottom: 8px;
+    border-bottom: 0px solid #ffff;
+    padding-left: 3px;
+    border-left: 2px solid #dde1e4;
 	}
 }
 .btn-custom{

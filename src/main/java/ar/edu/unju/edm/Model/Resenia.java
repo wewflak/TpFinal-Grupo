@@ -39,7 +39,7 @@ public class Resenia {
 	private Pelicula pelicula;
 	@DateTimeFormat(pattern = "yyyy-MM-dd")
 	private LocalDate fechadeCom;
-	
+	private Boolean estado;
 	public Resenia() {
 		// TODO Auto-generated constructor stub
 	}
@@ -81,6 +81,14 @@ public class Resenia {
 	}
 	public void setPelicula(Pelicula pelicula) {
 		this.pelicula = pelicula;
+	}
+
+	public Boolean getEstado() {
+		return estado;
+	}
+
+	public void setEstado(Boolean estado) {
+		this.estado = estado;
 	}
 	
 }

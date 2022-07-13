@@ -40,14 +40,6 @@ public class ReseniaController {
 	IPeliculaService peliculaservice;
 
 	@GetMapping("/cargarResena/{id}")
-//	public ModelAndView addComentario() {
-//	
-//	ModelAndView view = new ModelAndView("cargarResena");
-//	SRT.info("Entre al addComentario maquina");
-//	view.addObject("pelicula", pelicula);
-//	return view;
-//	}
-//	@GetMapping("/comentarPelicula/{id}")
 		public ModelAndView addResenia(Model model, @PathVariable(name="id")Integer id) throws Exception{
 		Pelicula peliculaEncontrada = new Pelicula();
 		SRT.info("Entrando!!!!!!!!!!!!!!");
@@ -58,7 +50,7 @@ public class ReseniaController {
 			model.addAttribute("formReseniaErrorMessage", e.getMessage());
 		}
 		ModelAndView view = new ModelAndView("cargarResena");
-
+		SRT.info(peliculaEncontrada.getId());
 		view.addObject("unaResenia", reviewService.nuevaResenia());
 		view.addObject("clientes", clienteservice.mostrarClientes());
 		view.addObject("pelicula", peliculaEncontrada);
@@ -92,12 +84,39 @@ public class ReseniaController {
 			view.setViewName("mostrarResena");
 			return view;
 	}
-	@GetMapping("/mostrarResena")
-	public ModelAndView showMovies() {
+	@GetMapping("/mostrarResena/{id}")
+	public ModelAndView showMovies(@PathVariable (name="id") Integer id) throws Exception {
 		ModelAndView vista= new ModelAndView("mostrarResena");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
-		vista.addObject("listaresenas",reviewService.mostrarResenias());
+		Pelicula peliculaEncontrada = new Pelicula();
+		try {
+			peliculaEncontrada = peliculaservice.buscarPelicula(id);
+			SRT.info("Se encontro la pelicula");
+			
+		}catch(Exception e) {
+			vista.setViewName("index");
+			vista.addObject("formReseniaErrorMessage", e.getMessage());
+		}
+		vista.addObject("listaresenas",reviewService.mostrarReseniasPorPelicula(peliculaEncontrada.getId()));
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
+//	@GetMapping("/cargarResena/{id}")
+//	public ModelAndView addResenia(Model model, @PathVariable(name="id")Integer id) throws Exception{
+//	Pelicula peliculaEncontrada = new Pelicula();
+//	SRT.info("Entrando!!!!!!!!!!!!!!");
+//	try {
+//		peliculaEncontrada = peliculaservice.buscarPelicula(id);
+//		SRT.info("Se encontro la pelicula");
+//	}catch(Exception e) {
+//		model.addAttribute("formReseniaErrorMessage", e.getMessage());
+//	}
+//	ModelAndView view = new ModelAndView("cargarResena");
+//	SRT.info(peliculaEncontrada.getId());
+//	view.addObject("unaResenia", reviewService.nuevaResenia());
+//	view.addObject("clientes", clienteservice.mostrarClientes());
+//	view.addObject("pelicula", peliculaEncontrada);
+//	return view;
+//	}
+	
 }

@@ -65,7 +65,7 @@ img{
                     <h5 class="card-title" th:text="${p.nombre}">Titulo de cancion</h5>
                     <p class="card-text" th:text="${p.descripcion}">{Descripcion de la cancion, nombre de artista, nombre de album, descripcion de artista}</p>
              		<a class="bton" th:href="@{'/cargarResena/'+${p.id}}">Comentar</a>
-                    <a class="bton" th:href="@{'/mostrarResena'}">Comentar</a> 
+                    <a class="bton" th:href="@{'/mostrarResena/'+${p.id}}">Comentar</a> 
                 </div>
                 </div>
             </div>

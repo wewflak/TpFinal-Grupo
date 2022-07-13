@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unju.edm.Model.ClientePelicula;
+import ar.edu.unju.edm.Model.Pelicula;
 import ar.edu.unju.edm.Service.IClientePeliculaService;
 import ar.edu.unju.edm.Service.IClienteService;
 import ar.edu.unju.edm.Service.IPeliculaService;
@@ -38,14 +39,21 @@ public class ClientePeliculaController {
 	@Autowired
 	IPeliculaService peliculaservice;
 
-	@GetMapping("/cargarentrada")
-	public ModelAndView addEntrada() {
+	@GetMapping("/cargarentrada/{id}")
+	public ModelAndView addEntrada(Model model, @PathVariable(name="id") Integer id) throws Exception {
+		Pelicula peliculaEncontrada = new Pelicula();
 		SRT.info("Ingresando al metodo");
-
+		try {
+			peliculaEncontrada = peliculaservice.buscarPelicula(id);
+			SRT.info(peliculaEncontrada.getId() + " Se encontro la pelicula");
+		}catch(Exception e) {
+			ModelAndView view = new ModelAndView("cargarentrada");
+			view.addObject("formEntradaErrorMessage", e.getMessage());
+		}
 		ModelAndView view = new ModelAndView("cargarentrada");
 		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
 		view.addObject("clientes", clienteservice.mostrarClientes());
-		view.addObject("peliculas", peliculaservice.mostrarPeliculas());
+		view.addObject("pelicula", peliculaEncontrada);
 		return view;
 	}
 	@PostMapping("/guardarEntrada")

@@ -36,8 +36,8 @@
     <label for="exampleInputPassword1" class="form-label">Peliculas</label>
     <select class="form-control"
 						th:field="*{pelicula.id}">
-						<option th:each="p:${peliculas}" th:value="${p.id}"
-							th:text="${p.nombre}"></option>
+						<option th:value="${pelicula.id}"
+							th:text="${pelicula.nombre}"></option>
 					</select>
   </div>
 		    <div class="mb-3">

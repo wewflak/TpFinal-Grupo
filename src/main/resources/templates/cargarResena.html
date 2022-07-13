@@ -39,7 +39,12 @@ img{
   </div>
   <div class="mb-3">
     <label for="exampleInputPassword1" class="form-label">Peliculas</label>
-    <input disabled class="form-control" th:field="*{pelicula.id}" th:value="${pelicula.id}" th:text="${pelicula.nombre}">
+    <select class="form-control" th:field="*{pelicula.id}"> 
+    <option 
+    th:value="${pelicula.id}" th:text="${pelicula.nombre}"></option >
+    </select>
+    <div class="alert alert-danger"
+        		th:if="${#fields.hasErrors('pelicula')}"th:errors="*{pelicula}"></div>
   </div>
         
         

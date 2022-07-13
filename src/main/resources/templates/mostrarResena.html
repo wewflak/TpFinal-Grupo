@@ -11,7 +11,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 <style type="text/css"> 
 </style>
-<title>***Listado de Clientes***</title>
+<title>***Listado de Resenas***</title>
 <style>
     body{
     min-height: 100vh;
@@ -24,14 +24,12 @@
 </head>
 
 <body>
-<h2>Clientess registrados</h2>
+<h2>Resenas registradas</h2>
 <div class="contenedor">
 <div class="alert text-center" th:if="${formClienteErrorMessage}" th:text="${formClienteErrorMessage}">Name Error</div>
 <table class="table" id="tabla">
   <thead>
     <tr>
-      
-     <!-- <th scope="col">Id</th> -->
       <th scope="col">Nombre</th>
       <th scope="col">Pelicula</th>
       <th scope="col">Opinion</th>
@@ -41,10 +39,8 @@
   </thead>
   <tbody>
     <tr th:each="r : ${listaresenas}" >
-        <!-- <td th:text="${c.id}"></td>-- -->
 		<td th:text="${r.cliente.nombre}"></td>
 		<td th:text="${r.pelicula.nombre}"></td>
-<!-- 		<td th:text="${p.nombre}"></td> -->
 		<td th:text="${r.texto}"></td>
 		<td th:text="${r.valoracion}"></td>
 		<td th:text="${r.fechadeCom}"></td>
