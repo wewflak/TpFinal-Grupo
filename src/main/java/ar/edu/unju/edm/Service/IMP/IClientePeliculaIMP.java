@@ -1,11 +1,13 @@
 package ar.edu.unju.edm.Service.IMP;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import ar.edu.unju.edm.Model.ClientePelicula;
+import ar.edu.unju.edm.Model.Resenia;
 import ar.edu.unju.edm.Repository.ClientePeliculaRepository;
 import ar.edu.unju.edm.Service.IClientePeliculaService;
 
@@ -57,6 +59,34 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 		ClientePelicula entradaEncontrada = new ClientePelicula();
 		entradaEncontrada=clientePeliculaRepository.findById(idClientePelicula).orElseThrow(()->new Exception("Cliente Pelicula No encontrada"));
 		return entradaEncontrada;
+	}
+
+	@Override
+	public List<ClientePelicula> mostrarEntradasPorPelicula(Integer idClientePelicula) {
+		List<ClientePelicula> todos = new ArrayList<>();
+		List<ClientePelicula> filtrado = new ArrayList<>();
+		todos=(List<ClientePelicula>) clientePeliculaRepository.findAll();
+		for(int i=0; i<todos.size();i++) {
+			System.out.println(todos.get(i).getPelicula().getNombre());
+			if(todos.get(i).getPelicula().getId()==idClientePelicula) {
+				filtrado.add(todos.get(i));
+			}
+		}
+		return filtrado;
+	}
+
+	@Override
+	public List<ClientePelicula> mostrarEntradasPorCliente(Long dni) {
+		List<ClientePelicula> todos = new ArrayList<>();
+		List<ClientePelicula> filtrado = new ArrayList<>();
+		todos=(List<ClientePelicula>) clientePeliculaRepository.findAll();
+		for(int i=0; i<todos.size();i++) {
+			System.out.println(todos.get(i).getPelicula().getNombre());
+			if(todos.get(i).getCliente().getDni()==dni) {
+				filtrado.add(todos.get(i));
+			}
+		}
+		return filtrado;
 	}
 
 }

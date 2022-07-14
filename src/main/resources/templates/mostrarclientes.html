@@ -36,6 +36,8 @@
       <th scope="col">Email</th>
       <th scope="col">Fecha de Nacimiento</th>
       <th scope="col">Tipo</th>
+      <th scope="col">Entradas compradas</th>
+      <th scope="col">Ver comentarios</th>
       <th scope="col">Editar</th>
 	  <th scope="col">Eliminar</th>
     </tr>
@@ -48,7 +50,8 @@
 		<td th:text="${c.email}"></td>
 		<td th:text="${c.FechadeN}"></td>
 		<td th:text="${c.tipo}"></td>
-		<td><a class="bton" th:href="@{'/mostrarResenaAdmin2/'+${c.dni}}">Ver comentarios</a></td>
+		<td><a class="bton" th:href="@{'/mostrarEntradasCliente/'+${c.dni}}">Entradas</a></td>
+		<td><a class="bton" th:href="@{'/mostrarResenaAdmin2/'+${c.dni}}">Comentarios</a></td>
 		<td><a class="bton" th:href="@{'/editarCliente/'+${c.dni}}"> Editar </a></td>
 		
 		<td>	 <a class="bton" 

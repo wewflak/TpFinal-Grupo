@@ -99,7 +99,7 @@ public class ReseniaController {
 			SRT.info("Se encontro la pelicula");
 			
 		}catch(Exception e) {
-			vista.setViewName("index");
+			vista.setViewName("mostrarpeliculascliente");
 			vista.addObject("formReseniaErrorMessage", e.getMessage());
 		}
 		vista.addObject("listaresenas",reviewService.mostrarReseniasPorPelicula(peliculaEncontrada.getId()));
