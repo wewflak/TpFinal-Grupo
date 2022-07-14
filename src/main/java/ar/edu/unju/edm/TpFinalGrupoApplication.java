@@ -29,10 +29,10 @@ public class TpFinalGrupoApplication implements CommandLineRunner{
 //		
 		cliente.setDni((long) 44754210);
 	    cliente.setNombre("Brisa");
-		cliente.setApellido("alejoo");
+		cliente.setApellido("Ontiveros");
 		cliente.setContrasena("123");
 		cliente.setFechadeN(LocalDate.now());
-		cliente.setEmail("lisandro@gmail.com");
+		cliente.setEmail("brisa@gmail.com");
 		cliente.setTipo("ADMIN");
 		clienteService.guardarCliente(cliente);
 	}

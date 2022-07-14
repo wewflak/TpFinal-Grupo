@@ -26,7 +26,7 @@
 <body>
 <h2>Resenas registradas</h2>
 <div class="contenedor">
-<div class="alert text-center" th:if="${formClienteErrorMessage}" th:text="${formClienteErrorMessage}">Name Error</div>
+<div class="alert text-center" th:if="${formReseniaErrorMessage}" th:text="${formReseniaErrorMessage}">Name Error</div>
 <table class="table" id="tabla">
   <thead>
     <tr>
@@ -35,6 +35,7 @@
       <th scope="col">Opinion</th>
       <th scope="col">Valoracion</th>
       <th scope="col">Fecha de Comentario</th>
+      <!--<th scope="col">Editar</th>-->
     </tr>
   </thead>
   <tbody>
@@ -44,6 +45,7 @@
 		<td th:text="${r.texto}"></td>
 		<td th:text="${r.valoracion}"></td>
 		<td th:text="${r.fechadeCom}"></td>
+		<!--<td><a class="bton" th:href="@{'/editarResena/'+${r.idComentario}}"> Editar </a></td>-->
     </tr>
 </tbody>
 </table>
