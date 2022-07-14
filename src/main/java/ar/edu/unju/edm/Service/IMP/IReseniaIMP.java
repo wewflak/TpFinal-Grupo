@@ -67,7 +67,7 @@ public class IReseniaIMP implements IReseniaService {
 		todos=(List<Resenia>) reseniaRepository.findAll();
 		for(int i=0; i<todos.size();i++) {
 			System.out.println(todos.get(i).getPelicula().getNombre());
-			if(todos.get(i).getPelicula().getId()==id) {
+			if( todos.get(i).getEstado()==true && todos.get(i).getPelicula().getId()==id) {
 				filtrado.add(todos.get(i));
 			}
 		}
@@ -82,7 +82,7 @@ public class IReseniaIMP implements IReseniaService {
 		todos=(List<Resenia>) reseniaRepository.findAll();
 		for(int i=0; i<todos.size();i++) {
 			System.out.println(todos.get(i).getCliente().getNombre());
-			if(todos.get(i).getCliente().getDni()==dni) {
+			if(todos.get(i).getEstado()==true && todos.get(i).getCliente().getDni()==dni) {
 				filtrado.add(todos.get(i));
 			}
 		}

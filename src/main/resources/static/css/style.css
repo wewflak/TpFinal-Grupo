@@ -22,12 +22,12 @@ body{
 
   /* Track */
 ::-webkit-scrollbar-track {
-    background:transparent; 
+    background: #3d3d3d; 
 }
   /* Handle */
 ::-webkit-scrollbar-thumb {
-    background: linear-gradient(to bottom, #0c038c, #8d007e, #cd0061, #f3003e, #ff680a);
-    transition:all 1s;
+    background: linear-gradient(to top, #0c038c, #8d007e, #cd0061, #f3003e, #ff680a);
+    transition:all 2s;
     border-radius: 10px;
 }
   /* Handle on hover */
@@ -611,29 +611,63 @@ footer{
 	font-size: 15px;
 }
 /*Cards*/
-.container .row .col .card{
+.container .row .col{
 	
+    display: grid;
+	gap:2rem;
+	grid-auto-rows:30em;
+	grid-template-columns: repeat(auto-fill, minmax(20rem, 1fr));
     color: #212121;
     background: #f1f1f1;
     overflow: hidden;
-    margin-top: 3vh;
-    margin-bottom: 5vh;
-    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;
+}
+.card h6{
+	color:#dde1e4;
+    opacity: 0.6;
+    letter-spacing: .1rem;
+    text-transform: uppercase;
 }
 .col .card{
-	height:60vh;
+	background-color: #001532;
+	color:#dde1e4;
+	height:80vh;
 	width:25em;
+	margin-left: 3em;
+	margin-top:2em;
+	
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px !important;
 }
-.btn1{
-    background-color: #9C27B0;
-    color: #F1f1f1;
-    border: #9C27B0 solid 1px;
+.buton{
+	display:block;
+	color:#dde1e4;
+    background-color: #0000ff;
+    border: #0000ff solid 1px;
     border-radius: 20px;
     padding: .3rem;
     float: right;
     margin: .2rem;
-    margin-top: .5rem;
+    margin-top: 1.5rem;
+    transition:all 0.5s;
 }
-.btn1:hover{
+
+#volver{
+	margin-top:2em;
+	height: 5em;
+	margin-bottom: 2em; 
+}
+#volver span{
+	font-size: 1.2em;
+	margin-top: 2em;
+	vertical-align:middle;
+}
+.card-image{
+	display:flex;
+	justify-content: center;
+}
+.buton:hover{
     color: #f1f1f1;
+    background-color: var(--clr-bga);
+    border: var(--clr-bga) solid 1px;
+    
+    box-shadow: rgba(0, 21, 50, 0.16) 0px 3px 6px, rgba(0, 21, 50, 0.23) 0px 3px 6px !important;
 }

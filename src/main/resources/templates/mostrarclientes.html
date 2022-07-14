@@ -30,8 +30,6 @@
 <table class="table" id="tabla">
   <thead>
     <tr>
-      
-     <!-- <th scope="col">Id</th> -->
       <th scope="col">Nombre</th>
       <th scope="col">Apellido</th>
       <th scope="col">DNI</th>
@@ -44,13 +42,13 @@
   </thead>
   <tbody>
     <tr th:each="c : ${listaclientes}">
-        <!-- <td th:text="${c.id}"></td>-- -->
 		<td th:text="${c.nombre}"></td>
 		<td th:text="${c.apellido}"></td>
 		<td th:text="${c.dni}"></td>
 		<td th:text="${c.email}"></td>
 		<td th:text="${c.FechadeN}"></td>
 		<td th:text="${c.tipo}"></td>
+		<td><a class="bton" th:href="@{'/mostrarResenaAdmin2/'+${c.dni}}">Ver comentarios</a></td>
 		<td><a class="bton" th:href="@{'/editarCliente/'+${c.dni}}"> Editar </a></td>
 		
 		<td>	 <a class="bton" 

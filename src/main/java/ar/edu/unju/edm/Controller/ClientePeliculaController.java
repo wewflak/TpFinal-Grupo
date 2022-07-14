@@ -7,6 +7,7 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.edm.Model.Cliente;
 import ar.edu.unju.edm.Model.ClientePelicula;
 import ar.edu.unju.edm.Model.Pelicula;
 import ar.edu.unju.edm.Service.IClientePeliculaService;
@@ -40,26 +42,29 @@ public class ClientePeliculaController {
 	IPeliculaService peliculaservice;
 
 	@GetMapping("/cargarentrada/{id}")
-	public ModelAndView addEntrada(Model model, @PathVariable(name="id") Integer id) throws Exception {
+	public ModelAndView addEntrada(Model model, @PathVariable(name="id") Integer id, Authentication auth) throws Exception {
 		Pelicula peliculaEncontrada = new Pelicula();
+		Cliente clienteEncontrado = new Cliente();
 		SRT.info("Ingresando al metodo");
 		try {
 			peliculaEncontrada = peliculaservice.buscarPelicula(id);
-			SRT.info(peliculaEncontrada.getId() + " Se encontro la pelicula");
+			clienteEncontrado = clienteservice.buscarCliente(Long.parseLong(auth.getName()));
+			SRT.info("Se encontro la pelicula"+clienteEncontrado.getNombre());
 		}catch(Exception e) {
 			ModelAndView view = new ModelAndView("cargarentrada");
 			view.addObject("formEntradaErrorMessage", e.getMessage());
 		}
 		ModelAndView view = new ModelAndView("cargarentrada");
 		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
-		view.addObject("clientes", clienteservice.mostrarClientes());
+		view.addObject("cliente", clienteEncontrado);
 		view.addObject("pelicula", peliculaEncontrada);
 		return view;
 	}
 	@PostMapping("/guardarEntrada")
-	public ModelAndView saveEntrada(@Valid @ModelAttribute("unaEntrada") ClientePelicula clientePeliculaNuevo, BindingResult resultado) {
+	public ModelAndView saveEntrada(@Valid @ModelAttribute("unaEntrada") ClientePelicula clientePeliculaNuevo, BindingResult resultado, Authentication auth) {
 		ModelAndView view = new ModelAndView();
-
+		Pelicula peliculaEncontrada = new Pelicula();
+		Cliente clienteEncontrado = new Cliente();
 		//clientePeliculaService.guardarClientePelicula(clientePeliculaNuevo);
 		SRT.info("holaaaaaaaaaaaaaa"+clientePeliculaNuevo.getFechaCompra());
 		if(resultado.hasErrors()) {
@@ -69,6 +74,8 @@ public class ClientePeliculaController {
 			return view;
 		}
 		try {
+			peliculaEncontrada = peliculaservice.buscarPelicula(clientePeliculaNuevo.getPelicula().getId());
+			clienteEncontrado = clienteservice.buscarCliente(Long.parseLong(auth.getName()));
 			SRT.info("holaaaaaaaaaaaaaa"+clientePeliculaNuevo.getFechaCompra());
 			clientePeliculaService.guardarClientePelicula(clientePeliculaNuevo);
 		}catch(Exception e) {
@@ -81,22 +88,19 @@ public class ClientePeliculaController {
 		}
 		view.addObject("formClientePeliculaErrorMessage", "Relacion guardada correctamente");
 		view.addObject("unaEntrada", clientePeliculaNuevo);
+		view.addObject("cliente", clienteEncontrado);
+		view.addObject("pelicula", peliculaEncontrada);
 		view.setViewName("generadoComprobante");
 		return view;
 	}
-//	@GetMapping("/generadoComprobante")
-//	ModelAndView Comprobante(@Valid @ModelAttribute("unaEntrada") ClientePelicula clientePeliculaNuevo, Model model){
-//		ModelAndView view = new ModelAndView("generadoComprobante");
-//		view.addObject("Cliente", clientePeliculaNuevo.getCliente());
-//		SRT.error(clientePeliculaNuevo.getCliente().getDni());
-//		view.addObject("Pelicula", clientePeliculaNuevo.getPelicula());
-//		SRT.error(clientePeliculaNuevo.getPelicula().getNombre());
-//		view.addObject("unaEntrada", clientePelicula);
-//		view.addObject("band2", false);
-//		view.setViewName("generadoComprobante");
-//		return view;
-//	}
-
+	@GetMapping("/mostrarEntradas")
+	public ModelAndView showTickets() {
+		ModelAndView vista= new ModelAndView("mostrarEntradas");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		vista.addObject("listaEntradas", clientePeliculaService.listarClientePelicula());
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
 	@GetMapping("/editarPelicula/{idClientePelicula}")
 	public ModelAndView editRelation(Model model, @PathVariable(name="idClientePelicula")Integer idClientePelicula)throws Exception{
 		ClientePelicula relacionEncontrada = new ClientePelicula();

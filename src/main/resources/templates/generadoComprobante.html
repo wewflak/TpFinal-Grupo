@@ -18,14 +18,19 @@
         <h5> Ticket comprado el dia: </h5>
         <p th:text="${unaEntrada.fechaCompra}" ></p>
         <h5> Comprado por: </h5>
-        <h2 th:text="${unaEntrada.cliente.nombre}"></h2>
+        <p th:text="${cliente.nombre}"></p>
         <h5> Para la pelicula: </h5>
-        <h2 th:text="${pelicula.nombre}"> </h2>
+        <p th:text="${pelicula.nombre}"> </p>
 		</div>
         </div>
    <!-- <div>
    <button type="submit" onclick="window.open('file.doc')">Download!</button>
     </div>-->
     </div>
+<a href="mostrarpeliculasclientes">
+    <div class="botn" id="volver">
+      <span>Volver al Inicio</span>
+    </div>
+    </a>
 </body>
 </html>

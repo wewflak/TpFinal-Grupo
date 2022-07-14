@@ -28,8 +28,8 @@
     			<label for="exampleInputEmail1" class="form-label">Cliente</label>
     				<select class="form-control"
 						th:field="*{cliente.dni}">
-						<option th:each="c:${clientes}" th:value="${c.dni}"
-							th:text="${c.apellido}"></option>
+						<option  th:value="${cliente.dni}"
+							th:text="${cliente.apellido}"></option>
 					</select>    
   </div>
   <div class="mb-3">
@@ -47,7 +47,8 @@
             </div>  
   
   <div>
-<button type="submit" class="button"><span th:text="'Realizar Compra' "></span> </button> 
+  
+<button type="submit" class="button"><span th:text="'Realizar Compra' "><a></a></span> </button> 
 		    <a class="button" th:href="@{/mostrarpeliculasclientes}">Volver</a>
   </div>
   

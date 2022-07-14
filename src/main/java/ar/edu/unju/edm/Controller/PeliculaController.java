@@ -6,6 +6,7 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -15,7 +16,10 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unju.edm.Model.Cliente;
 import ar.edu.unju.edm.Model.Pelicula;
+import ar.edu.unju.edm.Service.IClientePeliculaService;
+import ar.edu.unju.edm.Service.IClienteService;
 import ar.edu.unju.edm.Service.IPeliculaService;
 
 import org.springframework.ui.Model;
@@ -23,6 +27,11 @@ import org.springframework.validation.BindingResult;
 @Controller //ESTO DEFINE
 public class PeliculaController {
     private static final Log SRT = LogFactory.getLog(PeliculaController.class);
+    
+	@Autowired
+	IClienteService clienteservice;
+	
+    
 	@Autowired //Creando un objetos nuevo lo tenes que instalciar 
 	Pelicula nuevaPelicula;
 	@Autowired
@@ -84,11 +93,19 @@ public class PeliculaController {
 	//Basicamente hice lo mismo que la anterior getMapping pero ahora esto conecta a las vistas
 	//peliculas y mostrarpeliculasclientes
 	@GetMapping("/mostrarpeliculasclientes")
-	public ModelAndView showMovies1() {
+	public ModelAndView showMovies1(Authentication auth) {
 		ModelAndView vista= new ModelAndView("peliculas");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		Cliente clienteEncontrado = new Cliente();
+		try {
+			clienteEncontrado = clienteservice.buscarCliente(Long.parseLong(auth.getName()));
+		}catch(Exception e) {
+			ModelAndView vista1 = new ModelAndView("peliculas");
+			vista1.addObject("formEntradaErrorMessage", e.getMessage());
+		}
 		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas());
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		vista.addObject("cliente", clienteEncontrado);
 		return vista;
 	}
 	@GetMapping("/peliculasclientes")

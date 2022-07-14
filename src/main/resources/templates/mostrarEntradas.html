@@ -11,7 +11,7 @@
 <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
 <style type="text/css"> 
 </style>
-<title>***Listado de Peliculas***</title>
+<title>***Listado de Entradas***</title>
 <style>
     body{
     height: fit-content;
@@ -47,24 +47,17 @@ Peliculas Registradas
 </h2>
 </div>
 <div class="container">
-<div class="alert text-center" th:if="${formPeliculaErrorMessage}" th:text="${formUsuarioPeliculaMessage}">Name Error</div>
+<div class="alert text-center" th:if="${formClientePeliculaErrorMessage}" th:text="${formClientePeliculaMessage}">Name Error</div>
             <div class="col">
             <div class="row">
-                <div class="card" th:each="p : ${listapeliculas}">
-                <h6 th:text="${p.id}"></h6>
-                <div class="card-image">
-                <img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" >
-                </div>
+                <div class="card" th:each="t : ${listaEntradas}">
+                <h6 th:text="${t.idClientePelicula}"></h6>
                 <div class="card-body">
-                    <h5 class="card-title" th:text="${p.nombre}">Titulo de cancion</h5>
-                    <p class="card-text" th:text="${p.descripcion}"></p>
                     <hr>
-                   <div> <h20>Genero: <p th:text="${p.genero}"></p></h20></div>
-                   <div> <h20>Duracion: <p th:text="${p.duracion}"></p></h20></div>
-                   <div> <h20>Fecha de Estreno: <p th:text="${p.fechadeE}"></p></h20></div>
-             		<a class="buton" th:href="@{'/cargarResena/'+${p.id}}">Comentar</a>
-                    <a class="buton" th:href="@{'/mostrarResena/'+${p.id}}">Ver Comentarios</a>
-                    <a class="buton" th:href="@{'/cargarentrada/'+${p.id}}">Comprar</a>  
+                   <div> <h20>Cliente: <br><p th:text="${t.cliente.nombre} + ' ' + ${t.cliente.apellido} "></p></h20></div>
+                   <div> <h20> <p th:text="${t.cliente.dni}"></p></h20></div>
+                   <div> <h20>Pelicula: <p th:text="${t.pelicula}"></p></h20></div>
+                   <div> <h20>Fecha de compra: <p th:text="${t.fechaCompra}"></p></h20></div> 
                 </div>
                 </div>
             </div>

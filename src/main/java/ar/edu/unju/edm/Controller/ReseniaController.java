@@ -5,6 +5,7 @@ import javax.validation.Valid;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -41,19 +42,22 @@ public class ReseniaController {
 	IPeliculaService peliculaservice;
 
 	@GetMapping("/cargarResena/{id}")
-		public ModelAndView addResenia(Model model, @PathVariable(name="id")Integer id) throws Exception{
+		public ModelAndView addResenia(Model model, @PathVariable(name="id")Integer id, Authentication auth) throws Exception{
 		Pelicula peliculaEncontrada = new Pelicula();
+		Cliente clienteEncontrado = new Cliente();
 		SRT.info("Entrando!!!!!!!!!!!!!!");
 		try {
 			peliculaEncontrada = peliculaservice.buscarPelicula(id);
-			SRT.info("Se encontro la pelicula");
+			clienteEncontrado = clienteservice.buscarCliente(Long.parseLong(auth.getName()));
+			SRT.info("Se encontro la pelicula"+clienteEncontrado.getNombre());
 		}catch(Exception e) {
 			model.addAttribute("formReseniaErrorMessage", e.getMessage());
 		}
 		ModelAndView view = new ModelAndView("cargarResena");
 		SRT.info(peliculaEncontrada.getId());
+		SRT.info(auth.getName());
 		view.addObject("unaResenia", reviewService.nuevaResenia());
-		view.addObject("clientes", clienteservice.mostrarClientes());
+		view.addObject("cliente", clienteEncontrado);
 		view.addObject("pelicula", peliculaEncontrada);
 		return view;
 		}
@@ -104,7 +108,7 @@ public class ReseniaController {
 	}
 	@GetMapping("/mostrarResenaAdmin/{id}")
 	public ModelAndView showReviewsMovieAdmin(@PathVariable (name="id") Integer id) throws Exception {
-		ModelAndView vista= new ModelAndView("mostrarResena");
+		ModelAndView vista= new ModelAndView("mostrarResenaAdmin");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
 		Pelicula peliculaEncontrada = new Pelicula();
 		try {
@@ -119,9 +123,9 @@ public class ReseniaController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-	@GetMapping("/mostrarResena/{dni}")
+	@GetMapping("/mostrarResena2/{dni}")
 	public ModelAndView showClientReviews(@PathVariable (name="dni") Long dni) throws Exception {
-		ModelAndView vista= new ModelAndView("mostrarResena");
+		ModelAndView vista= new ModelAndView("mostrarResena2");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
 		Cliente clienteEncontrado = new Cliente();
 		try {
@@ -136,9 +140,9 @@ public class ReseniaController {
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}
-	@GetMapping("/mostrarResenaAdmin/{dni}")
+	@GetMapping("/mostrarResenaAdmin2/{dni}")
 	public ModelAndView showClientReviewsAdmin(@PathVariable (name="dni") Long dni) throws Exception {
-		ModelAndView vista= new ModelAndView("mostrarResena");
+		ModelAndView vista= new ModelAndView("mostrarResenaAdmin");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
 		Cliente clienteEncontrado = new Cliente();
 		try {
@@ -159,26 +163,9 @@ public class ReseniaController {
 		reviewService.eliminarResenia(idComentario);
 		}catch(Exception error){
 			SRT.error("No se pudo eliminar la resena");
-			return "redirect:/cargarresena";
+			return "redirect:/cargarResena";
 		}
-		return "redirect:/mostrarResenaAdmin";
+		return "redirect:/mostrarclientes";
 	}
-//	@GetMapping("/cargarResena/{id}")
-//	public ModelAndView addResenia(Model model, @PathVariable(name="id")Integer id) throws Exception{
-//	Pelicula peliculaEncontrada = new Pelicula();
-//	SRT.info("Entrando!!!!!!!!!!!!!!");
-//	try {
-//		peliculaEncontrada = peliculaservice.buscarPelicula(id);
-//		SRT.info("Se encontro la pelicula");
-//	}catch(Exception e) {
-//		model.addAttribute("formReseniaErrorMessage", e.getMessage());
-//	}
-//	ModelAndView view = new ModelAndView("cargarResena");
-//	SRT.info(peliculaEncontrada.getId());
-//	view.addObject("unaResenia", reviewService.nuevaResenia());
-//	view.addObject("clientes", clienteservice.mostrarClientes());
-//	view.addObject("pelicula", peliculaEncontrada);
-//	return view;
-//	}
 	
 }
