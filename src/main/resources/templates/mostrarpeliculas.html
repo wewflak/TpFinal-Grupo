@@ -41,6 +41,7 @@ img{
       <th scope="col">Genero</th>
       <th scope="col">Duracion</th>
       <th scope="col">Fecha de Estreno</th>
+      <th scope="col">Entradas compradas</th>
       <th scope="col">Ver comentarios</th>
       <th scope="col">Editar</th>
 	  <th scope="col">Eliminar</th>
@@ -55,7 +56,8 @@ img{
 		<td th:text="${p.genero}"></td>
 		<td th:text="${p.duracion}"></td>
 		<td th:text="${p.fechadeE}"></td>
-		<td><a class="bton" th:href="@{'/mostrarResenaAdmin/'+${p.id}}">Ver comentarios</a></td>
+		<td><a class="bton" th:href="@{'/mostrarEntradasPelicula/'+${p.id}}">Entradas</a></td>
+		<td><a class="bton" th:href="@{'/mostrarResenaAdmin/'+${p.id}}">Comentarios</a></td>
 
 		<td><a class="bton" th:href="@{'/editarpeliculas/'+${p.id}}"> Editar </a></td>
 		

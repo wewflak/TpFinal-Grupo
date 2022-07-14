@@ -650,7 +650,7 @@ footer{
     transition:all 0.5s;
 }
 
-#volver{
+/*#volver{
 	margin-top:2em;
 	height: 5em;
 	margin-bottom: 2em; 
@@ -659,6 +659,29 @@ footer{
 	font-size: 1.2em;
 	margin-top: 2em;
 	vertical-align:middle;
+}*/
+ #volver{
+	margin-top:2rem;
+	display: block;
+	background-image: linear-gradient(to right, #0c038c, #4905aa, #7807c8, #a607e4, #d600ff);
+	padding:2rem 0 2rem 0;
+	transition:all 2s;
+	
+}
+#volver span{
+	margin-left:2rem;
+	color:#dde1e4;
+	font-size:1.2rem;
+	text-decoration:none;
+}
+a{
+	text-decoration:none;
+}
+a #volver:hover{
+	background-image: linear-gradient(to left, #0c038c, #4905aa, #7807c8, #a607e4, #d600ff);
+}
+a #volver:hover span{
+		color:#dde1e4;
 }
 .card-image{
 	display:flex;

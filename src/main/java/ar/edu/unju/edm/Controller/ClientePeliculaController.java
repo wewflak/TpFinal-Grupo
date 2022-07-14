@@ -93,11 +93,54 @@ public class ClientePeliculaController {
 		view.setViewName("generadoComprobante");
 		return view;
 	}
-	@GetMapping("/mostrarEntradas")
-	public ModelAndView showTickets() {
+	@GetMapping("/mostrarEntradas/{dni}")
+	public ModelAndView showClientTickets(@PathVariable (name="dni") Long dni) throws Exception {
 		ModelAndView vista= new ModelAndView("mostrarEntradas");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
-		vista.addObject("listaEntradas", clientePeliculaService.listarClientePelicula());
+		Cliente clienteEncontrado = new Cliente();
+		try {
+			clienteEncontrado = clienteservice.buscarCliente(dni);
+			SRT.info("Se encontro la pelicula");
+			
+		}catch(Exception e) {
+			vista.setViewName("mostrarpeliculascliente");
+			vista.addObject("formReseniaErrorMessage", e.getMessage());
+		}
+		vista.addObject("listaEntradas",clientePeliculaService.mostrarEntradasPorCliente(clienteEncontrado.getDni()));
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
+	@GetMapping("/mostrarEntradasPelicula/{id}")
+	public ModelAndView showTicketsMovieAdmin(@PathVariable (name="id") Integer id) throws Exception {
+		ModelAndView vista= new ModelAndView("mostrarEntradasAdmin");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		Pelicula peliculaEncontrada = new Pelicula();
+		try {
+			peliculaEncontrada = peliculaservice.buscarPelicula(id);
+			SRT.info("Se encontro la pelicula");
+			
+		}catch(Exception e) {
+			vista.setViewName("index");
+			vista.addObject("formReseniaErrorMessage", e.getMessage());
+		}
+		vista.addObject("listaEntradas",clientePeliculaService.mostrarEntradasPorPelicula(peliculaEncontrada.getId()));
+		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
+		return vista;
+	}
+	@GetMapping("/mostrarEntradasCliente/{dni}")
+	public ModelAndView showClientTicketsAdmin(@PathVariable (name="dni") Long dni) throws Exception {
+		ModelAndView vista= new ModelAndView("mostrarEntradasAdmin2");
+		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
+		Cliente clienteEncontrado = new Cliente();
+		try {
+			clienteEncontrado = clienteservice.buscarCliente(dni);
+			SRT.info("Se encontro la pelicula");
+			
+		}catch(Exception e) {
+			vista.setViewName("index");
+			vista.addObject("formReseniaErrorMessage", e.getMessage());
+		}
+		vista.addObject("listaEntradas",clientePeliculaService.mostrarEntradasPorCliente(clienteEncontrado.getDni()));
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
 		return vista;
 	}

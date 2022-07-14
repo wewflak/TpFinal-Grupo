@@ -13,6 +13,8 @@ public interface IClientePeliculaService {
 	public void eliminarClientePelicula(Integer idClientePelicula);
 	public void modificarClientePelicula(ClientePelicula clientMovie);
 	public List<ClientePelicula> listarClientePelicula();
+	public List<ClientePelicula> mostrarEntradasPorPelicula(Integer idClientePelicula);
+	public List<ClientePelicula> mostrarEntradasPorCliente(Long dni);
 	public ClientePelicula buscarClientePelicula(Integer idClientePelicula) throws Exception;
 	
 }
