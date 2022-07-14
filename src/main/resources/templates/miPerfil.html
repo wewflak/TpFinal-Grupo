@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html xmlns:th="https://www.thymeleaf.org">
-<head>
 <meta charset="UTF-8">
 <head>
 <!--<link th:href="@{webjars/bootstrap/4.5.0/css/bootstrap.min.css}" rel="stylesheet" type="text/css">-->
@@ -9,9 +8,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@300;400;500&family=Seaweed+Script&display=swap" rel="stylesheet">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 <link rel="stylesheet" th:href="@{/css/style.css}" type="text/css">
+<link rel="stylesheet" th:href="@{/css/magnific-popup.css}" type="text/css">
+<link rel="stylesheet" th:href="@{/css/all.min.css}" type="text/css">
+
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/solid.css">
+	<script src="https://use.fontawesome.com/releases/v5.0.7/js/all.js"></script>
 <style type="text/css"> 
 </style>
-<title>***Listado de Resenas***</title>
+<title>***Listado de Clientes***</title>
 <style>
     body{
     min-height: 100vh;
@@ -24,33 +28,36 @@
 </head>
 
 <body>
-<h2>Resenas registradas</h2>
+<h2>Clientess registrados</h2>
 <div class="contenedor">
 <div class="alert text-center" th:if="${formClienteErrorMessage}" th:text="${formClienteErrorMessage}">Name Error</div>
 <table class="table" id="tabla">
   <thead>
     <tr>
       <th scope="col">Nombre</th>
-      <th scope="col">Pelicula</th>
-      <th scope="col">Opinion</th>
-      <th scope="col">Valoracion</th>
-      <th scope="col">Fecha de Comentario</th>
+      <th scope="col">Apellido</th>
+      <th scope="col">DNI</th>
+      <th scope="col">Email</th>
+      <th scope="col">Fecha de Nacimiento</th>
+      <th scope="col">Tipo</th>
     </tr>
   </thead>
   <tbody>
-    <tr th:each="r : ${listaresenas}" >
-		<td th:text="${r.cliente.nombre}"></td>
-		<td th:text="${r.pelicula.nombre}"></td>
-		<td th:text="${r.texto}"></td>
-		<td th:text="${r.valoracion}"></td>
-		<td th:text="${r.fechadeCom}"></td>
+		<td th:text="${cliente.nombre}"></td>
+		<td th:text="${cliente.apellido}"></td>
+		<td th:text="${cliente.dni}"></td>
+		<td th:text="${cliente.email}"></td>
+		<td th:text="${cliente.FechadeN}"></td>
+		<td th:text="${cliente.tipo}"></td>
+		
     </tr>
 </tbody>
 </table>
-<a href="/peliculasclientes">
+<a href="/mostrarpeliculasclientes">
     <div class="botn">
       <span>Volver al Inicio</span>
     </div>
     </a>
     </div>
+</body>
 </html>

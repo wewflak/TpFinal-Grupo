@@ -144,7 +144,7 @@ public class ReseniaController {
 	}
 	@GetMapping("/mostrarResenaAdmin2/{dni}")
 	public ModelAndView showClientReviewsAdmin(@PathVariable (name="dni") Long dni) throws Exception {
-		ModelAndView vista= new ModelAndView("mostrarResenaAdmin");
+		ModelAndView vista= new ModelAndView("mostrarResenaAdmin2");
 		SRT.error("ENTRANDOOOOOOOOOOOOOOOOOOOOO");
 		Cliente clienteEncontrado = new Cliente();
 		try {

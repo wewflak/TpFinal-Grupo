@@ -19,6 +19,7 @@
     font-family: 'Hind Siliguri', sans-serif;
     justify-items:center;
     overflow-y:scroll;
+    
 }
 img{
 	width:120px;
@@ -29,7 +30,7 @@ img{
 
 <body>
 <h2>Peliculas registradas</h2>
-<div class="contenedor">
+<div class="contenedor" >
 <div class="alert text-center" th:if="${formPeliculaErrorMessage}" th:text="${formUsuarioPeliculaMessage}">Name Error</div>
 <table class="table" id="tabla">
   <thead>
@@ -52,7 +53,7 @@ img{
     	<td><img th:src="${'data:image/jpg;base64,'+p.imagen}" alt="" ></td>
     	<td th:text="${p.id}"></td>
 		<td th:text="${p.nombre}"></td>
-		<td th:text="${p.descripcion}"></td>
+		<div class="description"><td th:text="${p.descripcion}"></td></div>
 		<td th:text="${p.genero}"></td>
 		<td th:text="${p.duracion}"></td>
 		<td th:text="${p.fechadeE}"></td>
