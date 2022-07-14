@@ -112,5 +112,20 @@ public class ClienteController {
 		}
 		return "redirect:/mostrarclientes";
 	}
-	
+	@GetMapping("/miPerfil/{dni}")
+		public ModelAndView myProfile(@PathVariable (name="dni") Long dni)throws Exception{
+		ModelAndView view = new ModelAndView("miPerfil");
+		Cliente clienteEncontrado = new Cliente();
+		try {
+			clienteEncontrado = serviceclient.buscarCliente(dni);
+			SRT.info("Se encontro la pelicula");
+			
+		}catch(Exception e) {
+			view.setViewName("mostrarpeliculasclientes");
+			view.addObject("formClienteErrorMessage", e.getMessage());
+		}
+		view.addObject("cliente", clienteEncontrado);
+		
+		return view;	
+		}
 }

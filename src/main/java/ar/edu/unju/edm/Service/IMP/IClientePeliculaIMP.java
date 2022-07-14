@@ -68,7 +68,7 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 		todos=(List<ClientePelicula>) clientePeliculaRepository.findAll();
 		for(int i=0; i<todos.size();i++) {
 			System.out.println(todos.get(i).getPelicula().getNombre());
-			if(todos.get(i).getPelicula().getId()==idClientePelicula) {
+			if(todos.get(i).getPelicula().getEstado()==true && todos.get(i).getPelicula().getId()==idClientePelicula) {
 				filtrado.add(todos.get(i));
 			}
 		}
@@ -82,7 +82,7 @@ public class IClientePeliculaIMP implements IClientePeliculaService {
 		todos=(List<ClientePelicula>) clientePeliculaRepository.findAll();
 		for(int i=0; i<todos.size();i++) {
 			System.out.println(todos.get(i).getPelicula().getNombre());
-			if(todos.get(i).getCliente().getDni()==dni) {
+			if(todos.get(i).getPelicula().getEstado()==true && todos.get(i).getCliente().getDni()==dni) {
 				filtrado.add(todos.get(i));
 			}
 		}

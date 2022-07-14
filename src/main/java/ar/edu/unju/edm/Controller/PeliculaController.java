@@ -101,7 +101,7 @@ public class PeliculaController {
 			clienteEncontrado = clienteservice.buscarCliente(Long.parseLong(auth.getName()));
 		}catch(Exception e) {
 			ModelAndView vista1 = new ModelAndView("peliculas");
-			vista1.addObject("formEntradaErrorMessage", e.getMessage());
+			vista1.addObject("formPeliculaErrorMessage", e.getMessage());
 		}
 		vista.addObject("listapeliculas", servicemovie.mostrarPeliculas());
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");

@@ -29,8 +29,7 @@ img{
     <div class="container">
         <form class="caja col-md 6" th:object="${unaResenia}" th:action="${band2} ? @{/ModificarResena} : @{/guardarResenia}" method="post">
         
-        
-			<input type="hidden" class="form-control" th:if="${band2}" th:field="*{fechadeCom}">
+      
         
         	  		<div class="mb-3">
     			<label for="exampleInputEmail1" class="form-label">Cliente</label>
@@ -63,8 +62,8 @@ img{
           </div>
           
           <div class="mb-3">
-                <label for="fechadeCom" class="form-label" th:if="${band2==true}">Fecha de Comentario</label>
-                <input  type="date"  class="date form-control" th:if="${band2==true}" id="fechadeCom" th:field="*{fechadeCom}" required>
+                <label for="fechadeCom" class="form-label" >Fecha de Comentario</label>
+                <input  type="date"  class="date form-control" id="fechadeCom" th:field="*{fechadeCom}" required>
                     <div class="alert alert-danger" th:if="${#fields.hasErrors('fechadeCom')}"th:errors="*{fechadeCom}"></div>
             </div> 
           

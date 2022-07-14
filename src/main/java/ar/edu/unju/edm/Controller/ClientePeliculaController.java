@@ -52,7 +52,7 @@ public class ClientePeliculaController {
 			SRT.info("Se encontro la pelicula"+clienteEncontrado.getNombre());
 		}catch(Exception e) {
 			ModelAndView view = new ModelAndView("cargarentrada");
-			view.addObject("formEntradaErrorMessage", e.getMessage());
+			view.addObject("formClientePeliculaErrorMessage", e.getMessage());
 		}
 		ModelAndView view = new ModelAndView("cargarentrada");
 		view.addObject("unaEntrada", clientePeliculaService.nuevoClientePelicula());
@@ -104,7 +104,7 @@ public class ClientePeliculaController {
 			
 		}catch(Exception e) {
 			vista.setViewName("mostrarpeliculascliente");
-			vista.addObject("formReseniaErrorMessage", e.getMessage());
+			vista.addObject("formClientePeliculaErrorMessage", e.getMessage());
 		}
 		vista.addObject("listaEntradas",clientePeliculaService.mostrarEntradasPorCliente(clienteEncontrado.getDni()));
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
@@ -121,7 +121,7 @@ public class ClientePeliculaController {
 			
 		}catch(Exception e) {
 			vista.setViewName("index");
-			vista.addObject("formReseniaErrorMessage", e.getMessage());
+			vista.addObject("formClientePeliculaErrorMessage", e.getMessage());
 		}
 		vista.addObject("listaEntradas",clientePeliculaService.mostrarEntradasPorPelicula(peliculaEncontrada.getId()));
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");
@@ -138,7 +138,7 @@ public class ClientePeliculaController {
 			
 		}catch(Exception e) {
 			vista.setViewName("index");
-			vista.addObject("formReseniaErrorMessage", e.getMessage());
+			vista.addObject("formClientePeliculaErrorMessage", e.getMessage());
 		}
 		vista.addObject("listaEntradas",clientePeliculaService.mostrarEntradasPorCliente(clienteEncontrado.getDni()));
 		SRT.error("SALIENDOOOOOOOOOOOOOOOOOOOOOO");

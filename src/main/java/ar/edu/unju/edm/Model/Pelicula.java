@@ -7,6 +7,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Lob;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
 
@@ -23,6 +25,8 @@ public class Pelicula {
     private String nombre;
     private  String genero;
     @NotNull
+	@Min(value=2, message="No puede ser menor que 2")
+	@Max(value=1500, message="No puede ser mayo que 1500")
     private Long duracion;
     private String descripcion;
     @DateTimeFormat(pattern = "yyyy-MM-dd")
