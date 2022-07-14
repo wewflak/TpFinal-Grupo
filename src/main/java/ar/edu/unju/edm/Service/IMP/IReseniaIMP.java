@@ -105,5 +105,12 @@ public class IReseniaIMP implements IReseniaService {
 		reseniaEncontrada=reseniaRepository.findById(idResenia).orElseThrow(()->new Exception("Resenia no encontrada"));
 		return reseniaEncontrada;
 	}
+
+	@Override
+	public void modificarResenias(Resenia review) {
+		review.setEstado(true);
+		reseniaRepository.save(review);
+		
+	}
 	
 }

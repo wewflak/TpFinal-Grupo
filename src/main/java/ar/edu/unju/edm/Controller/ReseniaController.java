@@ -59,6 +59,7 @@ public class ReseniaController {
 		view.addObject("unaResenia", reviewService.nuevaResenia());
 		view.addObject("cliente", clienteEncontrado);
 		view.addObject("pelicula", peliculaEncontrada);
+		view.addObject("band2", false);
 		return view;
 		}
 	@PostMapping("/guardarResenia")
@@ -80,6 +81,7 @@ public class ReseniaController {
 			view.addObject("formReseniaErrorMessage", e.getMessage());
 			view.addObject("unaResenia", reviewService.nuevaResenia());
 			SRT.error("Saliedno del metodo");
+			view.addObject("band2", false);
 			view.setViewName("cargarResena");
 			return view;
 		}
@@ -168,4 +170,30 @@ public class ReseniaController {
 		return "redirect:/mostrarclientes";
 	}
 	
+	@GetMapping("/editarResena/{idComentario}")
+	public ModelAndView editReview(Model model, @PathVariable(name="idComentario")Integer idComentario) throws Exception{
+		Resenia reseniaEncontrada = new Resenia();
+		ModelAndView encontrado = new ModelAndView();
+		try {
+			reseniaEncontrada = reviewService.buscarResenia(idComentario);
+			SRT.info(reseniaEncontrada.getFechadeCom());
+		}catch(Exception e) {
+			encontrado.addObject("formReseniaErrorMessage", e.getMessage());
+		}
+		encontrado.setViewName("cargarResena");
+		encontrado.addObject("Resena", reseniaEncontrada);
+		encontrado.addObject("band2", true);
+		SRT.error("Resenia: " + reseniaEncontrada);
+		return encontrado;
+	}
+	
+	@PostMapping("ModificarResena")
+	public ModelAndView subReview(@Valid @ModelAttribute ("resenia") Resenia reseniamodificar, Model model, Authentication auth) {
+		reviewService.modificarResenias(reseniamodificar);
+		SRT.info("Ingresando al metodo guardar Resena: "+reseniamodificar.getFechadeCom());
+		ModelAndView vista = new ModelAndView ("mostrarResena2");
+		vista.addObject("listaresenas", reviewService.mostrarReseniasPorCliente(Long.parseLong(auth.getName())));
+		vista.addObject("formReseniaErrorMessage", "Resenia guardada correctamente");
+		return vista;
+	}
 }
