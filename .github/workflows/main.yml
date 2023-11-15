@@ -26,7 +26,7 @@ jobs:
       uses: docker/build-push-action@v2
       with:
         context: .
-        file: "C:\Users\Lisan\Documents\Java PV2022\TpFinal-Grupo\dockerfile.yml"
+        file: C:\Users\Lisan\Documents\Java PV2022\TpFinal-Grupo\dockerfile.yml
         push: true
         tags: lisandro1806/githubcd15-11:latest       
         build-args: |
