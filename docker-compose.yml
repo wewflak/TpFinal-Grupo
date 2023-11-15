@@ -1,0 +1,7 @@
+version: '3'
+   
+services:
+  tpFinalHIA:
+    image: lisandro1806/githubcd15-11:latest
+    ports:
+      - "80:80"
