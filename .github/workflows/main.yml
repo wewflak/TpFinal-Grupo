@@ -23,11 +23,10 @@ jobs:
       run: mvn clean install -DskipTests
 
     - name: Build and Push Docker Image
-      uses: docker/build-push-action@v2
-      with:
-        context: .
-        file: C:\Users\Lisan\Documents\Java PV2022\TpFinal-Grupo\dockerfile.yml
-        push: true
-        tags: lisandro1806/githubcd15-11:latest       
-        build-args: |
-          JAR_FILE=target/proyectoHIA.jar
+      run: |
+        docker buildx create --use
+        docker buildx build \
+          --build-arg JAR_FILE=proyectoHIA.jar \
+          --file "C:\Users\Lisan\Documents\Java PV2022\TpFinal-Grupo\dockerfile.yml"
+          --tag lisandro1806/githubcd15-11:latest \
+          --push .
