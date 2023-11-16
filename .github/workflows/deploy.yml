@@ -15,5 +15,5 @@ jobs:
 
     - name: Deploy to Production
       run: |
-        ls-l
+        ls -l
         docker-compose -f docker-compose.yml up -d
