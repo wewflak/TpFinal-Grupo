@@ -20,4 +20,6 @@ jobs:
     - name: Deploy to Production
       run: |
         ls -l
+        cd src\main\resources\templates
+        vi index.html
         docker-compose -f docker-compose.yml up -d
