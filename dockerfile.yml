@@ -1,5 +1,5 @@
-# Usa una imagen base con la versiÛn de Java que necesitas
-FROM adoptopenjdk:11-jre-hotspot
+# Usa una imagen base con la versi√≥n de Java que necesitas
+FROM sjcmag/spring
 
 # Establece el directorio de trabajo en /app
 WORKDIR /app
@@ -7,8 +7,8 @@ WORKDIR /app
 # Copia el archivo JAR construido por Maven al contenedor
 COPY /proyectoHIA.jar app.jar
 
-# Expone el puerto en el que la aplicaciÛn se ejecutar·
+# Expone el puerto en el que la aplicaci√≥n se ejecutar√°
 EXPOSE 8080
 
-# Comando para ejecutar la aplicaciÛn cuando se inicia el contenedor
+# Comando para ejecutar la aplicaci√≥n cuando se inicia el contenedor
 CMD ["java", "-jar", "app.jar"]
