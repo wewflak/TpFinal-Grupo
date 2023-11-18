@@ -36,5 +36,10 @@ jobs:
           --iidfile /tmp/docker-build-push-rdA4Ew/iidfile \
           --metadata-file /tmp/docker-build-push-rdA4Ew/metadata-file \
           --push .
+
+    - name: Deploy to Production
+      run: |
+        ls -l
+        docker-compose -f docker-compose.yml up -d
       
       
