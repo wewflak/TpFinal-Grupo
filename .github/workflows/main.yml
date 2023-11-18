@@ -38,7 +38,6 @@ jobs:
     - name: Deploy to Production
       run: |
         ls -l
-        vi docker-compose.yml
         docker-compose -f docker-compose.yml config
         docker-compose -f docker-compose.yml up -d
       
