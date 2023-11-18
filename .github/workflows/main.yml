@@ -33,8 +33,6 @@ jobs:
           --build-arg JAR_FILE=proyectoHIA.jar \
           --file dockerfile.yml \
           --tag lisandro1806/githubcd15-11:latest \
-          --iidfile /tmp/docker-build-push-rdA4Ew/iidfile \
-          --metadata-file /tmp/docker-build-push-rdA4Ew/metadata-file \
           --push .
 
     - name: Deploy to Production
