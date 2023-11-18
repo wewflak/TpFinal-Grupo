@@ -2,6 +2,6 @@ version: '3'
    
 services:
   tpFinalHIA:
-    image: debian:latest
+    image: lisandro1806/githubcd15-11:latest
     ports:
       - "80:80"
