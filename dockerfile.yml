@@ -1,5 +1,5 @@
 # Usa una imagen base con la versión de Java que necesitas
-FROM sjcmag/spring
+FROM sjcmag/spring:v1
 
 # Establece el directorio de trabajo en /app
 WORKDIR /app
