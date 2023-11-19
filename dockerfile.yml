@@ -2,7 +2,7 @@
 FROM sjcmag/spring:v1
 
 # Establece el directorio de trabajo en /app
-
+WORKDIR /app
 
 # Copia el archivo JAR construido por Maven al contenedor
 COPY /target/crudapp.jar .
