@@ -38,7 +38,9 @@ jobs:
     - name: Deploy to Production
       run: |
         ls -l
-        docker-compose -f docker-compose.yml config
-        docker-compose -f docker-compose.yml up -d
+        docker run  \
+        --name tpFinalHIA \
+        -p 8080:8080 \
+        lisandro1806/githubcd15-11
       
       
