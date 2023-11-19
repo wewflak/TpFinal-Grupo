@@ -34,7 +34,7 @@ jobs:
         ls -l
         docker buildx build \
           --build-arg JAR_FILE=crudapp.jar \
-          --file dockerfile.yml \
+          --file "C:\Users\Lisan\Documents\Java PV2022\TpFinal-Grupo\dockerfile.yml" \
           --tag lisandro1806/githubcd15-11:latest \
           --push .
 
