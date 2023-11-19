@@ -5,10 +5,10 @@ FROM sjcmag/spring:v1
 WORKDIR /app
 
 # Copia el archivo JAR construido por Maven al contenedor
-COPY target/crudapp.jar app.jar
+COPY /target/crudapp.jar .
 
 # Expone el puerto en el que la aplicación se ejecutará
 EXPOSE 8080
 
 # Comando para ejecutar la aplicación cuando se inicia el contenedor
-CMD ["java", "-jar", "app.jar"]
+CMD ["java", "-jar", "crudapp.jar"]
