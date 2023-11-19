@@ -33,7 +33,7 @@ jobs:
         cd target
         ls -l
         docker buildx build \
-          --build-arg JAR_FILE=proyectoHIA.jar \
+          --build-arg JAR_FILE=crudapp.jar \
           --file dockerfile.yml \
           --tag lisandro1806/githubcd15-11:latest \
           --push .
